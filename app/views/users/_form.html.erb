@@ -1,0 +1,26 @@
+<form action="<%= form_action %>" method="POST">
+  <%= update_input if [:put, :patch].include?(form_method) %>
+  <%= auth_input %>
+
+  <div>
+    <label for="user_username">Username</label><br>
+    <input type="text" name="user[username]" id="user_username"
+        value="<%= user.username %>">
+  </div>
+  <div>
+    <label for="user_name">Real name (optional)</label><br>
+    <input type="text" name="user[name]" id="user_name"
+        value="<%= user.name %>">
+  </div>
+  <div>
+    <label for="user_email">Email</label><br>
+    <input type="email" name="user[email]" id="user_email"
+        value="<%= user.email %>">
+  </div>
+  <div>
+    <label for="user_password">Password</label><br>
+    <input type="password" name="user[password]" id="user_password">
+  </div>
+
+  <button>Submit</button>
+</form>

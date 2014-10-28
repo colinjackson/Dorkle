@@ -1,0 +1,12 @@
+<ul>
+<% flash.each do |notification_type, notifications| %>
+  <li>
+    <header><%= notification_type %></header>
+    <ul>
+      <% notifications.each do |notification| %>
+        <li><%= notification %></li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   end
 
   def password=(password)
+    return if password.empty?
+    
     @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
