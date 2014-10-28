@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem 'annotate', '~> 2.6.5'
+gem 'figaro', '>= 1.0.0'
 
 group :development do
   gem 'better_errors'
