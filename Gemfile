@@ -22,16 +22,6 @@ group :development do
   gem 'quiet_assets'
 end
 
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-end
-
-group :test do
-  gem 'faker'
-  gem 'capybara'
-  gem 'launchy'
-  gem 'shoulda-matchers'
-end
-
+gem 'rspec-rails', group: [:development, :test]
+gem 'shoulda-matchers', group: :test
 gem 'rails_12factor', group: :production
