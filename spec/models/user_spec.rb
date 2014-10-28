@@ -4,24 +4,22 @@ require 'necessary_and_unique_values'
 RSpec.describe User, :type => :model do
   describe "validates" do
     describe "username" do
-      it_behaves_like "a necessary and unique attribute", :username
+      it_behaves_like "a necessary and unique attribute", :user, :username
     end
 
     describe "email" do
-      it_behaves_like "a necessary and unique attribute", :username
+      it_behaves_like "a necessary and unique attribute", :user, :username
       it do
         should allow_value('csj.nyc@gmail.com', 'areallyw31RD3m811@anjlj.com')
           .for(:email)
       end
       it { should_not allow_value('email;address@email.com').for(:email) }
-      it { should_not allow_value('whatisthis@').for(:email) }
+      it { should_not allow_value('whatisthi@s').for(:email) }
     end
 
     describe "name" do
       it "should default to 'Dork'" do
-        user = User.new(username: "csj", email: "csj@nyc.org", password: "secret")
-        user.save()
-        expect(user.name).to eq("Dork")
+        expect(FactoryGirl.create(:user).name).to eq("Dork")
       end
     end
 
@@ -36,23 +34,22 @@ RSpec.describe User, :type => :model do
   end
 
   describe "authorizes" do
-    let(:user) { User.new(username: "csj", email: "csj@nyc.org", password: "secret") }
-
-    before do
-      user.save()
-    end
+    let(:user) { FactoryGirl.create(:user) }
 
     it "does not reveal password" do
-      expect{ user.password }.to raise NoMethodError
+      expect{ user.password }.to raise_error(NoMethodError)
     end
 
     it "checks if the password matches for the user" do
-      expect(user.is_password('secret')).to be true
+      expect(user.is_password?('secret')).to be true
     end
 
     describe "User::find_by_credentials" do
       it "returns the user if the username and password match" do
-        found_user = User.find_by_credentials({username: "csj", password: "secret"})
+        found_user = User.find_by_credentials({
+          username: user.username,
+          password: "secret"
+        })
         expect(found_user).to eq(user)
       end
 
