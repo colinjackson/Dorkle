@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   validates_presence_of :username, :email, :password_digest
   validates_uniqueness_of :username, :email
   validates_format_of :email, with: /\A[^\;\*\+\/\\]+@.+\..+\z/
@@ -6,6 +7,7 @@ class User < ActiveRecord::Base
 
   before_create :set_default_name
 
+  has_many :sessions
 
   def self.find_by_credentials(credentials)
     user = self.find_by_username(credentials[:username])
@@ -29,4 +31,5 @@ class User < ActiveRecord::Base
   def set_default_name
     self.name ||= "Dork Dorkly"
   end
+
 end

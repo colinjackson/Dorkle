@@ -1,7 +1,8 @@
 require 'rails_helper'
-require 'necessary_and_unique_values'
+require 'necessary_and_unique_attribute'
 
 RSpec.describe User, :type => :model do
+
   describe "validates" do
     describe "username" do
       it_behaves_like "a necessary and unique attribute", :user, :username
@@ -62,6 +63,12 @@ RSpec.describe User, :type => :model do
         found_user = User.find_by_credentials({username: "csj", password: "letmein"})
         expect(found_user).to be_nil
       end
+    end
+  end
+
+  describe "associates with" do
+    describe "session" do
+      it { should have_many(:sessions) }
     end
   end
 
