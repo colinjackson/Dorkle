@@ -18,8 +18,8 @@ RSpec.describe User, :type => :model do
     end
 
     describe "name" do
-      it "should default to 'Dork'" do
-        expect(FactoryGirl.create(:user).name).to eq("Dork")
+      it "should default to 'Dork Dorkly'" do
+        expect(create(:user).name).to eq("Dork Dorkly")
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe User, :type => :model do
   end
 
   describe "authorizes" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     it "does not reveal password" do
       expect{ user.password }.to raise_error(NoMethodError)

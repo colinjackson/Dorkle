@@ -4,14 +4,17 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A[^\;\*\+\/\\]+@.+\..+\z/
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  before_create :set_default_name
+
+
   def self.find_by_credentials(credentials)
     user = self.find_by_username(credentials[:username])
     user && user.is_password?(credentials[:password]) ? user : nil
   end
 
   def password=(password)
-    return if password.empty?
-    
+    return if !password || password.empty?
+
     @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
@@ -22,4 +25,8 @@ class User < ActiveRecord::Base
 
   private
   attr_reader :password
+
+  def set_default_name
+    self.name ||= "Dork Dorkly"
+  end
 end
