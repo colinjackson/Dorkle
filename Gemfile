@@ -21,9 +21,10 @@ group :development do
   gem 'quiet_assets'
 end
 
-gem 'rspec-rails', group: [:development, :test]
-group :test do
-  gem 'shoulda-matchers'
+gem 'shoulda-matchers', group: :test
+
+group :development, :test do
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
