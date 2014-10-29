@@ -5,6 +5,12 @@
 
 <h3>Time limit: <%= @game.time_limit %> seconds<br></h3>
 
+<form action="<%= rounds_url %>" method="POST">
+  <%= auth_input %>
+  <input type="hidden" name="round[game_id]" value="<%= @game.id %>">
+  <button>Start Game!</button>
+</form>
+
 <% if @game.author == current_user %>
   <h2>Manage your game</h2>
   <%= link_to "Set valid answers", game_answers_url(@game) %>

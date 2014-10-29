@@ -16,11 +16,20 @@ class RoundsController < ApplicationController
   end
 
   def show
-    @round = Round.includes(:game).find(params[:id])
+    @round = Round.includes(:game, answer_matches: :answer).find(params[:id])
+    render :show
   end
 
   def guess
     @round = Round.includes(:game).find(params[:id])
+    @guess = params[:round_guess]
+    if @round.handle_guess(@guess)
+      flash.now[:notices] = ["#{@guess} is correct!"]
+    else
+      flash.now[:notices] = ["#{@guess} is incorrect, sorry"]
+    end
+
+    render :show
   end
 
   private

@@ -8,20 +8,27 @@ class Round < ActiveRecord::Base
 
   def handle_guess(guess)
     answer = answer_for_guess(guess)
-    self.answer_matches.create!(answer: answer) if answer
+    if answer
+      self.answer_matches.create!(answer: answer)
+    else
+      return false
+    end
   end
 
   def answer_for_guess(guess)
     self.answers
-      .includes(:matches)
-      .where(answer: guess, round_answer_matches: {id: nil})
+      .joins("LEFT OUTER JOIN (#{RoundAnswerMatch.where(round_id: self.id).to_sql})
+              AS matches ON matches.answer_id = game_answers.id")
+      .where(answer: guess)
+      .where('matches.id IS NULL')
       .first
   end
 
   def answers_left
     self.answers
-      .includes(:matches)
-      .where(round_answer_matches: {id: nil})
+      .joins("LEFT OUTER JOIN (#{RoundAnswerMatch.where(round_id: self.id).to_sql})
+              AS matches ON matches.answer_id = game_answers.id")
+      .where('matches.id IS NULL')
       .count
   end
 
