@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(credentials_params)
     if @user
-      flash[:notice] = ["All right, you're in! Time to get your dork on!"]
+      flash[:notices] = ["All right, you're in! Time to get your dork on!"]
       sign_in!(@user)
       redirect_to user_url(@user)
     else
