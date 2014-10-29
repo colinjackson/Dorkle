@@ -70,6 +70,10 @@ RSpec.describe User, :type => :model do
     describe "session" do
       it { should have_many(:sessions) }
     end
+
+    describe "game" do
+      it { should have_many(:created_games) }
+    end
   end
 
 end

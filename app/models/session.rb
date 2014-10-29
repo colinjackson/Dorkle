@@ -5,7 +5,7 @@ class Session < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
-  belongs_to :user
+  belongs_to :user, inverse_of: :sessions
 
   private
   def ensure_session_token

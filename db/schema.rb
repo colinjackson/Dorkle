@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028203526) do
+ActiveRecord::Schema.define(version: 20141029061235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: true do |t|
+    t.string   "title",      null: false
+    t.string   "subtitle"
+    t.string   "source",     null: false
+    t.integer  "time_limit", null: false
+    t.integer  "author_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "games", ["author_id"], name: "index_games_on_author_id", using: :btree
+  add_index "games", ["title"], name: "index_games_on_title", unique: true, using: :btree
 
   create_table "sessions", force: true do |t|
     t.integer  "user_id",       null: false

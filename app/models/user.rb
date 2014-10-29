@@ -7,7 +7,11 @@ class User < ActiveRecord::Base
 
   before_create :set_default_name
 
-  has_many :sessions
+  has_many :sessions, inverse_of: :user
+  has_many :created_games,
+    class_name: "Game",
+    foreign_key: :author_id,
+    inverse_of: :author
 
   def self.find_by_credentials(credentials)
     user = self.find_by_username(credentials[:username])
