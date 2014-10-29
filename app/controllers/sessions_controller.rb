@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  before_filter :ensure_signed_out, only: [:new, :create]
-  before_filter :ensure_signed_in, only: :destroy
+  before_filter :require_signed_out, only: [:new, :create]
+  before_filter :require_signed_in, only: :destroy
 
   def new
     @user = User.new()

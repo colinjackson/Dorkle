@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
     session[:token] = nil
   end
 
-  def ensure_signed_in
+  def require_signed_in
     redirect_to new_session_url if !signed_in?
   end
 
-  def ensure_signed_out
+  def require_signed_out
     redirect_to user_url(current_user) if signed_in?
   end
 
