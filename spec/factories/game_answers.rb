@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :game_answer do
-    answer "42"
+    sequence(:answer) { |n| "#{n}" }
     game
   end
 end

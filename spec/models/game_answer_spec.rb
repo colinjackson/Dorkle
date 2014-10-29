@@ -6,7 +6,7 @@ RSpec.describe GameAnswer, :type => :model do
     it { should validate_presence_of(:game) }
     it { should validate_presence_of(:answer) }
 
-    it "should enforce uniquness of answers per game" do
+    it "should enforce uniqueness of answers per game" do
       next_answer = GameAnswer.new({
         game: game_answer.game,
         answer: game_answer.answer
@@ -27,5 +27,6 @@ RSpec.describe GameAnswer, :type => :model do
 
   describe "associates" do
     it { should belong_to(:game) }
+    it { should have_many(:matches) }
   end
 end
