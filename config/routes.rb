@@ -8,5 +8,11 @@ Rails.application.routes.draw do
   end
   resources :game_answers, only: [:create, :destroy], as: "answers"
 
+  resources :rounds, only: [:create, :show] do
+    member do
+      post 'guess' => 'rounds#guess', as: 'guess'
+    end
+  end
+
   root to: 'games#index'
 end

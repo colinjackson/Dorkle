@@ -6,7 +6,6 @@ RSpec.describe Round, :type => :model do
     let(:round) { create(:round) }
 
     it { should validate_presence_of(:game) }
-    it { should validate_presence_of(:player) }
 
     describe "completed" do
       it "should default to false" do

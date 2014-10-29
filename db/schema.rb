@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20141029105851) do
 
   create_table "rounds", force: true do |t|
     t.integer  "game_id",                    null: false
-    t.integer  "player_id",                  null: false
+    t.integer  "player_id"
     t.boolean  "completed",  default: false
     t.datetime "created_at"
     t.datetime "updated_at"

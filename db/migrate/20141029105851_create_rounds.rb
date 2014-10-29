@@ -2,7 +2,7 @@ class CreateRounds < ActiveRecord::Migration
   def change
     create_table :rounds do |t|
       t.references :game, null: false, index: true
-      t.integer :player_id, null: false
+      t.integer :player_id
       t.boolean :completed, default: false
 
       t.timestamps
