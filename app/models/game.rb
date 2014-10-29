@@ -8,4 +8,5 @@ class Game < ActiveRecord::Base
     less_than_or_equal_to: 900
 
   belongs_to :author, class_name: "User", inverse_of: :created_games
+  has_many :answers, class_name: "GameAnswer"
 end
