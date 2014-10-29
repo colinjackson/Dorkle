@@ -9,4 +9,5 @@ class Game < ActiveRecord::Base
 
   belongs_to :author, class_name: "User", inverse_of: :created_games
   has_many :answers, class_name: "GameAnswer"
+  has_many :rounds, inverse_of: :game
 end

@@ -12,10 +12,8 @@ RSpec.describe Session, :type => :model do
     end
   end
 
-  describe "associates with" do
-    describe "user" do
-      it { should belong_to(:user) }
-    end
+  describe "associates" do
+    it { should belong_to(:user) }
   end
 
   describe "methods" do

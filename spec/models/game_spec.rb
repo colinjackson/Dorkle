@@ -36,14 +36,10 @@ RSpec.describe Game, :type => :model do
     end
   end
 
-  describe "associates with" do
-    describe "user" do
-      it { should belong_to(:author) }
-    end
-
-    describe "game answer" do
-      it { should have_many(:answers) }
-    end
+  describe "associates" do
+    it { should belong_to(:author) }
+    it { should have_many(:answers) }
+    it { should have_many(:rounds) }
   end
 
 end

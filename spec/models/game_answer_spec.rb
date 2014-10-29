@@ -24,4 +24,8 @@ RSpec.describe GameAnswer, :type => :model do
       expect(next_answer).not_to be_valid
     end
   end
+
+  describe "associates" do
+    it { should belong_to(:game) }
+  end
 end

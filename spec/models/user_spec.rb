@@ -66,14 +66,10 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe "associates with" do
-    describe "session" do
-      it { should have_many(:sessions) }
-    end
-
-    describe "game" do
-      it { should have_many(:created_games) }
-    end
+  describe "associates" do
+    it { should have_many(:sessions) }
+    it { should have_many(:created_games) }
+    it { should have_many(:rounds) }
   end
 
 end
