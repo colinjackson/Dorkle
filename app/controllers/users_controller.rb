@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def require_current_user
-    if User.find(params[:id]) != current_user || !signed_in?
+    if !signed_in? || User.find(params[:id]) != current_user
       render plain: "You are a bad person!", status: :forbidden
     end
   end

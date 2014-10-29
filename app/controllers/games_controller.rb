@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_filter :require_signed_in, except: [:index, :show]
+  before_filter :require_signed_in, only: :new, :create
   before_filter :require_current_user_owner, only: [:edit, :update, :destroy]
 
   def index
@@ -57,7 +57,7 @@ class GamesController < ApplicationController
   end
 
   def require_current_user_owner
-    if Game.find(params[:id]).author_id != current_user.id
+    if !signed_in? || Game.find(params[:id]).author_id != current_user.id
       redirect_to games_url
     end
   end
