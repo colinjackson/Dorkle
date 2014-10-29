@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception
 
   helper_method :current_user, :current_session, :signed_in?
@@ -26,6 +27,14 @@ class ApplicationController < ActionController::Base
   def sign_out!
     current_session && current_session.destroy
     session[:token] = nil
+  end
+
+  def ensure_signed_in
+    redirect_to new_session_url if !signed_in?
+  end
+
+  def ensure_signed_out
+    redirect_to user_url(current_user) if signed_in?
   end
 
 end

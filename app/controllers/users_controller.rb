@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :ensure_signed_out, only: [:new, :create]
+  before_filter :ensure_current_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new()
@@ -47,6 +49,12 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :email, :name, :password)
+  end
+
+  def ensure_current_user
+    if User.find(params[:id]) != current_user || !signed_in?
+      render plain: "You are a bad person!", status: :forbidden
+    end
   end
 
 end

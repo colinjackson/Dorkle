@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
+  def ==(other)
+    return other.is_a?(User) && other.id == self.id
+  end
+
   private
   attr_reader :password
 

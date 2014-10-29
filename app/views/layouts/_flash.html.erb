@@ -1,7 +1,7 @@
 <ul>
 <% flash.each do |notification_type, notifications| %>
   <li>
-    <header><%= notification_type %></header>
+    <h4><%= notification_type %></h4>
     <ul>
       <% notifications.each do |notification| %>
         <li><%= notification %></li>

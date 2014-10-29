@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_filter :ensure_signed_out, only: [:new, :create]
+  before_filter :ensure_signed_in, only: :destroy
 
   def new
     @user = User.new()
@@ -8,10 +10,12 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(credentials_params)
     if @user
+      flash[:notice] = ["All right, you're in! Time to get your dork on!"]
       sign_in!(@user)
       redirect_to user_url(@user)
     else
       flash.now[:errors] = ["Invalid username and password. Try again!"]
+      @user = User.new(credentials_params)
       render :new
     end
   end
