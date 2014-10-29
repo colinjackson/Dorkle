@@ -1,7 +1,9 @@
-<h1>Sign up</h1>
+<h1>Sign Up</h1>
 
-<%= render "form",
+<%= render "shared/user_form",
   user: @user,
   form_action: users_url,
-  form_method: :post
+  form_method: :post,
+  auth_only: false,
+  button_text: "Ready to Dorkle!"
 %>

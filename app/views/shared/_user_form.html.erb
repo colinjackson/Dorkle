@@ -7,6 +7,8 @@
     <input type="text" name="user[username]" id="user_username"
         value="<%= user.username %>">
   </div>
+
+  <% unless auth_only %>
   <div>
     <label for="user_name">Real name (optional)</label><br>
     <input type="text" name="user[name]" id="user_name"
@@ -17,10 +19,12 @@
     <input type="email" name="user[email]" id="user_email"
         value="<%= user.email %>">
   </div>
+  <% end %>
+
   <div>
     <label for="user_password">Password</label><br>
     <input type="password" name="user[password]" id="user_password">
   </div>
 
-  <button>Submit</button>
+  <button><%= button_text %></button>
 </form>

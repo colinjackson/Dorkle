@@ -1,0 +1,9 @@
+<h1>Sign In</h1>
+
+<%= render "shared/user_form",
+  user: @user,
+  form_action: sessions_url,
+  form_method: :post,
+  auth_only: true,
+  button_text: "Let me in!"
+%>
