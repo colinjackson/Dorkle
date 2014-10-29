@@ -1,0 +1,13 @@
+<h1>Games!</h1>
+
+<ul>
+  <% @games.each do |game| %>
+  <li>
+    <h4><%= link_to game.title, game_url(game) %></h4>
+    <h5><%= game.subtitle %></h5>
+    <h5>by <%= link_to game.author.username user_url(game.author) %></h5>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "Roll your own game!", new_game_url %>

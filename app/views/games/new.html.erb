@@ -1,0 +1,8 @@
+<h1>New Game</h1>
+
+<%= render "form",
+  game: @game,
+  form_action: games_url,
+  form_method: "POST",
+  button_text: "Set it free!"
+%>

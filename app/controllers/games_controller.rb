@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   before_filter :require_current_user_owner, only: [:edit, :update, :destroy]
 
   def index
-    @games = Game.all.includes(:author)
+    @games = Game.includes(:author).all
     render :index
   end
 
@@ -25,7 +25,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
+    @game = Game.includes(:author).find(params[:id])
     render :show
   end
 

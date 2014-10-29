@@ -6,9 +6,9 @@ module ApplicationHelper
     HTML
   end
 
-  def update_input
+  def update_input(method)
     <<-HTML.html_safe
-      <input type="hidden" name="_method" value="PATCH">
+      <input type="hidden" name="_method" value="#{method}">
     HTML
   end
 end

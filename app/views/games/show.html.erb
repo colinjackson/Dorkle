@@ -1,0 +1,10 @@
+<h1><%= @game.title %></h1>
+<h4><%= @game.subtitle %></h4>
+<h4>by <%= link_to @game.author.username, user_url(@game.author) %></h4>
+<p>source: <%= @game.source %></p>
+
+<h3>Time limit: <%= @game.time_limit %> seconds<br></h3>
+
+<% if @game.author == current_user %>
+  <%= link_to "Update this game", edit_game_url(@game) %>
+<% end %>

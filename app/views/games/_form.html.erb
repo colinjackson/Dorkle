@@ -1,0 +1,27 @@
+<form action="<%= form_action %>" method="POST">
+  <%= update_input(form_method) %>
+  <%= auth_input %>
+
+  <div>
+    <label for="game_title">Title</label><br>
+    <input type="text" name="game[title]" id="game_title"
+        value="<%= game.title %>"
+  </div>
+  <div>
+    <label for="game_subtitle">Subtitle</label><br>
+    <input type="text" name="game[subtitle]" id="game_subtitle"
+        value="<%= game.subtitle %>"
+  </div>
+  <div>
+    <label for="game_source">Source</label><br>
+    <input type="text" name="game[source]" id="game_source"
+        value="<%= game.source %>"
+  </div>
+  <div>
+    <label for="game_time_limit">Time Limit (in seconds)</label><br>
+    <input type="text" name="game[time_limit]" id="game_time_limit"
+        value="<%= game.time_limit %>">
+  </div>
+
+  <button><%= button_text %></button>
+</form>

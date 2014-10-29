@@ -1,0 +1,8 @@
+<h1>Change the Game</h1>
+
+<%= render "form",
+  game: @game,
+  form_action: game_url(@game),
+  form_method: "PUT",
+  button_text: "Commit!"
+%>
