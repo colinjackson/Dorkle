@@ -6,7 +6,7 @@ RSpec.describe GameAnswer, :type => :model do
     it { should validate_presence_of(:game) }
     it { should validate_presence_of(:answer) }
 
-    it "should enforce uniquess of answers per game" do
+    it "should enforce uniquness of answers per game" do
       next_answer = GameAnswer.new({
         game: game_answer.game,
         answer: game_answer.answer

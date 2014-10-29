@@ -1,0 +1,22 @@
+<h1>TOP SECRET: Valid answers for <%= @game.title %></h1>
+<h3>For <%= @game.author.username %>'s eyes only!</h3>
+
+<h4>New valid answer</h4>
+<form action="<%= answers_url %>" method="POST">
+  <%= auth_input %>
+  <input type="hidden" name="game_id" value="<%= @game.id %>">
+
+  <input type="text" name="game_answer[answer]" id="game_answer_answer">
+  <button>add answer</button>
+</form>
+
+<ul>
+  <% @game.answers.each do |answer| %>
+  <li>
+    <%= answer.answer %>
+    <%= button_to "remove", answer_url(answer), method: :delete %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "Back to the game page", game_url(@game) %>

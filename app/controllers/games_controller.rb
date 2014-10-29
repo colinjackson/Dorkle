@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_filter :require_signed_in, only: :new, :create
+  before_filter :require_signed_in, only: [:new, :create]
   before_filter :require_current_user_owner, only: [:edit, :update, :destroy]
 
   def index
