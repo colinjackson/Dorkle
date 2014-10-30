@@ -1,6 +1,6 @@
 <h1><%= @round.game.title %></h1>
 
-<% if @round.time_remaining > 0 %>
+<% if @round.time_remaining > 0 && @round.answers_left > 0 %>
 <form action="<%= guess_round_url(@round) %>" method="post">
   <%= auth_input %>
 
@@ -8,14 +8,20 @@
   <input type="text" name="round_guess" id="guess-box">
   <button>Try it!</button>
 </form>
-<h3><%= @round.time_remaining %> seconds remaining...</h3>
+<h3><%= time_string(@round.time_remaining.to_i) %> remaining...</h3>
 <h3><%= @round.answers_left %>/<%= @round.answers.count %> remaining</h3>
+
+<% elsif @round.answers_left.zero? %>
+<h2>Congratulations!</h2>
+<p>You win! Good job!</p>
+
 <% else %>
 <h2>Time's up!</h2>
 <p>You got <%= (1 - (@round.answers_left / @round.answers.count)) * 100 %>% right!</p>
+
 <% end %>
 
-
+<h2>Correct Answers</h2>
 <ul>
   <% @round.answer_matches.each do |answer_match| %>
   <li><%= answer_match.answer.answer %></li>

@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     return other.is_a?(User) && other.id == self.id
   end
 
+  def getName
+    self.name ? self.name : self.username
+  end
+
   private
   attr_reader :password
 

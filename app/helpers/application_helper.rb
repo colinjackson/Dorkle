@@ -11,4 +11,11 @@ module ApplicationHelper
       <input type="hidden" name="_method" value="#{method}">
     HTML
   end
+
+  def time_string(time)
+    mins = (time / 60).to_s
+    secs = "0#{(time % 60)}".last(2)
+
+    "#{mins}:#{secs}"
+  end
 end

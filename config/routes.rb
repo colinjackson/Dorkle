@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'games#index'
+  root to: 'static_pages#root'
 end

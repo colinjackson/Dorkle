@@ -3,7 +3,7 @@
 <h4>by <%= link_to @game.author.username, user_url(@game.author) %></h4>
 <p>source: <%= @game.source %></p>
 
-<h3>Time limit: <%= @game.time_limit %> seconds<br></h3>
+<h3>Time limit: <%= time_string(@game.time_limit) %><br></h3>
 
 <form action="<%= rounds_url %>" method="POST">
   <%= auth_input %>

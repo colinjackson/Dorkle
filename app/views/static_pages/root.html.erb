@@ -1,0 +1,11 @@
+<h1>Latest Games</h1>
+
+<ul>
+  <% @games.each do |game| %>
+  <li>
+    <h2><%= link_to game.title, game_url(game) %></h2>
+    <h4>by <%= link_to game.author.getName, user_url(game.author) %></h4>
+    <h4>Time limit: <%= time_string(game.time_limit) %></h4>
+  </li>
+  <% end %>
+</ul>
