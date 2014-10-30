@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notices] = ["Welcome to Dorkle!"]
-      sign_in!(user)
+      sign_in!(@user)
       redirect_to user_url(@user)
     else
       flash.now[:errors] = ["Zoinks!"] + @user.errors.full_messages

@@ -8,13 +8,13 @@
   <input type="text" name="round_guess" id="guess-box">
   <button>Try it!</button>
 </form>
+<h3><%= @round.time_remaining %> seconds remaining...</h3>
+<h3><%= @round.answers_left %>/<%= @round.answers.count %> remaining</h3>
 <% else %>
 <h2>Time's up!</h2>
 <p>You got <%= (1 - (@round.answers_left / @round.answers.count)) * 100 %>% right!</p>
 <% end %>
 
-<h3><%= @round.time_remaining %> seconds remaining...</h3>
-<h3><%= @round.answers_left %>/<%= @round.answers.count %> remaining</h3>
 
 <ul>
   <% @round.answer_matches.each do |answer_match| %>
