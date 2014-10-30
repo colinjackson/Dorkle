@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: game_answers
+#
+#  id         :integer          not null, primary key
+#  game_id    :integer          not null
+#  answer     :string(255)      not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class GameAnswer < ActiveRecord::Base
   validates_presence_of :game, :answer
   validates_uniqueness_of :answer, case_sensitive: false, scope: :game_id

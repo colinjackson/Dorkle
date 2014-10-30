@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: game_answers
+#
+#  id         :integer          not null, primary key
+#  game_id    :integer          not null
+#  answer     :string(255)      not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'rails_helper'
 
 RSpec.describe GameAnswer, :type => :model do

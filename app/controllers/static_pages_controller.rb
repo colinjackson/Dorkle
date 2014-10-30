@@ -5,8 +5,4 @@ class StaticPagesController < ApplicationController
     render :root
   end
 
-  def backbone
-    render :backbone
-  end
-
 end

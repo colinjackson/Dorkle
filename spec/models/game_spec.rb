@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)      not null
+#  subtitle   :string(255)
+#  source     :string(255)      not null
+#  time_limit :integer          not null
+#  author_id  :integer          not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'rails_helper'
 require 'necessary_and_unique_attribute'
 

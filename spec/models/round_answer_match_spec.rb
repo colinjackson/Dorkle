@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: round_answer_matches
+#
+#  id         :integer          not null, primary key
+#  round_id   :integer          not null
+#  answer_id  :integer          not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'rails_helper'
 
 RSpec.describe RoundAnswerMatch, :type => :model do
