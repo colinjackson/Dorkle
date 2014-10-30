@@ -1,0 +1,18 @@
+<ul>
+  <% if signed_in? %>
+  <li><%= link_to current_user.name, user_url(current_user) %></li>
+  <li><%= button_to "Sign Out", session_url(current_session), method: :delete %></li>
+  <% else %>
+  <li><%= link_to "Log In", new_session_url %></li>
+  <li><%= link_to "Sign Up", new_user_url %></li>
+  <% end %>
+</ul>
+
+<nav>
+  <ul>
+    <li><%= link_to "Home", root_url %></li>
+    <li><%= link_to "Play", games_url %></li>
+    <li><%= link_to "Create", new_game_url %></li>
+    <li><%= link_to "Surprise Me!", game_url(Game.all.sample) %></li>
+  </ul>
+</nav>
