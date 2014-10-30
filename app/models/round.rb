@@ -19,7 +19,7 @@ class Round < ActiveRecord::Base
     self.answers
       .joins("LEFT OUTER JOIN (#{RoundAnswerMatch.where(round_id: self.id).to_sql})
               AS matches ON matches.answer_id = game_answers.id")
-      .where(answer: guess)
+      .where("lower(game_answers.answer) = ?", guess.downcase)
       .where('matches.id IS NULL')
       .first
   end

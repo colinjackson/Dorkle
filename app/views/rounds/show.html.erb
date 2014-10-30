@@ -10,7 +10,7 @@
 </form>
 <% else %>
 <h2>Time's up!</h2>
-<p>You got <%= 100 * @round.answers_left / @round.answers.count %>% right!</p>
+<p>You got <%= (1 - (@round.answers_left / @round.answers.count)) * 100 %>% right!</p>
 <% end %>
 
 <h3><%= @round.time_remaining %> seconds remaining...</h3>
