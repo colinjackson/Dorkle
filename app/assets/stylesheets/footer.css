@@ -1,0 +1,15 @@
+footer {
+  width: 80%;
+  margin: 0 auto;
+  background: lightgrey;
+}
+
+footer a {
+  display: block;
+  padding: 8px;
+  margin: 0 auto;
+  background: dimgrey;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+}

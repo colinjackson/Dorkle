@@ -1,20 +1,32 @@
 <h1><%= @user.username %></h1>
 
-<h2>Deets</h2>
-<ul>
-  <li>Name: <%= @user.name %></li>
-  <li>Email: <%= @user.email %></li>
-</ul>
+<div class="user-show group">
+  <div class="user-details">
+    <h2><%= @user.username %>'s details</h2>
+    <table>
+      <tr>
+        <td class="default-key">Name</td>
+        <td class="default-value"><%= @user.name %></td>
+      </tr>
+      <tr>
+        <td class="default-key">Email</td>
+        <td class="default-value"><%= @user.email %></td>
+      </tr>
+    </table>
 
-<h2>Created Games</h2>
-<ul>
-  <% @user.created_games.each do |game| %>
-  <li>
-    <%= link_to game.title, game_url(game) %>
-  </li>
-  <% end %>
-</ul>
+    <% if @user == current_user %>
+      <%= link_to "Update your profile", edit_user_url(current_user) %>
+    <% end %>
+  </div>
 
-<% if @user == current_user %>
-  <%= link_to "Update your profile", edit_user_url(current_user) %>
-<% end %>
+  <div class="user-created-games">
+  <h2>Created Games</h2>
+    <ul>
+      <% @user.created_games.each do |game| %>
+        <li>
+          <%= link_to game.title, game_url(game) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,24 +1,24 @@
-<form action="<%= form_action %>" method="POST">
+<form class="default" action="<%= form_action %>" method="POST">
   <%= update_input(form_method) %>
   <%= auth_input %>
 
   <div>
-    <label for="game_title">Title</label><br>
+    <label for="game_title">Title</label>
     <input type="text" name="game[title]" id="game_title"
-        value="<%= game.title %>"
+        value="<%= game.title %>">
   </div>
   <div>
-    <label for="game_subtitle">Subtitle</label><br>
+    <label for="game_subtitle">Subtitle</label>
     <input type="text" name="game[subtitle]" id="game_subtitle"
-        value="<%= game.subtitle %>"
+        value="<%= game.subtitle %>">
   </div>
   <div>
-    <label for="game_source">Source</label><br>
+    <label for="game_source">Source</label>
     <input type="text" name="game[source]" id="game_source"
-        value="<%= game.source %>"
+        value="<%= game.source %>">
   </div>
   <div>
-    <label for="game_time_limit">Time Limit (in seconds)</label><br>
+    <label for="game_time_limit">Time Limit (in seconds)</label>
     <input type="text" name="game[time_limit]" id="game_time_limit"
         value="<%= game.time_limit %>">
   </div>

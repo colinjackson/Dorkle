@@ -1,11 +1,15 @@
 <h1>Latest Games</h1>
 
-<ul>
+<ul class="games-list">
   <% @games.each do |game| %>
-  <li>
-    <h2><%= link_to game.title, game_url(game) %></h2>
-    <h4>by <%= link_to game.author.getName, user_url(game.author) %></h4>
-    <h4>Time limit: <%= time_string(game.time_limit) %></h4>
-  </li>
+    <li class="game-item">
+      <a class="group" href="<%= game_url(game) %>">
+        <h2 class="game-item-title"><%= game.title %></h2>
+        <h3 class="game-item-subtitle"><%= game.getSubtitle %></h3>
+        <h3 class="game-item-author">by <%= game.author.username %></h3>
+        <h3 class="game-item-time">Time limit:
+          <%= time_string(game.time_limit) %></h3>
+      </a>
+    </li>
   <% end %>
 </ul>

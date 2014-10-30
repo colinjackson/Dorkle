@@ -1,0 +1,105 @@
+/* TAG DEFAULTS */
+
+body {
+  font-family: sans-serif;
+  font-size: 1.3em;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+h3 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+
+/* CLEARFIX */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+/* FORM DEFAULTS */
+
+form.default {
+  background: lightgrey;
+  width: 75%;
+  margin: 0 auto;
+  padding: 16px 0;
+}
+
+form.default > div {
+  width: 50%;
+  margin: 16px auto;
+  padding: 8px;
+  background: silver;
+}
+
+form.default > div {
+  margin-top: 0;
+}
+
+form.default label {
+  display: block;
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+form.default input[type=text],
+form.default input[type=email],
+form.default input[type=password] {
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  background: white;
+  text-align: center;
+  padding: 8px;
+}
+
+form.default button {
+  display: block;
+  padding: 16px;
+  font-size: 1.2em;
+  margin: 0 auto;
+  background: dimgray;
+  color: white;
+}
+
+
+/* TABLE DEFAULTS */
+
+table td.default-key {
+  text-align: right;
+}
+
+table td.default-key:after {
+  content: ": ";
+}
+
+table td.default-value {
+  font-style: italic;
+  font-weight: bold;
+}

@@ -10,13 +10,15 @@
 
 <header>
   <%= render "layouts/header" %>
-  <%= render "layouts/flash" %>
 </header>
 
-<%= yield %>
+<main>
+  <%= render "layouts/flash" %>
+  <%= yield %>
+</main>
 
 <footer>
-  <%= link_to "See games list", games_url %>
+  <%= link_to "CLICK ME IF YOU WANT DA GAMES", games_url %>
 </footer>
 
 </body>

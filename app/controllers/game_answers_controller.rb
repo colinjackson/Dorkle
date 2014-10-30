@@ -19,9 +19,9 @@ class GameAnswersController < ApplicationController
   end
 
   def destroy
-    @game_answer = GameAnswer.find(params[:game_id])
+    @game_answer = GameAnswer.find(params[:id])
     @game_answer.destroy
-    redirect_to game_url(@game_answer.game)
+    redirect_to game_answers_url(@game_answer.game)
   end
 
   private
@@ -30,9 +30,16 @@ class GameAnswersController < ApplicationController
   end
 
   def require_current_user_owner
-    if !signed_in? || Game.find(params[:game_id]).author_id != current_user.id
-      redirect_to games_url
+    invalid = false
+
+    invalid ||= !signed_in?
+    if (params[:action] == "destroy")
+      invalid ||= GameAnswer.find(params[:id]).game.author_id != current_user.id
+    else
+      invalid ||= Game.find(params[:game_id]).author_id != current_user.id
     end
+
+    invalid ? redirect_to(games_url) : nil
   end
 
 end

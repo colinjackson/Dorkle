@@ -1,28 +1,28 @@
-<form action="<%= form_action %>" method="POST">
+<form class="default" action="<%= form_action %>" method="POST">
   <%= update_input(form_method) %>
   <%= auth_input %>
 
   <div>
-    <label for="user_username">Username</label><br>
+    <label for="user_username">Username</label>
     <input type="text" name="user[username]" id="user_username"
         value="<%= user.username %>">
   </div>
 
   <% unless auth_only %>
   <div>
-    <label for="user_name">Real name (optional)</label><br>
+    <label for="user_name">Real name (optional)</label>
     <input type="text" name="user[name]" id="user_name"
         value="<%= user.name %>">
   </div>
   <div>
-    <label for="user_email">Email</label><br>
+    <label for="user_email">Email</label>
     <input type="email" name="user[email]" id="user_email"
         value="<%= user.email %>">
   </div>
   <% end %>
 
   <div>
-    <label for="user_password">Password</label><br>
+    <label for="user_password">Password</label>
     <input type="password" name="user[password]" id="user_password">
   </div>
 

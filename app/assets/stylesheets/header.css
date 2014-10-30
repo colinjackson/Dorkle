@@ -1,0 +1,45 @@
+header {
+  width: 100%;
+  background: lightgrey;
+}
+
+header > * {
+  height: 45px;
+}
+
+header ul {
+  height: 100%;
+}
+
+header li {
+  float: left;
+  padding: 10px;
+  height: 21px;
+}
+
+header .top-bar .dorkle-logo {
+  float: left;
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 80px;
+  width: auto;
+}
+
+header .top-bar ul.session-info {
+  float: right;
+  height: 100%;
+}
+
+header .navbar li {
+  border: solid black;
+  border-width: 2px 2px 2px 0;
+  background: grey;
+  color: white;
+}
+
+header .navbar li:last-child {
+  border-width: 2px 0 2px 2px;
+  float: right;
+}

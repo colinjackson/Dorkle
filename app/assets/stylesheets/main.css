@@ -1,0 +1,176 @@
+/* MAIN STUFF */
+
+main {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+  background: gainsboro;
+}
+
+
+/* GAMES LIST */
+
+main .games-list {
+  background: lightgrey;
+  width: 75%;
+  margin: 0 auto;
+}
+
+main .games-list .game-item {
+  padding: 8px;
+}
+
+main .games-list .game-item:nth-child(even) {
+  background: silver;
+}
+
+main .games-list .game-item a {
+  display: block;
+}
+
+main .games-list .game-item h2,
+main .games-list .game-item h3 {
+  float: left;
+  width: 40%;
+  text-align: center;
+  padding: 8px 5%;
+}
+
+
+/* USER SHOW */
+
+main .user-show {
+  background: lightgrey;
+}
+
+main .user-show > * {
+  float: left;
+  width: 40%;
+  padding: 8px 5%;
+}
+
+main .user-show li {
+  text-align: center;
+}
+
+main .user-show .user-details table {
+  width: 100%;
+}
+
+main .user-show .user-details > a {
+  display: block;
+  width: 95%;
+  padding: 2.5%;
+  text-align: center;
+  background: darkgrey;
+}
+
+main .user-show .user-created-games li {
+  background: silver;
+}
+
+main .user-show .user-created-games li:nth-child(even) {
+  background: darkgrey;
+}
+
+main .user-show .user-created-games a {
+  display: block;
+  padding: 8px;
+}
+
+
+/* GAME SHOW */
+
+main .game-show > h2 {
+  font-style: italic;
+}
+
+main > .game-show > .game-details {
+  width: 75%;
+  margin: 10px auto;
+  background: lightgrey;
+}
+
+main > .game-show > .game-details > * {
+  display: block;
+  float: left;
+  width: 40%;
+  margin: 0 auto;
+  padding: 8px 5%;
+}
+
+main > .game-show > .game-details > form > button {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+  padding: 16px;
+  background: dimgrey;
+  color: white;
+}
+
+main > .game-show > .game-manage {
+  width: 75%;
+  margin: 10px auto;
+  background: lightgrey;
+  text-align: center;
+}
+
+main > .game-show > .game-manage > a {
+  display: inline-block;
+  padding: 8px;
+  margin: 8px;
+  text-align: center;
+  background: dimgrey;
+  color: white;
+}
+
+
+/* GAME ANSWERS INDEX */
+
+main > .game-answers-index > * {
+  float: left;
+  width: 40%;
+  padding: 8px 5%;
+}
+
+main > .game-answers-index .game-answers-add-new form {
+  width: 100%;
+}
+
+main > .game-answers-index .game-answers-add-new form > div {
+  width: 80%;
+}
+
+main > .game-answers-index .game-answers-existing > ul {
+  margin: 10px;
+  background: lightgrey;
+}
+
+main > .game-answers-index .game-answers-existing li {
+  border-bottom: 2px solid black;
+}
+
+main > .game-answers-index .game-answers-existing li:nth-child(even) {
+  background: silver;
+}
+
+main > .game-answers-index .game-answers-existing li:last-child {
+  border-bottom: 0;
+}
+
+main > .game-answers-index .game-answers-existing li > * {
+  display: inline-block;
+}
+
+main > .game-answers-index .game-answers-existing .game-answer-list-item {
+  float: left;
+  padding: 4px;
+}
+
+main > .game-answers-index .game-answers-existing .button_to {
+  float: right;
+  margin-left: 10px;
+  background: dimgrey;
+  color: white;
+  padding: 4px
+}

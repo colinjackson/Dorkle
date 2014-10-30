@@ -1,14 +1,19 @@
-<ul>
-  <% if signed_in? %>
-  <li><%= link_to current_user.name, user_url(current_user) %></li>
-  <li><%= button_to "Sign Out", session_url(current_session), method: :delete %></li>
-  <% else %>
-  <li><%= link_to "Log In", new_session_url %></li>
-  <li><%= link_to "Sign Up", new_user_url %></li>
-  <% end %>
-</ul>
+<div class="top-bar">
+  <a href="<%= root_url %>">
+    <img class="dorkle-logo" src="<%= image_path("dorkle-logo.png") %>">
+  </a>
+  <ul class="session-info">
+    <% if signed_in? %>
+      <li><%= link_to current_user.name, user_url(current_user) %></li>
+      <li><%= button_to "Sign Out", session_url(current_session), method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Log In", new_session_url %></li>
+      <li><%= link_to "Sign Up", new_user_url %></li>
+    <% end %>
+  </ul>
+</div>
 
-<nav>
+<nav class="navbar">
   <ul>
     <li><%= link_to "Home", root_url %></li>
     <li><%= link_to "Play", games_url %></li>

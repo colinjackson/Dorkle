@@ -1,25 +1,34 @@
 <h1>TOP SECRET: Valid answers for <%= @game.title %></h1>
-<h3>For <%= @game.author.username %>'s eyes only!</h3>
+<h2>For <%= @game.author.getName %>'s eyes only!</h2>
 
-<h4>New valid answer</h4>
-<form action="<%= answers_url %>" method="POST">
-  <%= auth_input %>
-  <input type="hidden" name="game_id" value="<%= @game.id %>">
+<div class="game-answers-index group">
+  <div class="game-answers-add-new">
+    <form class="default" action="<%= answers_url %>" method="POST">
+      <%= auth_input %>
+      <input type="hidden" name="game_id" value="<%= @game.id %>">
 
-  <input type="text" name="game_answer[answer]" id="game_answer_answer">
-  <button>add answer</button>
-</form>
+      <div>
+        <label for="game_answer_answer">New answer</label>
+        <input type="text" name="game_answer[answer]" id="game_answer_answer">
+      </div>
 
-<ul>
-  <% @game.answers.each do |answer| %>
-  <li>
-    <%= answer.answer %>
-    <%= button_to "remove", answer_url(answer), method: :delete %>
-  </li>
-  <% end %>
-</ul>
+      <button>add answer</button>
+    </form>
+  </div>
 
-<%= link_to "Back to the game page", game_url(@game) %>
+  <div class="game-answers-existing">
+    <ul>
+      <% @game.answers.each do |answer| %>
+      <li class="group">
+        <span class="game-answer-list-item"><%= answer.answer %></span>
+        <%= button_to "remove", answer_url(answer), method: :delete %>
+      </li>
+      <% end %>
+    </ul>
+
+    <%= link_to "Back to the game page", game_url(@game) %>
+  </div>
+</div>
 
 <script>
 $(function () {

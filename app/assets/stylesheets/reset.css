@@ -1,0 +1,31 @@
+html, body,
+header, main, footer,
+img,
+ul, li,
+table, tbody, th, tr, td
+form, input, label, button,
+a,
+nav, section, article,
+div, span,
+h1, h2, h3, h4, h5, h6,
+p, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  text-decoration: none;
+}
+
+ul, li {
+  list-style: none;
+}
+
+input, button {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
