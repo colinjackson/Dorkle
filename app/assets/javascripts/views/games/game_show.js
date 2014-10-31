@@ -14,4 +14,4 @@ Dorkle.Views.GameShow = Backbone.View.extend({
     return this;
   }
 
-})
+});

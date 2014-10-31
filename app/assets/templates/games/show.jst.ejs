@@ -4,6 +4,12 @@
 <div class="game-show">
   <div class="game-details group">
     <table>
+      <% if (game.author) { %>
+      <tr>
+        <td class="default-key">by</td>
+        <td class="default-value"><%= game.author.get("username") %></td>
+      </tr>
+      <% } %>
       <tr>
         <td class="default-key">Time</td>
         <td class="default-value">

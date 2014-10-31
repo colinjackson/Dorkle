@@ -24,7 +24,6 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
     var view = new Dorkle.Views.GameShow({
       model: game
     });
-    game.fetch();
 
     this._swapMainView(view);
   },

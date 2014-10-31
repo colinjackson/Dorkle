@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :games
+    resources :users, only: :show
   end
 
   root to: 'static_pages#root'

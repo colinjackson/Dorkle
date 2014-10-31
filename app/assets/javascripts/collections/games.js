@@ -12,6 +12,8 @@ Dorkle.Collections.Games = Backbone.Collection.extend({
           this.add(game);
         }.bind(this)
       });
+    } else {
+      game.fetch();
     }
 
     return game;

@@ -4,8 +4,8 @@ module Api
     before_filter :require_current_user_owner, only: [:edit, :update, :destroy]
 
     def index
-      @games = Game.all
-      render json: @games
+      @games = Game.includes(:author).all
+      render :index
     end
 
     def create

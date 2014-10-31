@@ -1,6 +1,9 @@
 <a class="game-show-link group" href="javascript:void(0)">
   <h2 class="game-item-title"><%= game.get("title") %></h2>
   <h3 class="game-item-subtitle"><%= game.getSubtitle() %></h3>
+  <% if (game.author) { %>
+  <h3 class="game-item-author">by <%= game.author.getName() %></h3>
+  <% } %>
   <h3 class="game-item-time">Time limit:
     <%= Dorkle.Utils.time_string(game.get("time_limit")) %></h3>
 </a>
