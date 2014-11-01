@@ -7,8 +7,11 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   },
 
   events: {
-    'keyup #guess-box': 'checkAnswer'
+    'keyup #guess-box': 'checkAnswer',
+    'submit': 'cancelSubmission'
   },
+
+  cancelSubmission: function (event) { event.preventDefault(); },
 
   render: function () {
     var renderedContent = this.template();
@@ -41,7 +44,7 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
       answer: answer
     });
     this.model.matches().add(answerMatch);
-    
+
     this.validAnswers.remove(answer);
   }
 });

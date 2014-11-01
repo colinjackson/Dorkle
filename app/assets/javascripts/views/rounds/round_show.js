@@ -22,7 +22,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     this.addSubview('.round-show', guessSubview);
 
     var correctSubview = new Dorkle.Views.RoundShowStatus({
-      collection: this.model.matches()
+      model: this.model
     });
     this.addSubview('.round-show', correctSubview);
 
@@ -40,7 +40,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
   },
 
   checkForVictory: function () {
-    if (this.validAnswers.length === 0) this.handleVictory();
+    if (this.model.isWon()) this.handleVictory();
   },
 
   handleVictory: function () {

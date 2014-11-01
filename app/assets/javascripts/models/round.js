@@ -31,5 +31,24 @@ Dorkle.Models.Round = Backbone.Model.extend({
     }
 
     return this._matches;
+  },
+
+  timeRemaining: function () {
+    if (this.game) {
+      var timeElapsed = (Date.now() - Date.parse(this.get('created_at'))) / 1000;
+      var timeLimit = this.game.get('time_limit');
+      return timeLimit - timeElapsed;
+    } else {
+      return 0;
+    }
+  },
+
+  answersLeft: function () {
+    return this.answers().length - this.matches().length;
+  },
+
+  isWon: function () {
+    return this.answers().length === this.matches().length;
   }
-})
+
+});

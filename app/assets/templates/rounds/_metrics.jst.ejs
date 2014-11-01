@@ -1,0 +1,8 @@
+<h3 class="round-metrics-timer">
+  <span class="time">
+    <%= Dorkle.Utils.timeString(round.timeRemaining()) %></span> remaining...
+</h3>
+<h3 class="round-metrics-remaining">
+  <span class="left"><%= round.answersLeft() %></span>/<%= round.answers().length %>
+    answers left
+</h3>
