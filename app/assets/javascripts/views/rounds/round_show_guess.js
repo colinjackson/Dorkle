@@ -34,13 +34,14 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   },
 
   handleCorrectGuess: function (answer, $guessBox) {
-    var answerMatch = new Dorkle.Models.RoundAnswerMatch({
-      round_id: this.model.id,
-      answer_id: answer.id
-    });
-
-    this.model.matches().add(answerMatch);
-    this.validAnswers.remove(answer);
     $guessBox.val('');
+
+    var answerMatch = new Dorkle.Models.RoundAnswerMatch({
+      round: this.model,
+      answer: answer
+    });
+    this.model.matches().add(answerMatch);
+    
+    this.validAnswers.remove(answer);
   }
 });

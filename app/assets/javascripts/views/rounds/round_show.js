@@ -6,6 +6,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
 
     this.validAnswers = this.model.answers().clone();
     this.listenTo(this.model.answers(), 'add', this.updateValidAnswers);
+    this.listenTo(this.validAnswers, 'remove', this.checkForVictory);
   },
 
   render: function () {
@@ -36,6 +37,14 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
 
   updateValidAnswers: function (newAnswer) {
     this.validAnswers.add(newAnswer);
+  },
+
+  checkForVictory: function () {
+    if (this.validAnswers.length === 0) this.handleVictory();
+  },
+
+  handleVictory: function () {
+    alert('Congratulations! You win!')
   }
 
 });

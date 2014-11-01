@@ -17,7 +17,7 @@ Dorkle.Models.Round = Backbone.Model.extend({
 
   answers: function () {
     if (!this._answers) {
-      this._answers = new Dorkle.Collections.GameAnswers({
+      this._answers = new Dorkle.Collections.GameAnswers([], {
         game: this.game
       });
     }
