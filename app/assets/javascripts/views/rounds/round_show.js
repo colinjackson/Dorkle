@@ -2,7 +2,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
   template: JST['rounds/show'],
 
   initialize: function () {
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'change', this.resetTitle);
   },
 
   render: function () {
@@ -18,6 +18,12 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     this.addSubview('.round-show', correctSubview);
 
     return this;
+  },
+
+  resetTitle: function () {
+    if (this.model.game) {
+      this.$('h1').text(this.model.game.get('title'));
+    }
   }
 
 });
