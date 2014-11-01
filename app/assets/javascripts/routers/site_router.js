@@ -7,7 +7,8 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
   routes: {
     "": "gamesIndex",
     "games": "gamesIndex",
-    "games/:id": "gameShow"
+    "games/:id": "gameShow",
+    "games/:game_id/round": "roundShow"
   },
 
   gamesIndex: function () {
@@ -24,6 +25,16 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
     var view = new Dorkle.Views.GameShow({
       model: game
     });
+
+    this._swapMainView(view);
+  },
+
+  roundShow: function (gameId) {
+    var round = new Dorkle.Models.Round({game_id: gameId})
+    var view = new Dorkle.Views.RoundShow({
+      model: round
+    });
+    round.save();
 
     this._swapMainView(view);
   },

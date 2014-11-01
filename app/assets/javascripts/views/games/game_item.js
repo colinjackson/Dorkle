@@ -17,7 +17,7 @@ Dorkle.Views.GameItem = Backbone.View.extend({
   },
 
   goToGame: function () {
-    var gamePath = "/games/" + this.model.id;
-    Backbone.history.navigate(gamePath, {trigger: true});
+    var gameShowPath = "/games/" + this.model.id;
+    Backbone.history.navigate(gameShowPath, {trigger: true});
   }
 });

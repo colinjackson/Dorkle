@@ -127,47 +127,47 @@ main .game-show > .game-manage > a {
 
 /* GAME ANSWERS INDEX */
 
-main > .game-answers-index > * {
+main .game-answers-index > * {
   float: left;
   width: 40%;
   padding: 8px 5%;
 }
 
-main > .game-answers-index .game-answers-add-new form {
+main .game-answers-index .game-answers-add-new form {
   width: 100%;
 }
 
-main > .game-answers-index .game-answers-add-new form > div {
+main .game-answers-index .game-answers-add-new form > div {
   width: 80%;
 }
 
-main > .game-answers-index .game-answers-existing > ul {
+main .game-answers-index .game-answers-existing > ul {
   margin: 10px;
   background: lightgrey;
 }
 
-main > .game-answers-index .game-answers-existing li {
+main .game-answers-index .game-answers-existing li {
   border-bottom: 2px solid black;
 }
 
-main > .game-answers-index .game-answers-existing li:nth-child(even) {
+main .game-answers-index .game-answers-existing li:nth-child(even) {
   background: silver;
 }
 
-main > .game-answers-index .game-answers-existing li:last-child {
+main .game-answers-index .game-answers-existing li:last-child {
   border-bottom: 0;
 }
 
-main > .game-answers-index .game-answers-existing li > * {
+main .game-answers-index .game-answers-existing li > * {
   display: inline-block;
 }
 
-main > .game-answers-index .game-answers-existing .game-answer-list-item {
+main .game-answers-index .game-answers-existing .game-answer-list-item {
   float: left;
   padding: 4px;
 }
 
-main > .game-answers-index .game-answers-existing .button_to {
+main .game-answers-index .game-answers-existing .button_to {
   float: right;
   margin-left: 10px;
   background: dimgrey;
