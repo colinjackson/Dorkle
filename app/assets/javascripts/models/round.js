@@ -23,5 +23,13 @@ Dorkle.Models.Round = Backbone.Model.extend({
     }
 
     return this._answers;
+  },
+
+  matches: function () {
+    if (!this._matches) {
+      this._matches = new Dorkle.Collections.RoundAnswerMatches();
+    }
+
+    return this._matches;
   }
 })
