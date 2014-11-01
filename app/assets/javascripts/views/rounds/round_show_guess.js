@@ -20,9 +20,14 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
     return this;
   },
 
+  startRound: function () {
+    this.$guessBox = $('#guess-box');
+    this.$guessBox.prop('disabled', false);
+    this.$guessBox.focus();
+  },
+
   checkAnswer: function (event) {
-    var $guessBox = $(event.currentTarget);
-    var guess = $guessBox.val();
+    var guess = this.$guessBox.val();
 
     var correctAnswer;
     this.validAnswers.every(function (answer) {
@@ -36,8 +41,8 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
     if (correctAnswer) this.handleCorrectGuess(correctAnswer, $guessBox);
   },
 
-  handleCorrectGuess: function (answer, $guessBox) {
-    $guessBox.val('');
+  handleCorrectGuess: function (answer) {
+    this.$guessBox.val('');
 
     var answerMatch = new Dorkle.Models.RoundAnswerMatch({
       round: this.model,
@@ -46,5 +51,10 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
     this.model.matches().add(answerMatch);
 
     this.validAnswers.remove(answer);
+  },
+
+  endRound: function () {
+    this.$guessBox.prop('disabled', true);
   }
+
 });

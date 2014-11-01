@@ -23,11 +23,20 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
     return this;
   },
 
+  startRound: function () {
+    this.subviews('div.round-metrics')[0].startRound();
+  },
+
   addAnswerMatch: function (answerMatch) {
     var subview = new Dorkle.Views.AnswerMatchItem({
       model: answerMatch
     });
 
     this.addSubview('ul.game-answers-status-list', subview);
+  },
+
+  endRound: function () {
+    this.subviews('div.round-metrics')[0].endRound();
   }
-})
+
+});
