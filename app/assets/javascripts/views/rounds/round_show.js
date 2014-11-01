@@ -21,7 +21,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     });
     this.addSubview('.round-show', guessSubview);
 
-    var correctSubview = new Dorkle.Views.RoundShowCorrect({
+    var correctSubview = new Dorkle.Views.RoundShowStatus({
       collection: this.model.matches()
     });
     this.addSubview('.round-show', correctSubview);

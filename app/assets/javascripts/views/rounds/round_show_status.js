@@ -1,6 +1,6 @@
-Dorkle.Views.RoundShowCorrect = Backbone.Superview.extend({
-  className: 'game-answers-correct',
-  template: JST['rounds/_correct'],
+Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
+  className: 'game-answers-status',
+  template: JST['rounds/_status'],
 
   initialize: function () {
     this.listenTo(this.collection, 'add', this.addAnswerMatch);
@@ -23,6 +23,6 @@ Dorkle.Views.RoundShowCorrect = Backbone.Superview.extend({
       model: answerMatch
     });
 
-    this.addSubview('ul.game-answers-correct-list', subview);
+    this.addSubview('ul.game-answers-status-list', subview);
   }
 })

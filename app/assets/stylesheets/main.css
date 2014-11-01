@@ -141,33 +141,33 @@ main .game-answers-index .game-answers-guess form > div {
   width: 80%;
 }
 
-main .game-answers-index .game-answers-correct > ul {
+main .game-answers-index .game-answers-status > ul {
   margin: 10px;
   background: lightgrey;
 }
 
-main .game-answers-index .game-answers-correct li {
+main .game-answers-index .game-answers-status li {
   border-bottom: 2px solid black;
 }
 
-main .game-answers-index .game-answers-correct li:nth-child(even) {
+main .game-answers-index .game-answers-status li:nth-child(even) {
   background: silver;
 }
 
-main .game-answers-index .game-answers-correct li:last-child {
+main .game-answers-index .game-answers-status li:last-child {
   border-bottom: 0;
 }
 
-main .game-answers-index .game-answers-correct li > * {
+main .game-answers-index .game-answers-status li > * {
   display: inline-block;
 }
 
-main .game-answers-index .game-answers-correct .game-answer-list-item {
+main .game-answers-index .game-answers-status .game-answer-list-item {
   float: left;
   padding: 4px;
 }
 
-main .game-answers-index .game-answers-correct .button_to {
+main .game-answers-index .game-answers-status .button_to {
   float: right;
   margin-left: 10px;
   background: dimgrey;
