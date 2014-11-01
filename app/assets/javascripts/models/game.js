@@ -11,7 +11,7 @@ Dorkle.Models.Game = Backbone.Model.extend({
   },
 
   getSubtitle: function () {
-    if (this.get("subtitle")) return this.get("subtitle");
-    return "(no subtitle)";
+    if (this.get('subtitle')) return this.get('subtitle');
+    return '(no subtitle)';
   }
 });

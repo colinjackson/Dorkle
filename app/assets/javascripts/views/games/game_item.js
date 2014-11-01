@@ -4,7 +4,7 @@ Dorkle.Views.GameItem = Backbone.View.extend({
   template: JST['games/_item'],
 
   events: {
-    "click a.game-show-link": "goToGame"
+    'click a.game-show-link': 'goToGame'
   },
 
   render: function () {
@@ -17,7 +17,7 @@ Dorkle.Views.GameItem = Backbone.View.extend({
   },
 
   goToGame: function () {
-    var gameShowPath = "/games/" + this.model.id;
+    var gameShowPath = '/games/' + this.model.id;
     Backbone.history.navigate(gameShowPath, {trigger: true});
   }
 });

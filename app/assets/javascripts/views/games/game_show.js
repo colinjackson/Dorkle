@@ -2,11 +2,11 @@ Dorkle.Views.GameShow = Backbone.View.extend({
   template: JST['games/show'],
 
   initialize: function () {
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, 'sync', this.render);
   },
 
   events: {
-    "click button.round-start": "startRound"
+    'click button.round-start': 'startRound'
   },
 
   render: function () {
@@ -21,7 +21,7 @@ Dorkle.Views.GameShow = Backbone.View.extend({
   startRound: function (event) {
     event.preventDefault();
 
-    var roundShowPath = "/games/" + this.model.id + "/round";
+    var roundShowPath = '/games/' + this.model.id + '/round';
     Backbone.history.navigate(roundShowPath, {trigger: true});
   }
 

@@ -133,11 +133,11 @@ main .game-answers-index > * {
   padding: 8px 5%;
 }
 
-main .game-answers-index .game-answers-add-new form {
+main .game-answers-index .game-answers-guess form {
   width: 100%;
 }
 
-main .game-answers-index .game-answers-add-new form > div {
+main .game-answers-index .game-answers-guess form > div {
   width: 80%;
 }
 

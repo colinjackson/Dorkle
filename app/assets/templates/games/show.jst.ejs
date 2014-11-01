@@ -1,4 +1,4 @@
-<h1><%= game.get("title") %></h1>
+<h1><%= game.get('title') %></h1>
 <h2><%= game.getSubtitle() %></h2>
 
 <div class="game-show">
@@ -7,17 +7,17 @@
       <% if (game.author) { %>
       <tr>
         <td class="default-key">by</td>
-        <td class="default-value"><%= game.author.get("username") %></td>
+        <td class="default-value"><%= game.author.get('username') %></td>
       </tr>
       <% } %>
       <tr>
         <td class="default-key">Time</td>
         <td class="default-value">
-          <%= Dorkle.Utils.time_string(game.get("time_limit")) %></td>
+          <%= Dorkle.Utils.time_string(game.get('time_limit')) %></td>
       </tr>
       <tr>
         <td class="default-key">Source</td>
-        <td class="default-value"><%= game.get("source") %></td>
+        <td class="default-value"><%= game.get('source') %></td>
       </tr>
     </table>
 

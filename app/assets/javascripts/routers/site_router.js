@@ -5,10 +5,10 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
   },
 
   routes: {
-    "": "gamesIndex",
-    "games": "gamesIndex",
-    "games/:id": "gameShow",
-    "games/:game_id/round": "roundShow"
+    '': 'gamesIndex',
+    'games': 'gamesIndex',
+    'games/:id': 'gameShow',
+    'games/:game_id/round': 'roundShow'
   },
 
   gamesIndex: function () {

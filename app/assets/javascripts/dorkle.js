@@ -8,7 +8,7 @@ window.Dorkle = {
     Dorkle.games = new Dorkle.Collections.Games()
 
     new Dorkle.Routers.SiteRouter({
-      $mainEl: $("main")
+      $mainEl: $('main')
     });
     Backbone.history.start();
   }

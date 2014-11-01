@@ -24,11 +24,11 @@ RSpec.describe User, :type => :model do
     describe "email" do
       it_behaves_like "a necessary and unique attribute", :user, :username
       it do
-        should allow_value('csj.nyc@gmail.com', 'areallyw31RD3m811@anjlj.com')
+        should allow_value("csj.nyc@gmail.com", "areallyw31RD3m811@anjlj.com")
           .for(:email)
       end
-      it { should_not allow_value('email;address@email.com').for(:email) }
-      it { should_not allow_value('whatisthi@s').for(:email) }
+      it { should_not allow_value("email;address@email.com").for(:email) }
+      it { should_not allow_value("whatisthi@s").for(:email) }
     end
 
     describe "name" do
@@ -55,7 +55,7 @@ RSpec.describe User, :type => :model do
     end
 
     it "checks if the password matches for the user" do
-      expect(user.is_password?('secret')).to be true
+      expect(user.is_password?("secret")).to be true
     end
 
     describe "User::find_by_credentials" do

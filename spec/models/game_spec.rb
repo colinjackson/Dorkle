@@ -19,7 +19,7 @@ RSpec.describe Game, :type => :model do
 
   describe "validates" do
     describe "title" do
-      it_behaves_like 'a necessary and unique attribute', :game, :title
+      it_behaves_like "a necessary and unique attribute", :game, :title
     end
 
     describe "presences" do
