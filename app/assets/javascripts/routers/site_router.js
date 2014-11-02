@@ -1,7 +1,6 @@
 Dorkle.Routers.SiteRouter = Backbone.Router.extend({
   initialize: function (options) {
     this.$mainEl = options.$mainEl;
-    this.$mainEl.empty();
   },
 
   routes: {
@@ -40,6 +39,7 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
   },
 
   _swapMainView: function (view) {
+    this.$mainEl.empty();
     this.currentView && this.currentView.remove();
     this.$mainEl.html(view.render().$el);
     this.currentView = view;

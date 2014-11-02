@@ -1,6 +1,6 @@
 Dorkle.Collections.Games = Backbone.Collection.extend({
   model: Dorkle.Models.Game,
-  url: 'api/games',
+  url: '/api/games',
 
   getOrFetch: function (id) {
     game = this.id;

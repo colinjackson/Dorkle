@@ -1,5 +1,5 @@
 Dorkle.Models.Round = Backbone.Model.extend({
-  urlRoot: 'api/rounds',
+  urlRoot: '/api/rounds',
 
   parse: function (json) {
     if (json.game) {
@@ -34,15 +34,12 @@ Dorkle.Models.Round = Backbone.Model.extend({
   },
 
   timeRemaining: function () {
-    if (this.game && this.get('start_time')) {
-      var timeElapsed = (Date.now() - this.get('start_time')) / 1000;
-      var timeLimit = this.game.get('time_limit');
-      return timeLimit - timeElapsed;
-    } else if (this.game) {
-      return this.game.get('time_limit');
-    } else {
-      return 0;
-    }
+    if (!this.game) return 0;
+    if (!this.get('start_time')) return this.game.get('time_limit');
+
+    var timeElapsed = (Date.now() - this.get('start_time')) / 1000;
+    var timeLimit = this.game.get('time_limit');
+    return timeLimit - timeElapsed;
   },
 
   answersLeft: function () {

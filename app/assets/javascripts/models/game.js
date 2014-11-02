@@ -1,5 +1,5 @@
 Dorkle.Models.Game = Backbone.Model.extend({
-  urlRoot: 'api/games',
+  urlRoot: '/api/games',
 
   parse: function (json) {
     if (json.author) {
