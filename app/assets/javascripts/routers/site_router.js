@@ -21,8 +21,12 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
   },
 
   gameNew: function () {
-    var view = new Dorkle.Views.GameNew();
-    this._swapMainView(view);
+    if (Dorkle.currentUserId) {
+      var view = new Dorkle.Views.GameNew();
+      this._swapMainView(view);
+    } else {
+      Backbone.history.navigate('', {trigger: true});
+    }
   },
 
   gameShow: function (id) {

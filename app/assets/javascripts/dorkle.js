@@ -8,10 +8,10 @@ window.Dorkle = {
     Dorkle.games = new Dorkle.Collections.Games()
     Dorkle.currentUserId = $('#current-user').data('id');
 
-    new Dorkle.Routers.SiteRouter({
+    Dorkle.siteRouter = new Dorkle.Routers.SiteRouter({
       $mainEl: $('main')
     });
-    new Dorkle.Views.Header({el: $('header')});
+    Dorkle.header = new Dorkle.Views.Header({el: $('header')});
 
     Backbone.history.start({pushState: true});
   }
