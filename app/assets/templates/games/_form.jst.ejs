@@ -1,0 +1,22 @@
+<div>
+  <label for="game_title">Title</label>
+  <input type="text" name="game[title]" id="game_title"
+      value="<%= game.get('title') %>">
+</div>
+<div>
+  <label for="game_subtitle">Subtitle</label>
+  <input type="text" name="game[subtitle]" id="game_subtitle"
+      value="<%= game.get('subtitle') %>">
+</div>
+<div>
+  <label for="game_source">Source</label>
+  <input type="text" name="game[source]" id="game_source"
+      value="<%= game.get('source') %>">
+</div>
+<div>
+  <label for="game_time_limit">Time Limit (in seconds)</label>
+  <input type="text" name="game[time_limit]" id="game_time_limit"
+      value="<%= game.get('time_limit') %>">
+</div>
+
+<button class="game-form-submit"><%= buttonText %></button>

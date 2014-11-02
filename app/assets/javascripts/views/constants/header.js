@@ -3,9 +3,9 @@ Dorkle.Views.Header = Backbone.View.extend({
   events: {
     'click a.go-to': 'preventDefault',
     'click a.go-to.root': 'goToRoot',
-    // 'click a.go-to.current-user': 'goToCurrentUser',
+    'click a.go-to.current-user': 'goToCurrentUser',
     'click a.go-to.games': 'goToGames',
-    // 'click a.go-to.create': 'goToCreate',
+    'click a.go-to.create': 'goToCreate',
     'click a.go-to.random-game': 'goToRandomGame'
   },
   preventDefault: function (event) { event.preventDefault(); },
