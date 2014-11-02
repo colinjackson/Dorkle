@@ -88,6 +88,10 @@ form.default button {
   color: white;
 }
 
+form.default input:disabled {
+  background: lightgray;
+}
+
 
 /* TABLE DEFAULTS */
 

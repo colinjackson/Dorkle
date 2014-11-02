@@ -2,7 +2,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
   template: JST['rounds/show'],
 
   initialize: function () {
-    this.listenTo(this.model, 'sync', this.startRound);
+    this.listenTo(this.model, 'sync', this.prepareForStart);
 
     this.validAnswers = this.model.answers().clone();
     this.listenTo(this.model.answers(), 'add', this.updateValidAnswers);
@@ -29,9 +29,12 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     return this;
   },
 
-  startRound: function () {
+  prepareForStart: function () {
     this.$('h1').text(this.model.game.get('title'));
+    setTimeout(this.startRound.bind(this), 1000);
+  },
 
+  startRound: function () {
     var timeLimit = this.model.game.get('time_limit') * 1000;
     setTimeout(this.handleDefeat.bind(this), timeLimit);
 
