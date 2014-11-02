@@ -36,7 +36,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
 
   startRound: function () {
     var timeLimit = this.model.game.get('time_limit') * 1000;
-    setTimeout(this.handleDefeat.bind(this), timeLimit);
+    this.roundTimeoutID = setTimeout(this.handleDefeat.bind(this), timeLimit);
 
     this.model.set('start_time', Date.now());
     this._subviewsSend(function (subview) {
@@ -63,8 +63,9 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
   },
 
   endRound: function () {
+    clearInterval(this.roundTimeoutID)
     this._subviewsSend(function (subview) {
-      subview.endRound()
+      subview.endRound();
     });
   },
 

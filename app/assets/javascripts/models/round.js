@@ -38,6 +38,8 @@ Dorkle.Models.Round = Backbone.Model.extend({
       var timeElapsed = (Date.now() - this.get('start_time')) / 1000;
       var timeLimit = this.game.get('time_limit');
       return timeLimit - timeElapsed;
+    } else if (this.game) {
+      return this.game.get('time_limit');
     } else {
       return 0;
     }
