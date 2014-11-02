@@ -33,6 +33,11 @@ Dorkle.Views.RoundShowMetrics = Backbone.View.extend({
 
   endRound: function () {
     clearInterval(this.timerIntervalID);
+  },
+
+  remove: function () {
+    if (this.timerIntervalID) clearInterval(this.timerIntervalID);
+    Backbone.View.prototype.remove.call(this);
   }
 
 });

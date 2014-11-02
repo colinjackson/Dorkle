@@ -10,6 +10,8 @@ window.Dorkle = {
     new Dorkle.Routers.SiteRouter({
       $mainEl: $('main')
     });
+    new Dorkle.Views.Header({el: $('header')});
+
     Backbone.history.start();
   }
 };
