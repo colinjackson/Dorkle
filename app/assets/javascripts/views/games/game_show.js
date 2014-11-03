@@ -20,9 +20,7 @@ Dorkle.Views.GameShow = Backbone.View.extend({
 
   startRound: function (event) {
     event.preventDefault();
-
-    var roundShowPath = '/games/' + this.model.id + '/round';
-    Backbone.history.navigate(roundShowPath, {trigger: true});
+    Dorkle.siteRouter.roundCreate(this.model);
   }
 
 });

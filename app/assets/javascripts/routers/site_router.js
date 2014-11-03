@@ -8,7 +8,6 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
     'games': 'gamesIndex',
     'games/new': 'gameNew',
     'games/:id': 'gameShow',
-    'games/:game_id/round': 'roundCreate',
     'rounds/:id': 'roundShow'
   },
 
@@ -39,8 +38,19 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
     this._swapMainView(view);
   },
 
-  roundCreate: function (gameId) {
-    var round = new Dorkle.Models.Round({game_id: gameId})
+  roundShow: function (id) {
+    var round = new Dorkle.Models.Round({id: id});
+    var view = new Dorkle.Views.RoundShow({
+      model: round
+    });
+    round.fetch();
+
+    this._swapMainView(view);
+  },
+
+  roundCreate: function (game) {
+    var round = new Dorkle.Models.Round({game_id: game.id});
+    round.game = game;
     var view = new Dorkle.Views.RoundShow({
       model: round
     });
@@ -50,16 +60,6 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
         Backbone.history.navigate(roundShowPath);
       }
     });
-
-    this._swapMainView(view);
-  },
-
-  roundShow: function (id) {
-    var round = new Dorkle.Models.Round({id: id});
-    var view = new Dorkle.Views.RoundShow({
-      model: round
-    });
-    round.fetch();
 
     this._swapMainView(view);
   },

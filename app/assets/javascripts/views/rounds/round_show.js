@@ -34,7 +34,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
 
     if (!this.model.get('start_time')) {
       setTimeout(this.startRound.bind(this), 1000);
-    } else if (this.model.timeRemaining() > 0) {
+    } else if (this.model.timeRemaining() > 0 && !this.model.isWon()) {
       this.startRound();
     }
   },

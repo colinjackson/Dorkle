@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :users, except: :index
-
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :games do
@@ -14,12 +13,19 @@ Rails.application.routes.draw do
     end
   end
 
+
   namespace :api, defaults: { format: :json } do
     resources :users, only: :show
+
     resources :games do
       resources :game_answers, only: :index, as: "answers"
     end
-    resources :rounds, only: [:create, :show, :update]
+
+    resources :rounds, only: [:create, :show, :update] do
+      resources :round_answer_matches, only: :index, as: "answer_matches"
+    end
+
+    resources :round_answer_matches, only: :create, as: "answer_matches"
   end
 
   root to: "static_pages#root"

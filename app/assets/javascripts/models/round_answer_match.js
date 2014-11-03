@@ -1,9 +1,16 @@
 Dorkle.Models.RoundAnswerMatch = Backbone.Model.extend({
+  urlRoot: '/api/round_answer_matches',
+
   initialize: function (options) {
-    this.answer = options.answer;
-    this.set({
-      round_id: options.round.id,
-      answer_id: options.answer.id
-    });
+    if (options && options.answer) this._answer = options.answer;
+  },
+
+  answer: function () {
+    if (!this._answer) {
+      var answerId = this.get('answer_id');
+      this._answer = this.collection.round.answers().get(answerId);
+    }
+
+    return this._answer;
   }
 });

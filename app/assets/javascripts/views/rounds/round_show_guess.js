@@ -46,10 +46,10 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
     this.$guessBox.val('');
 
     var answerMatch = new Dorkle.Models.RoundAnswerMatch({
-      round: this.model,
       answer: answer
     });
-    this.model.matches().add(answerMatch);
+    answerMatch.set({round_id: this.model.id, answer_id: answer.id});
+    this.model.matches().create(answerMatch);
 
     this.validAnswers.remove(answer);
   },

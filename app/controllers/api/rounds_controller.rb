@@ -16,12 +16,14 @@ module Api
     end
 
     def show
-      @round = Round.includes(:game, :answers).find(params[:id])
+      @round = Round.includes(:game, :answers, :answer_matches)
+        .find(params[:id])
       render :show
     end
 
     def update
-      @round = Round.includes(:game, :answers).find(params[:id])
+      @round = Round.includes(:game, :answers, :answer_matches)
+        .find(params[:id])
 
       if @round.update(round_params)
         render :show

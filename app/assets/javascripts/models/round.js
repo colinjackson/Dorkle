@@ -6,10 +6,13 @@ Dorkle.Models.Round = Backbone.Model.extend({
       this.game = Dorkle.games.add(json.game);
       delete json.game;
     }
-
     if (json.answers) {
       this.answers().set(json.answers);
       delete json.answers;
+    }
+    if (json.answer_matches) {
+      this.matches().set(json.answer_matches);
+      delete json.answer_matches;
     }
 
     return json;
@@ -27,7 +30,9 @@ Dorkle.Models.Round = Backbone.Model.extend({
 
   matches: function () {
     if (!this._matches) {
-      this._matches = new Dorkle.Collections.RoundAnswerMatches();
+      this._matches = new Dorkle.Collections.RoundAnswerMatches([], {
+        round: this
+      });
     }
 
     return this._matches;
