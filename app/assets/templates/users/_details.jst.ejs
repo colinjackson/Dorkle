@@ -1,0 +1,23 @@
+<h2>Details</h2>
+
+<table>
+  <tr>
+    <td class="default-key">Name</td>
+    <td class="default-value"><%= user.get('name') || "Anonymous" %></td>
+  </tr>
+  <tr>
+    <td class="default-key">Username</td>
+    <td class="default-value"><%= user.get('username') %></td>
+  </tr>
+  <% if (isCurrentUser) { %>
+  <tr>
+    <td class="default-key">Email</td>
+    <td class="default-value"><%= user.get('email') %></td>
+  </tr>
+  <% } %>
+</table>
+
+<% if (isCurrentUser) { %>
+  <% var currentUserEditPath = '/users/' + user.id + '/edit' %>
+  <a href="<%= currentUserEditPath %>">Update Your Profile</a>
+<% } %>

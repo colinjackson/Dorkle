@@ -1,9 +1,7 @@
 json.(@user, :id, :username, :name)
 
-if (@user == current_user) {
-  json.email @user.email
-}
+json.email @user.email if @user == current_user
 
-json.games @user.created_games do |game|
+json.created_games @user.created_games do |game|
   json.(game, :id, :title, :subtitle, :source, :time_limit)
 end

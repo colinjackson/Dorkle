@@ -4,11 +4,12 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'gamesIndex',
-    'games': 'gamesIndex',
-    'games/new': 'gameNew',
-    'games/:id': 'gameShow',
-    'rounds/:id': 'roundShow'
+    '':           'gamesIndex',
+    'games':      'gamesIndex',
+    'games/new':  'gameNew',
+    'games/:id':  'gameShow',
+    'rounds/:id': 'roundShow',
+    'users/:id':  'userShow'
   },
 
   gamesIndex: function () {
@@ -60,6 +61,16 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
         Backbone.history.navigate(roundShowPath);
       }
     });
+
+    this._swapMainView(view);
+  },
+
+  userShow: function (id) {
+    var user = new Dorkle.Models.User({id: id});
+    var view = new Dorkle.Views.UserShow({
+      model: user
+    });
+    user.fetch();
 
     this._swapMainView(view);
   },
