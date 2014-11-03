@@ -41,6 +41,7 @@ class GamesController < ApplicationController
       redirect_to game_url(@game)
     else
       flash.now[:errors] = ["Confound it!"] + @game.errors.full_messages
+      render :edit
     end
   end
 
@@ -53,7 +54,7 @@ class GamesController < ApplicationController
   private
   def game_params
     params.require(:game)
-      .permit(:title, :subtitle, :source, :time_limit, :author_id)
+      .permit(:title, :subtitle, :source, :time_limit, :image)
   end
 
   def require_current_user_owner

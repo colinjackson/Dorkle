@@ -3,6 +3,9 @@
 
 <div class="game-show">
   <div class="game-details group">
+    <% if @game.image.url %>
+      <%= image_tag @game.image.url(:show) %>
+    <% end %>
     <table>
       <tr>
         <td class="default-key">by</td>

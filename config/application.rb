@@ -32,5 +32,17 @@ module Dorkle
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
 
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_protocol: "http",
+      url: ":s3_domain_url",
+      path: "images/:class/:id.:style.:extension",
+      s3_credentials: {
+        bucket: ENV['aws_bucket'],
+        access_key_id: ENV['aws_access_key_id'],
+        secret_access_key: ENV['aws_secret_key']
+      }
+    }
+
   end
 end

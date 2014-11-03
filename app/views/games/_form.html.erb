@@ -1,4 +1,5 @@
-<form class="default" action="<%= form_action %>" method="POST">
+<form class="default" action="<%= form_action %>"
+  method="POST" enctype="multipart/form-data">
   <%= update_input(form_method) %>
   <%= auth_input %>
 
@@ -8,9 +9,13 @@
         value="<%= game.title %>">
   </div>
   <div>
-    <label for="game_subtitle">Subtitle</label>
+    <label for="game_subtitle">Subtitle (optional)</label>
     <input type="text" name="game[subtitle]" id="game_subtitle"
         value="<%= game.subtitle %>">
+  </div>
+  <div>
+    <label for="game_image">Add an image (optional)</label>
+    <%= file_field :game, :image %>
   </div>
   <div>
     <label for="game_source">Source</label>
