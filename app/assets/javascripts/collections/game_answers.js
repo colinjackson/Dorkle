@@ -4,7 +4,7 @@ Dorkle.Collections.GameAnswers = Backbone.Collection.extend({
     return this.game.url() + '/game_answers';
   },
 
-  initialize: function (options) {
+  initialize: function (models, options) {
     this.game = options.game;
   }
 });

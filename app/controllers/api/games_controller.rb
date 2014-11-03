@@ -9,7 +9,14 @@ module Api
     end
 
     def create
-      @game = Game.new(game_params)
+      @game = current_user.created_games.new(game_params)
+      puts "THESE ARE THE ANSWERS PARAMS #{answers_params}"
+
+      answers_params.each do |answer_params|
+        puts "THIS IS AN ANSWER PARAMS #{answer_params}"
+        @game.answers.new(answer_params.permit(:answer))
+      end
+
       if @game.save()
         render :show
       else
@@ -43,8 +50,11 @@ module Api
 
     private
     def game_params
-      params.require(:game)
-        .permit(:title, :subtitle, :source, :time_limit, :author_id)
+      params.require(:game).permit(:title, :subtitle, :source, :time_limit)
+    end
+
+    def answers_params
+      params.require(:answers)
     end
 
     def require_current_user_owner

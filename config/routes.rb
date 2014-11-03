@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: :show
-    resources :games
+    resources :games do
+      resources :game_answers, only: :index, as: "answers"
+    end
     resources :rounds, only: [:create, :show]
   end
 

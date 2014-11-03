@@ -28,7 +28,8 @@ Backbone.Superview = Backbone.View.extend({
 
   removeSubview: function (selector, subview) {
     subview.remove();
-    this.subviews(selector).splice(subviews.indexOf(subview), 1)
+    var index = this.subviews(selector).indexOf(subview);
+    this.subviews(selector).splice(index, 1);
   },
 
   remove: function () {
