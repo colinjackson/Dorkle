@@ -4,9 +4,14 @@
       value="<%= game.get('title') %>">
 </div>
 <div>
-  <label for="game_subtitle">Subtitle</label>
+  <label for="game_subtitle">Subtitle (optional)</label>
   <input type="text" name="subtitle" id="game_subtitle"
       value="<%= game.get('subtitle') %>">
+</div>
+<div>
+  <img id="game-image-preview" src="">
+  <label for="game_image">Add an image (optional)</label>
+  <input type="file" name="image" id="game_image">
 </div>
 <div>
   <label for="game_source">Source</label>

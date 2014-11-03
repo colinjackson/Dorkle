@@ -2,6 +2,7 @@ module Api
   class GamesController < ApplicationController
     before_filter :require_signed_in, only: [:new, :create]
     before_filter :require_current_user_owner, only: [:edit, :update, :destroy]
+    wrap_parameters false
 
     def index
       @games = Game.includes(:author).all
@@ -10,10 +11,8 @@ module Api
 
     def create
       @game = current_user.created_games.new(game_params)
-      puts "THESE ARE THE ANSWERS PARAMS #{answers_params}"
 
-      answers_params.each do |answer_params|
-        puts "THIS IS AN ANSWER PARAMS #{answer_params}"
+      game_answers_params.each do |answer_params|
         @game.answers.new(answer_params.permit(:answer))
       end
 
@@ -50,11 +49,12 @@ module Api
 
     private
     def game_params
-      params.require(:game).permit(:title, :subtitle, :source, :time_limit)
+      params.require(:game)
+        .permit(:title, :subtitle, :source, :time_limit, :image)
     end
 
-    def answers_params
-      params.require(:answers)
+    def game_answers_params
+      params.require(:game)['answers']
     end
 
     def require_current_user_owner

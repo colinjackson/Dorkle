@@ -1,5 +1,6 @@
 <a class="game-show-link group" href="javascript:void(0)">
   <h2 class="game-item-title"><%= game.get('title') %></h2>
+  <img src="<%= game.get('image_url_thumb') %>">
   <h3 class="game-item-subtitle"><%= game.getSubtitle() %></h3>
   <% if (game.author) { %>
   <h3 class="game-item-author">by <%= game.author.getName() %></h3>

@@ -7,6 +7,10 @@ Dorkle.Views.GameForm = Backbone.View.extend({
     this.buttonText = options.buttonText;
   },
 
+  events: {
+    'change #game_image': 'pullInImage'
+  },
+
   render: function () {
     var renderedContent = this.template({
       game: this.model,
@@ -15,5 +19,26 @@ Dorkle.Views.GameForm = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  pullInImage: function (event) {
+    var imageFile = event.currentTarget.files[0];
+    var reader = new FileReader();
+
+    var view = this;
+    reader.onloadend = function () {
+      view.model.set('image', this.result);
+      view._updateImagePreview(this.result);
+    };
+
+    if (imageFile) {
+      reader.readAsDataURL(imageFile);
+    } else {
+      this._updateImagePreview("");
+    }
+  },
+
+  _updateImagePreview: function (imageData) {
+    this.$('#game-image-preview').attr('src', imageData);
   }
 });
