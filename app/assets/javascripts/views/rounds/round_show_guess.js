@@ -16,7 +16,7 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template();
     this.$el.html(renderedContent);
-    this.$guessBox = $('#guess-box');
+    this.$guessBox = this.$('#guess-box');
 
     return this;
   },

@@ -7,6 +7,8 @@ class RoundsController < ApplicationController
       @round = Round.new(round_params)
     end
 
+    @round.start_time = Time.now()
+
     if @round.save
       redirect_to round_url(@round)
     else

@@ -16,14 +16,23 @@ module Api
     end
 
     def show
-      @round = Round.includes(:game, :answers)
-        .find(params[:id])
+      @round = Round.includes(:game, :answers).find(params[:id])
       render :show
+    end
+
+    def update
+      @round = Round.includes(:game, :answers).find(params[:id])
+
+      if @round.update(round_params)
+        render :show
+      else
+        render json: { error: @game.errors.full_messages }
+      end
     end
 
     private
     def round_params
-      params.require(:round).permit(:game_id, :player_id)
+      params.require(:round).permit(:game_id, :start_time)
     end
 
   end

@@ -37,9 +37,9 @@ Dorkle.Models.Round = Backbone.Model.extend({
     if (!this.game) return 0;
     if (!this.get('start_time')) return this.game.get('time_limit');
 
-    var timeElapsed = (Date.now() - this.get('start_time')) / 1000;
+    var timeElapsed = (Date.now() - Date.parse(this.get('start_time'))) / 1000;
     var timeLimit = this.game.get('time_limit');
-    return timeLimit - timeElapsed;
+    return Math.max((timeLimit - timeElapsed), 0);
   },
 
   answersLeft: function () {

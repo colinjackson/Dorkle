@@ -8,6 +8,7 @@
 #  completed  :boolean          default(FALSE)
 #  created_at :datetime
 #  updated_at :datetime
+#  start_time :datetime
 #
 
 require 'rails_helper'
@@ -70,7 +71,7 @@ RSpec.describe Round, :type => :model do
       end
 
       it "reports the remaining time left in the game" do
-        allow(round).to receive(:created_at).and_return(2.minutes.ago)
+        allow(round).to receive(:start_time).and_return(2.minutes.ago)
         expect(round.time_remaining).to be_within(0.5).of(0)
       end
     end

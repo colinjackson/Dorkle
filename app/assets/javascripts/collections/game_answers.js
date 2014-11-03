@@ -5,6 +5,6 @@ Dorkle.Collections.GameAnswers = Backbone.Collection.extend({
   },
 
   initialize: function (models, options) {
-    this.game = options.game;
+    if (options && options.game) this.game = options.game;
   }
 });

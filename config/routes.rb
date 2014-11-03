@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :games do
       resources :game_answers, only: :index, as: "answers"
     end
-    resources :rounds, only: [:create, :show]
+    resources :rounds, only: [:create, :show, :update]
   end
 
   root to: "static_pages#root"

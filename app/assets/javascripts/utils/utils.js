@@ -1,4 +1,5 @@
 var timeString = Dorkle.Utils.timeString = function (time) {
+  if (time === 0) return '0:00' // preempt falsy 0 value
   if (!time) return '';
 
   mins = Math.floor(time / 60);

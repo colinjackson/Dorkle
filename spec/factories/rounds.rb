@@ -8,6 +8,7 @@
 #  completed  :boolean          default(FALSE)
 #  created_at :datetime
 #  updated_at :datetime
+#  start_time :datetime
 #
 
 FactoryGirl.define do

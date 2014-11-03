@@ -8,6 +8,7 @@
 #  completed  :boolean          default(FALSE)
 #  created_at :datetime
 #  updated_at :datetime
+#  start_time :datetime
 #
 
 class Round < ActiveRecord::Base
@@ -45,7 +46,8 @@ class Round < ActiveRecord::Base
   end
 
   def time_remaining
-    self.game.time_limit - (Time.now - self.created_at)
+    return self.game.time_limit if !self.start_time
+    self.game.time_limit - (Time.now - self.start_time)
   end
 
   # SAVE the SQL version for reference/posterity:

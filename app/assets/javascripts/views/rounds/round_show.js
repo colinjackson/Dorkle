@@ -2,7 +2,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
   template: JST['rounds/show'],
 
   initialize: function () {
-    this.listenTo(this.model, 'sync', this.prepareForStart);
+    this.listenToOnce(this.model, 'sync', this.prepareForStart);
 
     this.validAnswers = this.model.answers().clone();
     this.listenTo(this.model.answers(), 'add', this.updateValidAnswers);
@@ -31,14 +31,24 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
 
   prepareForStart: function () {
     this.$('h1').text(this.model.game.get('title'));
-    setTimeout(this.startRound.bind(this), 1000);
+
+    if (!this.model.get('start_time')) {
+      setTimeout(this.startRound.bind(this), 1000);
+    } else if (this.model.timeRemaining() > 0) {
+      this.startRound();
+    }
   },
 
   startRound: function () {
-    var timeLimit = this.model.game.get('time_limit') * 1000;
+    var timeLimit;
+    if (!this.model.get('start_time')) {
+      this.model.set('start_time', new Date());
+      this.model.save();
+    }
+
+    timeLimit = this.model.timeRemaining() * 1000;
     this.roundTimeoutID = setTimeout(this.handleDefeat.bind(this), timeLimit);
 
-    this.model.set('start_time', Date.now());
     this._subviewsSend(function (subview) {
       subview.startRound();
     });
@@ -67,6 +77,12 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     this._subviewsSend(function (subview) {
       subview.endRound();
     });
+    this.model.save();
+  },
+
+  remove: function () {
+    if (this.roundTimeoutID) clearInterval(this.roundTimeoutID);
+    Backbone.Superview.prototype.remove.call(this);
   },
 
   _subviewsSend: function (callback) {
