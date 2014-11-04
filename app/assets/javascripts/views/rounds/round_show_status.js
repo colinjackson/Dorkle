@@ -28,6 +28,6 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
     this.addSubview('ul.board-status-matches-list', subview);
   },
 
-  endRound: function () { return true }
+  endRound: function () { this.stopListening(); }
 
 });

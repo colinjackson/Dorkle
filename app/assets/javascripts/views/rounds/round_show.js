@@ -6,7 +6,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     this.listenToOnce(this.model, 'sync', this.prepareForStart);
 
     this.validAnswers = this.model.answers().clone();
-    this.listenTo(this.model.answers(), 'add', this.updateValidAnswers);
+    this.listenTo(this.model, 'sync', this.setValidAnswers)
     this.listenTo(this.validAnswers, 'remove', this.checkForVictory);
   },
 
@@ -42,18 +42,14 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
       this.readySetGuess();
     } else if (this.model.timeRemaining() > 0 && !this.model.isWon()) {
       this.startRound();
+    } else {
+      this._setLabelState('game-over-state', 'GAME OVER!');
     }
   },
 
   readySetGuess: function () {
     setTimeout(function () {
-      var $label = this.$('label[for=guess-box]')
-      $label.text('Set...');
-      $label.removeClass('ready-state');
-      setTimeout(function () {
-        $label.addClass('set-state');
-      }, 0);
-
+      this._setLabelState('set-state', 'Set...');
       setTimeout(this.startRound.bind(this), 1000);
     }.bind(this), 1000);
   },
@@ -65,12 +61,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
       this.model.save();
     }
 
-    var $label = this.$('label[for=guess-box]');
-    $label.text('Guess!');
-    $label.removeClass('ready-state set-state');
-    setTimeout(function () {
-      $label.addClass('go-state');
-    }, 0);
+    this._setLabelState('go-state', 'Guess!');
 
     timeLimit = this.model.timeRemaining() * 1000;
     this.roundTimeoutID = setTimeout(this.handleDefeat.bind(this), timeLimit);
@@ -80,8 +71,8 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     });
   },
 
-  updateValidAnswers: function (newAnswer) {
-    this.validAnswers.add(newAnswer);
+  setValidAnswers: function () {
+    this.validAnswers.set(this.model.validAnswers().models);
   },
 
   checkForVictory: function () {
@@ -99,6 +90,8 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
   },
 
   endRound: function () {
+    this._setLabelState('game-over-state', 'GAME OVER!');
+
     clearInterval(this.roundTimeoutID)
     this._subviewsSend(function (subview) {
       subview.endRound();
@@ -109,6 +102,19 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
   remove: function () {
     if (this.roundTimeoutID) clearInterval(this.roundTimeoutID);
     Backbone.Superview.prototype.remove.call(this);
+  },
+
+  _setLabelState: function (newState, text) {
+    var states = ['ready-state', 'set-state', 'go-state', 'game-over-state'];
+    var newStateIndex = states.indexOf(newState);
+    states.splice(newStateIndex, 1);
+
+    var $label = this.$('label[for=guess-box]');
+    $label.text(text);
+    $label.removeClass(states.join(' '));
+    setTimeout(function () {
+      $label.addClass(newState);
+    }, 0);
   },
 
   _subviewsSend: function (callback) {

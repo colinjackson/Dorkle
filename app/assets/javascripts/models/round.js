@@ -38,6 +38,35 @@ Dorkle.Models.Round = Backbone.Model.extend({
     return this._matches;
   },
 
+  validAnswers: function () {
+    if (this.matches().length === 0) return this.answers().clone();
+
+    var matchedAnswerIds = [];
+    this.matches().each(function (match) {
+      matchedAnswerIds.push(match.get('answer_id'));
+    });
+
+    var validAnswers = new Dorkle.Collections.GameAnswers([], {
+      game: this.game
+    });
+    this.answers().each(function (answer) {
+      if (matchedAnswerIds.indexOf(answer.id) === -1) {
+        validAnswers.add(answer);
+      }
+    });
+
+    return validAnswers;
+  },
+
+  isAnswerMatched: function (answer) {
+    var matchedAnswerIds = [];
+    this.matches().each(function (match) {
+      matchedAnswerIds.push(match.get('answer_id'));
+    })
+
+    return matchedAnswerIds.indexOf(answer.id) !== -1
+  },
+
   timeRemaining: function () {
     if (!this.game) return 0;
     if (!this.get('start_time')) return this.game.get('time_limit');

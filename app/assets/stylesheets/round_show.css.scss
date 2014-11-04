@@ -1,6 +1,10 @@
 @import "utils/colors";
 
 .round-show {
+  > h1 {
+    text-align: center;
+  }
+
   .round-show-board {
     .round-show-board-guessing {
       .round-show-board-guess {
@@ -39,7 +43,11 @@
           -webkit-animation: slapdown 0.5s;
         }
 
-        label.time-up-state {
+        label.game-over-state {
+          font-weight: bold;
+          text-align: center;
+          color: $ft-red;
+          -webkit-animation: slapdown 0.5s;
         }
 
         .guess-box {
@@ -66,6 +74,10 @@
 
   .round-show-board-status {
     margin-top: 20px;
+
+    > h2 {
+      text-align: center;
+    }
 
     .board-status-matches-list {
       padding: 0 20px;
