@@ -4,9 +4,13 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
   template: JST['game_answers/_item'],
 
   events: {
-    'click .game-answer-item': 'beginEditing',
+    'click .game-answer-item-answer': 'beginEditing',
     'focusout input.game-answer-item-editing': 'endEditing',
-    'click button.game-answer-remove': 'deleteAnswer'
+    'keydown input.game-answer-item-editing': 'checkForEnter',
+    'click button.game-answer-delete': 'deleteAnswer'
+  },
+  checkForEnter: function (event) {
+    if (event.which === 13) this.$editBox.blur();
   },
 
   render: function () {
@@ -39,6 +43,8 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
     this.$editBox = null;
     this.render();
   },
+
+
 
   deleteAnswer: function (event) {
     event.preventDefault();

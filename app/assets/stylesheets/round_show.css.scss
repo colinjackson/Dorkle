@@ -52,10 +52,10 @@
 
         .guess-box {
           box-sizing: border-box;
-          padding: 5px 2.5%;
+          width: 100%;
+          padding: 5px;
           border: 2px solid $br-orange;
           border-radius: 6px;
-          width: 100%;
           font-size: 1.25em;
           text-align: center;
           background: $bg-beige;
@@ -83,33 +83,6 @@
       padding: 0 20px;
       min-height: 200px;
       text-align: center;
-
-      li {
-        display: inline-block;
-        position: relative;
-        padding: 3px 15px;
-        margin: 5px;
-        color: $ft-darkblue;
-        border-radius: 23px;
-        background: $bg-teal;
-        box-shadow: 0 3px 0 $br-teallight;
-        -webkit-animation: slapdown 0.3s;
-      }
     }
-  }
-}
-
-@-webkit-keyframes slapdown {
-  0% {
-    top: -500px;
-    left: -100px;
-    opacity: 0;
-    transform: scale(10);
-  }
-  100% {
-    top: 0;
-    left: 0;
-    opacity: 1;
-    transform: scale(1);
   }
 }

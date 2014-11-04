@@ -10,6 +10,7 @@ Dorkle.Views.GameForm = Backbone.View.extend({
   },
 
   events: {
+    'click #game_image-button': 'clickFileInput',
     'change #game_image': 'pullInImage'
   },
 
@@ -21,6 +22,11 @@ Dorkle.Views.GameForm = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  clickFileInput: function (event) {
+    event.preventDefault();
+    this.$('#game_image').click();
   },
 
   pullInImage: function (event) {

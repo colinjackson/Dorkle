@@ -46,43 +46,44 @@ h3 {
 /* FORM DEFAULTS */
 
 form.default {
-  background: lightgrey;
-  width: 75%;
-  margin: 0 auto;
-  padding: 16px 0;
-}
+  background: $bg-amber;
+  padding: 10px;
 
-form.default > div {
-  width: 50%;
-  margin: 16px auto;
-  padding: 8px;
-  background: silver;
-}
+  > div {
+    margin-bottom: 10px;
+    padding: 10px;
+    background: $bg-azure;
+    border: 2px solid $br-light;
+  }
 
-form.default > div {
-  margin-top: 0;
-}
+  > div:last-child {
+    margin-bottom: 0;
+  }
 
-form.default label {
-  display: block;
-  font-size: 1.2em;
-  text-align: center;
-  margin-bottom: 8px;
-}
+  label {
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+  }
 
-form.default input[type=text],
-form.default input[type=email],
-form.default input[type=password] {
-  display: block;
-  width: 90%;
-  margin: 0 auto;
-  background: white;
-  text-align: center;
-  padding: 8px;
-}
+  input[type=text],
+  input[type=email],
+  input[type=password] {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    border: 2px solid $br-light;
+    border-radius: 6px;
+    text-align: center;
+    background: $bg-beige;
+  }
 
-form.default input:disabled {
-  background: lightgray;
+  input[type=text]:focus,
+  input[type=email]:focus,
+  input[type=password]:focus {
+    border: 2px solid $br-teallight;
+  }
 }
 
 .button-default {
@@ -94,6 +95,7 @@ form.default input:disabled {
   font-weight: bold;
   font-size: 0.8em;
   letter-spacing: 3px;
+  border-radius: 6px;
   text-align: center;
   transition: top 0.15s, box-shadow 0.15s, color 0.15s;
   box-shadow: 0 3px 0 $br-orange;
@@ -110,8 +112,6 @@ form.default input:disabled {
   color: $ft-whiteblue;
   box-shadow: none;
 }
-
-
 
 
 /* TABLE DEFAULTS */

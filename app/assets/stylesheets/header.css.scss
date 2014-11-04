@@ -23,7 +23,7 @@ header {
     }
 
     .dorkle-logo-link:hover > .dorkle-logo {
-      -webkit-animation: wiggle 1s;
+      -webkit-animation: barrelroll 1s;
     }
 
     .dorkle-logo {
@@ -115,15 +115,4 @@ header {
     }
   }
 
-}
-
-
-/* ANIMATIONS */
-
-@-webkit-keyframes wiggle {
-  0% { transform: rotate(0); }
-  20%, 30% { transform: rotate(60deg); }
-  70% { transform: rotate(-420deg); }
-  90% { transform: rotate(-340deg); }
-  100% { transform: rotate(-360deg); }
 }

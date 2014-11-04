@@ -1,6 +1,6 @@
 Dorkle.Views.AnswerMatchItem = Backbone.View.extend({
   tagName: 'li',
-  className: 'group',
+  className: 'game-answer-item group',
   template: JST['answer_matches/_item'],
 
   render: function () {

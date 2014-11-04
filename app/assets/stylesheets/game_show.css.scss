@@ -23,11 +23,12 @@ GAME SHOW
 
     > * {
       padding: 20px;
-      background: $bg-azure;
       border: 2px solid $br-light;
     }
 
     .game-show-details {
+      background: $bg-azure;
+
       > h2 {
         font-size: 1.2em;
         font-style: italic;
@@ -44,6 +45,7 @@ GAME SHOW
     }
 
     .game-show-manage {
+      background: $bg-amber;
       margin-top: 20px;
     }
   }
