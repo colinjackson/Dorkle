@@ -17,40 +17,8 @@ main {
   border-width: 0 1px 1px 1px;
 }
 
-
-
-/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-GAMES INDEX
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-
-main .games-list {
-  background: lightgrey;
-  width: 75%;
-  margin: 0 auto;
-}
-
-main .games-list .game-item {
-  padding: 8px;
-}
-
-main .games-list .game-item:nth-child(even) {
-  background: silver;
-}
-
-main .games-list .game-item a {
-  display: block;
-}
-
-main .games-list .game-item h2,
-main .games-list .game-item h3 {
-  float: left;
-  width: 40%;
-  text-align: center;
-  padding: 8px 5%;
+main > * {
+  margin: 0 20px;
 }
 
 

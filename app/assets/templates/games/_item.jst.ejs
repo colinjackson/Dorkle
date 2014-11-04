@@ -1,10 +1,13 @@
 <a class="game-show-link group" href="javascript:void(0)">
   <img alt="Game" src="<%= game.get('image_url_thumb') %>">
-  <h2 class="game-item-title"><%= game.get('title') %></h2>
-  <span class="game-item-subtitle"><%= game.getSubtitle() %></span>
-  <% if (game.author) { %>
-  <span class="game-item-author">by <%= game.author.getName() %></span>
-  <% } %>
-  <span class="game-item-time">Time limit:
-    <%= Dorkle.Utils.timeString(game.get('time_limit')) %></span>
+
+  <div class="game-item-details">
+    <h2 class="game-item-title"><%= game.get('title') %></h2>
+    <span class="game-item-subtitle"><%= game.getSubtitle() %></span>
+    <% if (game.author) { %>
+    <span class="game-item-author">by <%= game.author.getName() %></span>
+    <% } %>
+    <span class="game-item-time">Time limit:
+      <%= Dorkle.Utils.timeString(game.get('time_limit')) %></span>
+  </div>
 </a>
