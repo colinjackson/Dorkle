@@ -1,4 +1,5 @@
 Dorkle.Views.RoundShow = Backbone.Superview.extend({
+  className: 'round-show',
   template: JST['rounds/show'],
 
   initialize: function () {
@@ -19,12 +20,12 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
       model: this.model,
       validAnswers: this.validAnswers
     });
-    this.addSubview('.round-show', guessSubview);
+    this.addSubview('.round-show-board', guessSubview);
 
-    var correctSubview = new Dorkle.Views.RoundShowStatus({
+    var statusSubview = new Dorkle.Views.RoundShowStatus({
       model: this.model
     });
-    this.addSubview('.round-show', correctSubview);
+    this.addSubview('.round-show-board', statusSubview);
 
     return this;
   },

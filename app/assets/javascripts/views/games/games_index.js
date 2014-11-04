@@ -1,4 +1,5 @@
 Dorkle.Views.GamesIndex = Backbone.Superview.extend({
+  className: 'games',
   template: JST['games/index'],
 
   initialize: function (options) {

@@ -1,6 +1,6 @@
 Dorkle.Views.GameAnswerItem = Backbone.View.extend({
   tagName: 'li',
-  className: 'group',
+  className: 'game-answer-item group',
   template: JST['game_answers/_item'],
 
   events: {

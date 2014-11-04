@@ -35,6 +35,6 @@ class Game < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: %r{\Aimage\/.*\Z}
 
   def getSubtitle
-    self.subtitle ? self.subtitle : "(no subtitle)"
+    self.subtitle && !self.subtitle.empty? ? self.subtitle : "(no subtitle)"
   end
 end

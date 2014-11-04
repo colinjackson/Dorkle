@@ -1,4 +1,5 @@
 Dorkle.Views.UserDetails = Backbone.View.extend({
+  className: 'user-show-details',
   template: JST['users/_details'],
 
   initialize: function () {

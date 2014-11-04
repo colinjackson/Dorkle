@@ -1,5 +1,5 @@
 Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
-  className: 'game-answers-status',
+  className: 'round-show-board-status',
   template: JST['rounds/_status'],
 
   initialize: function () {
@@ -13,7 +13,7 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
     var metricsSubview = new Dorkle.Views.RoundShowMetrics({
       model: this.model
     });
-    this.addSubview('div.round-metrics', metricsSubview);
+    this.addSubview('div.board-status-metrics', metricsSubview);
 
     var view = this;
     this.model.matches().each(function (answerMatch) {
@@ -24,7 +24,7 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
   },
 
   startRound: function () {
-    this.subviews('div.round-metrics')[0].startRound();
+    this.subviews('div.board-status-metrics')[0].startRound();
   },
 
   addAnswerMatch: function (answerMatch) {
@@ -32,11 +32,11 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
       model: answerMatch
     });
 
-    this.addSubview('ul.game-answers-status-list', subview);
+    this.addSubview('ul.board-status-matches-list', subview);
   },
 
   endRound: function () {
-    this.subviews('div.round-metrics')[0].endRound();
+    this.subviews('div.board-status-metrics')[0].endRound();
   }
 
 });

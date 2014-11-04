@@ -1,0 +1,12 @@
+<li class="game-item">
+  <a class="game-show-link group" href="<%= game_url(game) %>">
+    <%= image_tag game.image.url(:thumb) %>
+    <h2 class="game-item-title"><%= game.title %></h2>
+    <span class="game-item-subtitle"><%= game.getSubtitle %></span>
+    <% if with_user %>
+    <span class="game-item-author">by <%= game.author.getName %></span>
+    <% end %>
+    <span class="game-item-time">Time limit:
+      <%= time_string(game.time_limit) %></span>
+  </a>
+</li>

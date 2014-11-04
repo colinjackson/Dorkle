@@ -1,7 +1,9 @@
 Dorkle.Views.UserShow = Backbone.Superview.extend({
+  className: 'user-show',
   template: JST['users/show'],
 
   initialize: function () {
+    this.listenTo(this.model, 'change:username change:name', this.updateTitle);
     this.listenTo(this.model.createdGames(), 'add', this.addGame);
   },
 
@@ -14,7 +16,7 @@ Dorkle.Views.UserShow = Backbone.Superview.extend({
     var detailsSubview = new Dorkle.Views.UserDetails({
       model: this.model
     });
-    this.addSubview('div.user-details', detailsSubview);
+    this.addSubview('div.user-show-content', detailsSubview);
 
     var view = this;
     this.model.createdGames().each(function (game) {
@@ -24,11 +26,15 @@ Dorkle.Views.UserShow = Backbone.Superview.extend({
     return this;
   },
 
+  updateTitle: function () {
+    this.$('h1').text(this.model.getName());
+  },
+
   addGame: function (game) {
     var subview = new Dorkle.Views.GameItem({
       model: game
     });
 
-    this.addSubview('ul.user-created-games', subview);
+    this.addSubview('ul.user-show-created-games-list', subview);
   }
 })

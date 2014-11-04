@@ -1,15 +1,15 @@
-<h1><%= @game.title %></h1>
-<h2><%= @game.getSubtitle %></h2>
-
 <div class="game-show">
-  <div class="game-details group">
-    <% if @game.image.url %>
-      <%= image_tag @game.image.url(:show) %>
-    <% end %>
+  <h1><%= @game.title %></h1>
+  <h2><%= @game.getSubtitle %></h2>
+
+  <div class="game-show-details group">
+    <%= image_tag @game.image.url(:show) %>
     <table>
       <tr>
         <td class="default-key">by</td>
-        <td class="default-value"><%= link_to @game.author.username, user_url(@game.author) %></td>
+        <td class="default-value">
+          <%= link_to @game.author.getName, user_url(@game.author) %>
+        </td>
       </tr>
       <tr>
         <td class="default-key">Time</td>
@@ -24,16 +24,17 @@
     <form action="<%= rounds_url %>" method="POST">
       <%= auth_input %>
       <input type="hidden" name="round[game_id]" value="<%= @game.id %>">
-      <button>Start Game!</button>
+      <button class="round-start">Start Game!</button>
     </form>
   </div>
 
   <% if @game.author == current_user %>
-  <div class="game-manage">
-    <h3>Manage your game</h3>
+  <div class="game-show-manage">
+  <h2>Manage Your Game</h2>
     <%= link_to "Set valid answers", game_answers_url(@game) %>
     <%= link_to "Update this game", edit_game_url(@game) %>
   </div>
   <% end %>
 
+  </div>
 </div>

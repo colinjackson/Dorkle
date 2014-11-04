@@ -1,4 +1,5 @@
 Dorkle.Views.GameShow = Backbone.View.extend({
+  className: 'game-show',
   template: JST['games/show'],
 
   initialize: function () {

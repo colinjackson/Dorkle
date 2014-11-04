@@ -50,6 +50,10 @@ class Round < ActiveRecord::Base
     self.game.time_limit - (Time.now - self.start_time)
   end
 
+  def percent_right
+    ((self.answers_left.to_f * 100 / self.answers.count) + 0.5).to_i
+  end
+
   # SAVE the SQL version for reference/posterity:
   #
   # def answer_for_guess(guess)

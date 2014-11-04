@@ -1,15 +1,9 @@
-<h1>Games!</h1>
+<div class='games'>
+  <h1>Games!</h1>
 
-<ul class="games-list">
-  <% @games.each do |game| %>
-    <li class="game-item">
-      <a class="group" href="<%= game_url(game) %>">
-        <h2 class="game-item-title"><%= game.title %></h2>
-        <h3 class="game-item-subtitle"><%= game.getSubtitle %></h3>
-        <h3 class="game-item-author">by <%= game.author.username %></h3>
-        <h3 class="game-item-time">Time limit:
-          <%= time_string(game.time_limit) %></h3>
-      </a>
-    </li>
-  <% end %>
-</ul>
+  <ul class="games-list">
+    <% @games.each do |game| %>
+      <%= render 'item', game: game, with_user: true %>
+    <% end %>
+  </ul>
+</div>

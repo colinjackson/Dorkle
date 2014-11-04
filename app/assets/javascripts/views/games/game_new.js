@@ -1,4 +1,5 @@
 Dorkle.Views.GameNew = Backbone.Superview.extend({
+  className: 'game-new',
   template: JST['games/new'],
 
   events: {

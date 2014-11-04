@@ -1,5 +1,5 @@
 Dorkle.Views.RoundShowGuess = Backbone.View.extend({
-  className: 'game-answers-guess',
+  className: 'round-show-board-guess',
   template: JST['rounds/_guess'],
 
   initialize: function (options) {

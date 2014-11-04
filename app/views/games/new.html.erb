@@ -1,8 +1,14 @@
-<h1>New Game</h1>
+<div class="game-new">
+  <h1>New Game</h1>
 
-<%= render "form",
-  game: @game,
-  form_action: games_url,
-  form_method: "POST",
-  button_text: "Set it free!"
-%>
+  <div class="game-new-fields">
+    <div class="game-add-new">
+      <%= render "form",
+        game: @game,
+        form_action: games_url,
+        form_method: "POST",
+        button_text: "Get your game on!"
+      %>
+    </div>
+  </div>
+</div>

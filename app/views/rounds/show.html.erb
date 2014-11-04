@@ -1,41 +1,50 @@
-<h1><%= @round.game.title %></h1>
+<div class="round-show">
+  <h1><%= @round.game.title %></h1>
 
-<div class="round-show game-answers-index group">
-  <div class="game-answers-add-new">
-    <% if @round.time_remaining > 0 && @round.answers_left > 0 %>
-      <form class="default" action="<%= guess_round_url(@round) %>" method="post">
-        <%= auth_input %>
+  <div class="round-show-board group">
+    <div class="round-show-board-guess">
+      <% if @round.time_remaining > 0 && @round.answers_left > 0 %>
+        <form class="default" action="<%= guess_round_url(@round) %>" method="post">
+          <%= auth_input %>
 
-        <div>
-          <label for="guess">Guess!</label>
-          <input type="text" name="round_guess" id="guess-box" autocomplete="off">
-        </div>
+          <div>
+            <label for="guess">Guess!</label>
+            <input type="text" name="round_guess" id="guess-box" autocomplete="off">
+          </div>
 
-        <button>Try it!</button>
-      </form>
-      <h3><%= time_string(@round.time_remaining.to_i) %> remaining...</h3>
-      <h3><%= @round.answers_left %>/<%= @round.answers.count %> remaining</h3>
+          <button>Try it!</button>
+        </form>
 
-    <% elsif @round.answers_left.zero? %>
-      <h2>Congratulations!</h2>
-      <p>You win! Good job!</p>
+      <% elsif @round.answers_left.zero? %>
+        <h2>Congratulations!</h2>
+        <p>You win! Good job!</p>
 
-    <% else %>
-      <h2>Time's up!</h2>
-      <p>You got <%= (1 - (@round.answers_left / @round.answers.count)) * 100 %>% right!</p>
+      <% else %>
+        <h2>Time's up!</h2>
+        <p>
+          You got <%= @round.percent_right %>% right!
+        </p>
 
-    <% end %>
-  </div>
-
-  <div class="game-answers-existing">
-    <h2>Correct Answers</h2>
-    <ul>
-      <% @round.answer_matches.each do |answer_match| %>
-      <li class="group">
-        <span class="game-answer-list-item"><%= answer_match.answer.answer %></span>
-      </li>
       <% end %>
-    </ul>
+    </div>
+
+    <div class="round-show-board-status">
+      <div class="board-status-metrics">
+        <h3><%= time_string(@round.time_remaining.to_i) %> remaining...</h3>
+        <h3><%= @round.answers_left %>/<%= @round.answers.count %> remaining</h3>
+      </div>
+
+      <h2>Correct Answers</h2>
+      <ul class="board-status-matches-list">
+        <% @round.answer_matches.each do |answer_match| %>
+        <li class="group">
+          <span class="answer-match-item">
+            <%= answer_match.answer.answer %>
+          </span>
+        </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 
