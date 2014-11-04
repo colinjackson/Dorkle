@@ -4,6 +4,8 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
   template: JST['game_answers/_item'],
 
   events: {
+    'click .game-answer-item': 'beginEditing',
+    'focusout input.game-answer-item-editing': 'endEditing',
     'click button.game-answer-remove': 'deleteAnswer'
   },
 
@@ -16,9 +18,30 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
     return this;
   },
 
-  deleteAnswer: function (event) {
+  beginEditing: function (event) {
     event.preventDefault();
 
+    var $item = $(event.currentTarget);
+    this.$editBox = $('<input type="text">');
+    this.$editBox.addClass('game-answer-item-editing');
+
+    $item.replaceWith(this.$editBox);
+    this.$editBox.val(this.model.get('answer'));
+    this.$editBox.select();
+  },
+
+  endEditing: function (event) {
+    event.preventDefault();
+
+    this.model.set('answer', this.$editBox.val());
+    if (this.model.id) this.model.save();
+
+    this.$editBox = null;
+    this.render();
+  },
+
+  deleteAnswer: function (event) {
+    event.preventDefault();
     this.model.destroy();
   }
 });

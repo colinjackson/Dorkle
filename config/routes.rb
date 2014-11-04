@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :games do
       resources :game_answers, only: :index, as: "answers"
     end
-    resources :game_answers, only: [:create, :destroy], as: "answers"
+    resources :game_answers, only: [:create, :update, :destroy], as: "answers"
 
     resources :rounds, only: [:create, :show, :update] do
       resources :round_answer_matches, only: :index, as: "answer_matches"
