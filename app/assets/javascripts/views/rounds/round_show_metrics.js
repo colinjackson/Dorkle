@@ -1,4 +1,5 @@
 Dorkle.Views.RoundShowMetrics = Backbone.View.extend({
+  className: 'round-show-metrics',
   template: JST['rounds/_metrics'],
 
   initialize: function () {

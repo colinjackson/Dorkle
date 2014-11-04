@@ -20,7 +20,12 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
       model: this.model,
       validAnswers: this.validAnswers
     });
-    this.addSubview('.round-show-board', guessSubview);
+    this.addSubview('.round-show-board-guessing', guessSubview);
+
+    var metricsSubview = new Dorkle.Views.RoundShowMetrics({
+      model: this.model
+    });
+    this.addSubview('.round-show-board-guessing', metricsSubview);
 
     var statusSubview = new Dorkle.Views.RoundShowStatus({
       model: this.model
@@ -34,10 +39,21 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     this.$('h1').text(this.model.game.get('title'));
 
     if (!this.model.get('start_time')) {
-      setTimeout(this.startRound.bind(this), 1000);
+      this.readySetGuess();
     } else if (this.model.timeRemaining() > 0 && !this.model.isWon()) {
       this.startRound();
     }
+  },
+
+  readySetGuess: function () {
+    setTimeout(function () {
+      var $label = this.$('label[for=guess-box]')
+      $label.text('Set...');
+      $label.removeClass('ready-state');
+      $label.addClass('set-state');
+
+      setTimeout(this.startRound.bind(this), 1000);
+    }.bind(this), 1000);
   },
 
   startRound: function () {
@@ -46,6 +62,11 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
       this.model.set('start_time', new Date());
       this.model.save();
     }
+
+    var $label = this.$('label[for=guess-box]');
+    $label.text('Guess!');
+    $label.removeClass('ready-state set-state');
+    $label.addClass('go-state');
 
     timeLimit = this.model.timeRemaining() * 1000;
     this.roundTimeoutID = setTimeout(this.handleDefeat.bind(this), timeLimit);

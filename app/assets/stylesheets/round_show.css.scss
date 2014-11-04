@@ -1,0 +1,78 @@
+@import "utils/colors";
+
+.round-show {
+  .round-show-board {
+    .round-show-board-guessing {
+      .round-show-board-guess {
+        float: left;
+        width: 60%;
+        background: $bg-azure;
+        padding: 10px 20px;
+        border: 2px solid $br-light;
+        box-sizing: border-box;
+
+        label {
+          display: block;
+          padding: 0 30%;
+        }
+
+        label.ready-state {
+          font-weight: 300;
+          text-align: left;
+          color: $ft-red;
+        }
+
+        label.set-state {
+          font-weight: normal;
+          text-align: right;
+          color: $ft-yellow;
+        }
+
+        label.go-state {
+          font-weight: bold;
+          text-align: center;
+          color: $ft-green;
+        }
+
+        .guess-box {
+          box-sizing: border-box;
+          padding: 5px 2.5%;
+          border: 2px solid $br-orange;
+          border-radius: 6px;
+          width: 100%;
+          font-size: 1.25em;
+          text-align: center;
+          background: $bg-beige;
+        }
+      }
+
+      .round-show-metrics {
+        float: right;
+        width: 30%;
+        padding: 18px 25px;
+        border: 2px solid $br-light;
+        background: $bg-amber;
+      }
+    }
+  }
+
+  .round-show-board-status {
+    margin-top: 20px;
+
+    .board-status-matches-list {
+      padding: 0 20px;
+      min-height: 200px;
+      text-align: center;
+
+      li {
+        display: inline-block;
+        padding: 3px 15px;
+        margin: 5px;
+        border: 2px solid $br-teallight;
+        color: $ft-darkblue;
+        border-radius: 23px;
+        background: $bg-teal;
+      }
+    }
+  }
+}

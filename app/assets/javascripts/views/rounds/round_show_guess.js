@@ -22,7 +22,6 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   },
 
   startRound: function () {
-    this.$('label[for=guess-box]').text('Guess!')
     this.$guessBox.prop('disabled', false);
     this.$guessBox.focus();
   },

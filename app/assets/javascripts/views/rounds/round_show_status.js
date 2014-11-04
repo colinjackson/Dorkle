@@ -10,11 +10,6 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
     var renderedContent = this.template();
     this.$el.html(renderedContent);
 
-    var metricsSubview = new Dorkle.Views.RoundShowMetrics({
-      model: this.model
-    });
-    this.addSubview('div.board-status-metrics', metricsSubview);
-
     var view = this;
     this.model.matches().each(function (answerMatch) {
       view.addAnswerMatch(answerMatch);
@@ -23,9 +18,7 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
     return this;
   },
 
-  startRound: function () {
-    this.subviews('div.board-status-metrics')[0].startRound();
-  },
+  startRound: function () { return true },
 
   addAnswerMatch: function (answerMatch) {
     var subview = new Dorkle.Views.AnswerMatchItem({
@@ -35,8 +28,6 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
     this.addSubview('ul.board-status-matches-list', subview);
   },
 
-  endRound: function () {
-    this.subviews('div.board-status-metrics')[0].endRound();
-  }
+  endRound: function () { return true }
 
 });
