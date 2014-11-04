@@ -1,39 +1,43 @@
 <h1><%= game.get('title') || '...' %></h1>
-<h2><%= game.getSubtitle() %></h2>
 
-<div class="game-show-details group">
-  <img src="<%= game.get('image_url_show') %>">
-  <table>
-    <tr>
-      <td class="default-key">by</td>
-      <% if (game.author) { %>
-      <td class="default-value">
-        <a href="javascript:void(0)"><%= game.author.getName() %></a>
-      </td>
-      <% } %>
-    </tr>
-    <tr>
-      <td class="default-key">Time</td>
-      <td class="default-value">
-        <%= Dorkle.Utils.timeString(game.get('time_limit')) %>
-      </td>
-    </tr>
-    <tr>
-      <td class="default-key">Source</td>
-      <td class="default-value"><%= game.get('source') %></td>
-    </tr>
-  </table>
+<img src="<%= game.get('image_url_show') %>">
 
-  <form>
-    <button class="round-start">Start Game!</button>
-  </form>
+<div class="game-show-controls">
+  <div class="game-show-details group">
+    <h2><%= game.getSubtitle() %></h2>
+
+    <table>
+      <tr>
+        <td class="default-key">by</td>
+        <% if (game.author) { %>
+        <td class="default-value">
+          <a href="javascript:void(0)"><%= game.author.getName() %></a>
+        </td>
+        <% } %>
+      </tr>
+      <tr>
+        <td class="default-key">time</td>
+        <td class="default-value">
+          <%= Dorkle.Utils.timeString(game.get('time_limit')) %>
+        </td>
+      </tr>
+      <tr>
+        <td class="default-key">source</td>
+        <td class="default-value"><%= game.get('source') %></td>
+      </tr>
+    </table>
+
+    <form>
+      <button class="round-start button-default">START!</button>
+    </form>
+  </div>
+
+  <% if (game.author && game.author.id === Dorkle.currentUserId) { %>
+  <div class="game-show-manage">
+    <h2>Manage Your Game</h2>
+    <a class="game-show-manage-update button-default" href="javascript:void(0)">
+      EDIT GAME
+    </a>
+  </div>
+  <% } %>
 </div>
-
-<% if (game.author && game.author.id === Dorkle.currentUserId) { %>
-<div class="game-show-manage">
-  <h2>Manage Your Game</h2>
-  <a class="game-show-manage-update" href="javascript:void(0)">
-    Make Changes
-  </a>
-</div>
-<% } %>

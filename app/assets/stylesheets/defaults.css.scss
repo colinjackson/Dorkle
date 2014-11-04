@@ -21,15 +21,15 @@ h1 {
   font-weight: bold;
   color: $ft-darkblue;
   padding: 20px 40px;
-  margin: 0 20px;
   line-height: 90%;
   border-bottom: 4px solid $br-orange;
+  margin-bottom: 20px;
 }
 
 h2 {
   font-size: 1.3em;
   font-weight: bold;
-  color: $ft-darkblue;
+  color: $ft-brown;
   padding: 10px 20px;
   margin-bottom: 15px;
   line-height: 90%;
@@ -81,33 +81,56 @@ form.default input[type=password] {
   padding: 8px;
 }
 
-form.default button {
-  display: block;
-  padding: 16px;
-  font-size: 1.2em;
-  margin: 0 auto;
-  background: dimgray;
-  color: white;
-}
-
 form.default input:disabled {
   background: lightgray;
 }
+
+.button-default {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  background: $bg-yellow-gradient;
+  color: $ft-blue;
+  font-weight: bold;
+  font-size: 0.8em;
+  letter-spacing: 3px;
+  text-align: center;
+  transition: top 0.15s, box-shadow 0.15s, color 0.15s;
+  box-shadow: 0 3px 0 $br-orange;
+  top: 0;
+}
+
+.button-default:hover {
+  background: $bg-orange-gradient;
+}
+
+.button-default:active {
+  top: 3px;
+  background: $bg-orange-gradient;
+  color: $ft-whiteblue;
+  box-shadow: none;
+}
+
+
 
 
 /* TABLE DEFAULTS */
 
 table td.default-key {
+  font-weight: 300;
   text-align: right;
 }
 
 table td.default-key:after {
-  content: ": ";
+  content: ":";
 }
 
 table td.default-value {
+  display: inline-block;
+  padding: 0 10px;
   font-style: italic;
-  font-weight: bold;
+  color: $ft-darkblue;
+  margin-left: 20px;
 }
 
 

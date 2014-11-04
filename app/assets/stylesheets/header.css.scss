@@ -98,7 +98,7 @@ header {
     li > a {
       position: relative;
       display: block;
-      padding: 10px 15px;
+      padding: 10px 25px;
       transition: top 0.15s, box-shadow 0.15s, color 0.15s;
       box-shadow: none;
       top: 0;
@@ -119,12 +119,6 @@ header {
 
 
 /* ANIMATIONS */
-
-// @-webkit-keyframes wiggle {
-//   0%, 100% { transform: rotate(0); }
-//   25%, 75% { transform: rotate(-30deg); }
-//   50% { transform: rotate(30deg); }
-// }
 
 @-webkit-keyframes wiggle {
   0% { transform: rotate(0); }

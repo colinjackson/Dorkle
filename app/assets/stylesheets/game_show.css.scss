@@ -1,0 +1,50 @@
+@import "utils/colors";
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+GAME SHOW
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+.game-show {
+
+  > img {
+    float: left;
+    width: 30%;
+    margin-right: 40px;
+    border: 2px solid $br-orange;
+  }
+
+  .game-show-controls {
+    float: right;
+    width: 60%;
+
+    > * {
+      padding: 20px;
+      background: $bg-tan;
+      border: 2px solid $br-light;
+    }
+
+    .game-show-details {
+      > h2 {
+        font-size: 1.2em;
+        font-style: italic;
+      }
+
+      > table {
+        width: 100%;
+      }
+
+      button.round-start {
+        margin: 10px auto 0 auto;
+        width: 100%;
+      }
+    }
+
+    .game-show-manage {
+      margin-top: 20px;
+    }
+  }
+}
