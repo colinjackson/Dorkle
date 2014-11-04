@@ -1,4 +1,10 @@
-/* MAIN STUFF */
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+MAIN
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 main {
   width: 80%;
@@ -8,7 +14,14 @@ main {
 }
 
 
-/* GAMES LIST */
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+GAMES INDEX
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 main .games-list {
   background: lightgrey;
@@ -37,49 +50,14 @@ main .games-list .game-item h3 {
 }
 
 
-/* USER SHOW */
 
-main .user-show {
-  background: lightgrey;
-}
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-main .user-show > * {
-  float: left;
-  width: 40%;
-  padding: 8px 5%;
-}
+GAME SHOW
 
-main .user-show li {
-  text-align: center;
-}
-
-main .user-show .user-details table {
-  width: 100%;
-}
-
-main .user-show .user-details > a {
-  display: block;
-  width: 95%;
-  padding: 2.5%;
-  text-align: center;
-  background: darkgrey;
-}
-
-main .user-show .user-created-games li {
-  background: silver;
-}
-
-main .user-show .user-created-games li:nth-child(even) {
-  background: darkgrey;
-}
-
-main .user-show .user-created-games a {
-  display: block;
-  padding: 8px;
-}
-
-
-/* GAME SHOW */
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 main .game-show > h2 {
   font-style: italic;
@@ -125,7 +103,63 @@ main .game-show > .game-manage > a {
 }
 
 
-/* GAME ANSWERS INDEX */
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+USER SHOW
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+main .user-show {
+  background: lightgrey;
+}
+
+main .user-show > * {
+  float: left;
+  width: 40%;
+  padding: 8px 5%;
+}
+
+main .user-show li {
+  text-align: center;
+}
+
+main .user-show .user-details table {
+  width: 100%;
+}
+
+main .user-show .user-details > a {
+  display: block;
+  width: 95%;
+  padding: 2.5%;
+  text-align: center;
+  background: darkgrey;
+}
+
+main .user-show .user-created-games li {
+  background: silver;
+}
+
+main .user-show .user-created-games li:nth-child(even) {
+  background: darkgrey;
+}
+
+main .user-show .user-created-games a {
+  display: block;
+  padding: 8px;
+}
+
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+GAME ANSWERS INDEX
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 main .game-answers-index > * {
   float: left;
