@@ -31,8 +31,9 @@
   <% if @game.author == current_user %>
   <div class="game-show-manage">
   <h2>Manage Your Game</h2>
-    <%= link_to "Set valid answers", game_answers_url(@game) %>
-    <%= link_to "Update this game", edit_game_url(@game) %>
+    <%= link_to "Set Valid Answers", game_answers_url(@game) %>
+    <%= link_to "Make Changes", edit_game_url(@game),
+      class: 'game-show-manage-update' %>
   </div>
   <% end %>
 

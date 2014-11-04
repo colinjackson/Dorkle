@@ -7,7 +7,8 @@ Dorkle.Views.GameShow = Backbone.View.extend({
   },
 
   events: {
-    'click button.round-start': 'startRound'
+    'click button.round-start': 'startRound',
+    'click a.game-show-manage-update': 'updateGame'
   },
 
   render: function () {
@@ -22,6 +23,13 @@ Dorkle.Views.GameShow = Backbone.View.extend({
   startRound: function (event) {
     event.preventDefault();
     Dorkle.siteRouter.roundCreate(this.model);
+  },
+
+  updateGame: function (event) {
+    event.preventDefault();
+
+    editGamePath = '/games/' + this.model.id + '/edit';
+    Backbone.history.navigate(editGamePath, {trigger: true});
   }
 
 });

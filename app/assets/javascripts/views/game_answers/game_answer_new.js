@@ -19,7 +19,12 @@ Dorkle.Views.GameAnswerNew = Backbone.View.extend({
     event.preventDefault();
 
     var newAnswerAttrs = this.$el.serializeJSON();
-    this.collection.add(newAnswerAttrs);
+    if (this.collection.game.id) {
+      newAnswerAttrs.game_id = this.collection.game.id
+      this.collection.create(newAnswerAttrs, {wait: true});
+    } else {
+      this.collection.add(newAnswerAttrs);
+    }
     this.$answerBox.val('');
   }
 

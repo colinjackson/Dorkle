@@ -14,7 +14,7 @@ Dorkle.Views.GameNew = Backbone.Superview.extend({
     var formSubview = new Dorkle.Views.GameForm({
       model: this.newGame
     });
-    this.addSubview('div.game-add-new', formSubview);
+    this.addSubview('.game-add-new', formSubview);
 
     this.gameAnswers = new Dorkle.Collections.GameAnswers([], {
       game: this.newGame
@@ -22,7 +22,7 @@ Dorkle.Views.GameNew = Backbone.Superview.extend({
     var answersSubview = new Dorkle.Views.GameAnswersIndex({
       collection: this.gameAnswers
     });
-    this.addSubview('div.game-answers', answersSubview);
+    this.addSubview('.game-answers', answersSubview);
 
     return this;
   },
@@ -30,7 +30,7 @@ Dorkle.Views.GameNew = Backbone.Superview.extend({
   saveGame: function (event) {
     event.preventDefault();
 
-    var newGameAttrs = this.$('div.game-add-new > form').serializeJSON();
+    var newGameAttrs = this.$('.game-add-new > form').serializeJSON();
     this.newGame.set(newGameAttrs);
     this.newGame.set('answers', this.gameAnswers);
 

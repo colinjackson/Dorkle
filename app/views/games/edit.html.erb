@@ -1,10 +1,17 @@
-<h1>Change the Game</h1>
+<div class="game-edit">
+  <h1>Change the Game</h1>
 
-<%= render "form",
-  game: @game,
-  form_action: game_url(@game),
-  form_method: "PUT",
-  button_text: "Commit!"
-%>
+  <div class="game-edit-fields">
+    <div class="game-editing">
+      <%= render "form",
+        game: @game,
+        form_action: game_url(@game),
+        form_method: "PUT",
+        button_text: "Change It Up!"
+      %>
+    </div>
+  </div>
 
-<%= link_to "Back to the game page", game_url(@game) %>
+  <%= link_to "Forget It", game_url(@game),
+    class: "game-edit-return" %>
+</div>

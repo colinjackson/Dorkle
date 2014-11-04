@@ -5,6 +5,8 @@ Dorkle.Views.GameForm = Backbone.View.extend({
 
   initialize: function (options) {
     this.buttonText = options.buttonText;
+
+    this.listenTo(this.model, 'sync', this.render)
   },
 
   events: {

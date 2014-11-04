@@ -33,8 +33,8 @@ module Api
     end
 
     def update
-      @game = Game.new(game_params)
-      if @game.save()
+      @game = Game.find(params[:id])
+      if @game.update(game_params)
         render :show
       else
         render json: { error: @game.errors.full_messages }
