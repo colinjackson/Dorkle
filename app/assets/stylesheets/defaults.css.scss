@@ -36,15 +36,6 @@ h3 {
 }
 
 
-/* CLEARFIX */
-
-.group:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-
 /* FORM DEFAULTS */
 
 form.default {
@@ -110,4 +101,24 @@ table td.default-key:after {
 table td.default-value {
   font-style: italic;
   font-weight: bold;
+}
+
+
+/* UTILS */
+
+/* CLEARFIX */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
+/* FREEZE */
+
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
 }

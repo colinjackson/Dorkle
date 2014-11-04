@@ -2,6 +2,7 @@
 
 header {
   width: 100%;
+  padding-bottom: 45px;
 
   li {
     float: left;
@@ -17,7 +18,7 @@ header {
     .dorkle-logo-link {
       display: block;
       float: left;
-      height: 54px;
+      height: 60px;
       padding: 5px 15px;
     }
 
@@ -43,7 +44,7 @@ header {
 
     ul.session-info {
       float: right;
-      padding: 10px 0;
+      padding: 11px 0;
 
       li {
         border-left: 1px solid $br-light;
@@ -56,7 +57,7 @@ header {
       a, input[type="submit"] {
         display: block;
         float: left;
-        padding: 10px 20px;
+        padding: 10px 20px 9px 20px;
         font-size: 0.9em;
         font-weight: bold;
         color: $ft-darkblue;
@@ -65,8 +66,10 @@ header {
   }
 
   .navbar {
+    z-index: 1000;
+    width: 100%;
+    margin-bottom: -45px;
     background: $bg-yellow-gradient;
-    // box-shadow: 0 1px 5px -1px dimgrey;
     box-shadow: 0 3px 0 orange;
     color: $ft-blue;
     font-weight: bold;
