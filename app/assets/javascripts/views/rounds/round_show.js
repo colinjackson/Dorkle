@@ -50,7 +50,9 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
       var $label = this.$('label[for=guess-box]')
       $label.text('Set...');
       $label.removeClass('ready-state');
-      $label.addClass('set-state');
+      setTimeout(function () {
+        $label.addClass('set-state');
+      }, 0);
 
       setTimeout(this.startRound.bind(this), 1000);
     }.bind(this), 1000);
@@ -66,7 +68,9 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     var $label = this.$('label[for=guess-box]');
     $label.text('Guess!');
     $label.removeClass('ready-state set-state');
-    $label.addClass('go-state');
+    setTimeout(function () {
+      $label.addClass('go-state');
+    }, 0);
 
     timeLimit = this.model.timeRemaining() * 1000;
     this.roundTimeoutID = setTimeout(this.handleDefeat.bind(this), timeLimit);

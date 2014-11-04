@@ -12,26 +12,34 @@
         box-sizing: border-box;
 
         label {
+          position: relative;
           display: block;
           padding: 0 30%;
+          color: transparent;
         }
 
         label.ready-state {
           font-weight: 300;
           text-align: left;
           color: $ft-red;
+          -webkit-animation: slapdown 0.5s;
         }
 
         label.set-state {
           font-weight: normal;
           text-align: right;
           color: $ft-yellow;
+          -webkit-animation: slapdown 0.5s;
         }
 
         label.go-state {
           font-weight: bold;
           text-align: center;
           color: $ft-green;
+          -webkit-animation: slapdown 0.5s;
+        }
+
+        label.time-up-state {
         }
 
         .guess-box {
@@ -66,13 +74,30 @@
 
       li {
         display: inline-block;
+        position: relative;
         padding: 3px 15px;
         margin: 5px;
         border: 2px solid $br-teallight;
         color: $ft-darkblue;
         border-radius: 23px;
         background: $bg-teal;
+        -webkit-animation: slapdown 0.3s;
       }
     }
+  }
+}
+
+@-webkit-keyframes slapdown {
+  0% {
+    top: -500px;
+    left: -100px;
+    opacity: 0;
+    transform: scale(10);
+  }
+  100% {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transform: scale(1);
   }
 }
