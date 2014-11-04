@@ -77,10 +77,10 @@
         position: relative;
         padding: 3px 15px;
         margin: 5px;
-        border: 2px solid $br-teallight;
         color: $ft-darkblue;
         border-radius: 23px;
         background: $bg-teal;
+        box-shadow: 0 3px 0 $br-teallight;
         -webkit-animation: slapdown 0.3s;
       }
     }
