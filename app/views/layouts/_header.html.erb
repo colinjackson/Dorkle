@@ -1,26 +1,30 @@
-<div class="top-bar">
-  <a class="go-to root" href="<%= root_url %>">
-    <img class="dorkle-logo" src="<%= image_path("dorkle-logo.png") %>">
+<div class="top-bar group">
+  <a class="go-to root dorkle-logo-link" href="<%= root_url %>">
+    <img class="dorkle-logo" src="<%= image_path("dorkle-logo-small.png") %>">
   </a>
-  <ul class="session-info">
+  <span class="welcome-message">
+    Dorkle: a spiffy <a href="http://www.sporcle.com">Sporcle</a> spinoff
+    by <a href="http://colinjackson.co">Colin Jackson</a>
+  </span>
+  <ul class="session-info group">
     <% if signed_in? %>
-      <li><%= link_to current_user.name, user_url(current_user),
+      <li><%= link_to current_user.username, user_url(current_user),
         class: "go-to current-user" %></li>
-      <li><%= button_to "Sign Out", session_url(current_session),
+      <li><%= button_to "sign out", session_url(current_session),
         method: :delete %></li>
     <% else %>
-      <li><%= link_to "Log In", new_session_url %></li>
-      <li><%= link_to "Sign Up", new_user_url %></li>
+      <li><%= link_to "log in", new_session_url %></li>
+      <li><%= link_to "sign up", new_user_url %></li>
     <% end %>
   </ul>
 </div>
 
 <nav class="navbar">
-  <ul>
-    <li><%= link_to "Home", root_url, class: "go-to root" %></li>
-    <li><%= link_to "Play", games_url, class: "go-to games" %></li>
-    <li><%= link_to "Create", new_game_url, class: "go-to create" %></li>
-    <li><%= link_to "Surprise Me!", game_url(Game.all.sample),
+  <ul class="group">
+    <li><%= link_to "HOME", root_url, class: "go-to root" %></li>
+    <li><%= link_to "PLAY", games_url, class: "go-to games" %></li>
+    <li><%= link_to "CREATE", new_game_url, class: "go-to create" %></li>
+    <li><%= link_to "SURPRISE ME!", game_url(Game.all.sample),
       class: "go-to random-game" %></li>
   </ul>
 </nav>

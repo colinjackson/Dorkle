@@ -1,45 +1,123 @@
+@import "utils/colors";
+
 header {
   width: 100%;
-  background: lightgrey;
+
+  li {
+    float: left;
+  }
+
+  .top-bar {
+    width: 80%;
+    min-width: 900px;
+    margin: 0 auto;
+    border: solid $br-light;
+    border-width: 0 1px;
+
+    .dorkle-logo-link {
+      display: block;
+      float: left;
+      height: 54px;
+      padding: 5px 15px;
+    }
+
+    .dorkle-logo-link:hover > .dorkle-logo {
+      -webkit-animation: wiggle 0.75s;
+    }
+
+    .dorkle-logo {
+      height: 100%;
+      width: auto;
+    }
+
+    .welcome-message {
+      display: inline-block;
+      padding: 24px;
+      font-size: 0.7em;
+      color: gray;
+
+      > a {
+        text-decoration: underline;
+      }
+    }
+
+    ul.session-info {
+      float: right;
+      padding: 10px 0;
+
+      li {
+        border-left: 1px solid $br-light;
+      }
+
+      li:first-child {
+        border: 0;
+      }
+
+      a, input[type="submit"] {
+        display: block;
+        float: left;
+        padding: 10px 20px;
+        font-size: 0.9em;
+        font-weight: bold;
+        color: $ft-darkblue;
+      }
+    }
+  }
+
+  .navbar {
+    background: $bg-yellow-gradient;
+    // box-shadow: 0 1px 5px -1px dimgrey;
+    box-shadow: 0 3px 0 orange;
+    color: $ft-blue;
+    font-weight: bold;
+    font-size: 0.8em;
+    letter-spacing: 3px;
+
+    ul {
+      width: 80%;
+      min-width: 900px;
+      margin: 0 auto;
+      border: solid $br-light;
+      border-width: 0 1px;
+    }
+
+    li {
+      border-right: 1px solid $br-light;
+    }
+
+    li:last-child {
+      float: right;
+      border-left: 1px solid $br-light;
+      border-right: 0;
+    }
+
+    li > a {
+      position: relative;
+      display: block;
+      padding: 10px 15px;
+      transition: top 0.15s, box-shadow 0.15s, color 0.15s;
+      box-shadow: none;
+      top: 0;
+    }
+
+    li > a:hover {
+      background: $bg-orange-gradient;
+    }
+
+    li > a:active {
+      top: 3px;
+      color: $ft-whiteblue;
+      box-shadow: 0 -3px 0 $bg-beige;
+    }
+  }
+
 }
 
-header > * {
-  height: 45px;
-}
 
-header ul {
-  height: 100%;
-}
+/* ANIMATIONS */
 
-header li {
-  float: left;
-  padding: 10px;
-  height: 21px;
-}
-
-header .top-bar .dorkle-logo {
-  float: left;
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 80px;
-  width: auto;
-}
-
-header .top-bar ul.session-info {
-  float: right;
-  height: 100%;
-}
-
-header .navbar li {
-  border: solid black;
-  border-width: 2px 2px 2px 0;
-  background: grey;
-  color: white;
-}
-
-header .navbar li:last-child {
-  border-width: 2px 0 2px 2px;
-  float: right;
+@-webkit-keyframes wiggle {
+  0%, 100% { transform: rotate(0); }
+  25%, 75% { transform: rotate(-30deg); }
+  50% { transform: rotate(30deg); }
 }
