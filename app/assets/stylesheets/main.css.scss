@@ -9,12 +9,15 @@ MAIN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
 main {
+  position: relative;
+  z-index: 0;
   width: 80%;
-  min-width: 900px;
+  min-width: 1000px;
   margin: 0 auto;
   padding: 20px 0;
   border: solid $br-light;
   border-width: 0 1px 1px 1px;
+  background: $bg-beige;
 }
 
 main > * {
@@ -49,48 +52,45 @@ GAME ANSWER ITEM
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-USER SHOW
+GAME SHOW ITEM
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-main .user-show {
-  background: lightgrey;
-}
-
-main .user-show > * {
-  float: left;
-  width: 40%;
-  padding: 8px 5%;
-}
-
-main .user-show li {
-  text-align: center;
-}
-
-main .user-show .user-details table {
-  width: 100%;
-}
-
-main .user-show .user-details > a {
+.game-show-link {
   display: block;
-  width: 95%;
-  padding: 2.5%;
-  text-align: center;
-  background: darkgrey;
-}
 
-main .user-show .user-created-games li {
-  background: silver;
-}
+  > img {
+    float: left;
+    height: 150px;
+    width: auto;
+    margin-right: 40px;
+    border: 2px solid $br-orange;
+    background: $bg-beige;
+  }
 
-main .user-show .user-created-games li:nth-child(even) {
-  background: darkgrey;
-}
+  .game-item-title {
+    color: $ft-brown;
+  }
 
-main .user-show .user-created-games a {
-  display: block;
-  padding: 8px;
+  span {
+    display: block;
+  }
+
+  .game-item-subtitle {
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .game-item-author, .game-item-time {
+    float: left;
+    padding: 0 20px;
+    font-weight: 300;
+  }
+
+  .game-item-author {
+    border-right: 1px solid $br-light;
+  }
 }
 
 
@@ -126,68 +126,3 @@ KEYFRAMES
     transform: scale(1);
   }
 }
-
-
-
-
-
-
-
-
-
-
-/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-GAME ANSWERS INDEX
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
-
-// main .game-answers-index > * {
-//   float: left;
-//   width: 40%;
-//   padding: 8px 5%;
-// }
-//
-// main .game-answers-index .game-answers-guess form {
-//   width: 100%;
-// }
-//
-// main .game-answers-index .game-answers-guess form > div {
-//   width: 80%;
-// }
-//
-// main .game-answers-index .game-answers-status > ul {
-//   margin: 10px;
-//   background: lightgrey;
-// }
-//
-// main .game-answers-index .game-answers-status li {
-//   border-bottom: 2px solid black;
-// }
-//
-// main .game-answers-index .game-answers-status li:nth-child(even) {
-//   background: silver;
-// }
-//
-// main .game-answers-index .game-answers-status li:last-child {
-//   border-bottom: 0;
-// }
-//
-// main .game-answers-index .game-answers-status li > * {
-//   display: inline-block;
-// }
-//
-// main .game-answers-index .game-answers-status .game-answer-list-item {
-//   float: left;
-//   padding: 4px;
-// }
-//
-// main .game-answers-index .game-answers-status .button_to {
-//   float: right;
-//   margin-left: 10px;
-//   background: dimgrey;
-//   color: white;
-//   padding: 4px
-// }

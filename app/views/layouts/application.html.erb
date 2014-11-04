@@ -4,6 +4,11 @@
   <title>Dorkle</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
+
+  <% unless auth_action? %>
+    <%= javascript_include_tag 'client-routing' %>
+  <% end %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -21,7 +26,9 @@
 </main>
 
 <footer>
-  <%= link_to "CLICK ME IF YOU WANT DA GAMES", games_url %>
+  <a href="https://github.com/colinjackson">
+    a <strong>COLIN "S." JACKSON</strong> production
+  </a>
 </footer>
 
 </body>

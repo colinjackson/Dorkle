@@ -1,5 +1,5 @@
 Dorkle.Views.UserShow = Backbone.Superview.extend({
-  className: 'user-show',
+  className: 'user-show group',
   template: JST['users/show'],
 
   initialize: function () {

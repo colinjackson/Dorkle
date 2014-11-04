@@ -20,4 +20,12 @@ module ApplicationHelper
 
     "#{mins}:#{secs}"
   end
+
+  def auth_action?
+    authActions = ["create", "new", "edit", "update", "destroy"]
+    authControllers = ["users", "sessions"]
+
+    authActions.include?(params[:action]) &&
+      authControllers.include?(params[:controller])
+  end
 end

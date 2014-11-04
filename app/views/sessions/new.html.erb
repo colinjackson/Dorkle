@@ -1,9 +1,11 @@
-<h1>Log In</h1>
+<div class="session-new">
+  <h1>Log In</h1>
 
-<%= render "shared/user_form",
-  user: @user,
-  form_action: sessions_url,
-  form_method: "POST",
-  auth_only: true,
-  button_text: "Let me in!"
-%>
+  <%= render "shared/user_form",
+    user: @user,
+    form_action: sessions_url,
+    form_method: "POST",
+    auth_only: true,
+    button_text: "LET ME IN!"
+  %>
+</div>

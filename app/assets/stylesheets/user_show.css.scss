@@ -1,0 +1,37 @@
+@import "utils/colors";
+
+.user-show {
+  h2 {
+    text-align: center;
+  }
+
+  .user-show-content {
+    table {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    > li {
+      padding: 20px;
+      margin: 20px 0;
+      background: $bg-azure;
+      border: 2px solid $br-light;
+    }
+
+    .user-show-profile-update {
+      margin: 20px 0;
+    }
+  }
+
+  .user-show-created-games {
+    .user-show-created-games-list {
+
+      > li {
+        padding: 20px;
+        margin: 20px 0;
+        background: $bg-azure;
+        border: 2px solid $br-light;
+      }
+    }
+  }
+}

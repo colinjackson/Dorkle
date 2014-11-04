@@ -7,7 +7,7 @@ body {
   font-family: 'Fira Sans', sans-serif;
   font-size: 1.3em;
   color: $ft-darkbrown;
-  background: $bg-beige;
+  background: $bg-whitebeige;
 }
 
 img {
@@ -131,24 +131,4 @@ table td.default-value {
   font-style: italic;
   color: $ft-darkblue;
   margin-left: 20px;
-}
-
-
-/* UTILS */
-
-/* CLEARFIX */
-
-.group:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-
-/* FREEZE */
-
-.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
 }

@@ -1,0 +1,23 @@
+@import "utils/colors";
+
+.user-new,
+.user-edit,
+.session-new {
+
+  > h1 {
+    text-align: center;
+  }
+
+  > form {
+    padding: 40px;
+    border: 2px solid $br-orange;
+    width: 650px;
+    margin: 0 auto;
+  }
+
+}
+
+.user-form-submit {
+  margin-top: 40px;
+  width: 100%;
+}

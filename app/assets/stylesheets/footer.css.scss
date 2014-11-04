@@ -1,16 +1,30 @@
+@import "utils/colors";
+
 footer {
   width: 80%;
-  min-width: 900px;
-  margin: 0 auto;
-  background: lightgrey;
+  min-width: 1000px;
+  margin: 0 auto 150px auto;
+  border: solid $br-light;
+  background: $bg-blue-gradient;
+  border-width: 0 1px 1px 1px;
 }
 
 footer a {
   display: block;
-  padding: 8px;
+  padding: 10px 15px;
   margin: 0 auto;
-  background: dimgrey;
   color: white;
+  opacity: 0.15;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 0.8em;
+  font-style: italic;
+
+  strong {
+    display: inline-block;
+    padding: 0 2px 0 5px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 0.9em;
+    letter-spacing: 4px;
+  }
 }

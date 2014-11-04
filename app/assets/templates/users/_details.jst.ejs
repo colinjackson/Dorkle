@@ -19,5 +19,6 @@
 
 <% if (isCurrentUser) { %>
   <% var currentUserEditPath = '/users/' + user.id + '/edit' %>
-  <a href="<%= currentUserEditPath %>">Update Your Profile</a>
+  <a class="user-show-profile-update button-default"
+    href="<%= currentUserEditPath %>">UPDATE YOUR PROFILE</a>
 <% } %>

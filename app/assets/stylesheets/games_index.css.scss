@@ -16,39 +16,5 @@ GAMES INDEX
     background: $bg-azure;
     border: 2px solid $br-light;
   }
-
-  .game-show-link {
-    display: block;
-
-    > img {
-      float: left;
-      height: 150px;
-      width: auto;
-      margin-right: 40px;
-      border: 2px solid $br-orange;
-    }
-
-    .game-item-title {
-      color: $ft-brown;
-    }
-
-    span {
-      display: block;
-    }
-
-    .game-item-subtitle {
-      font-style: italic;
-      margin-bottom: 12px;
-    }
-
-    .game-item-author, .game-item-time {
-      float: left;
-      padding: 0 20px;
-      font-weight: 300;
-    }
-
-    .game-item-author {
-      border-right: 1px solid $br-light;
-    }
-  }
+  
 }
