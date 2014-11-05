@@ -126,3 +126,9 @@ KEYFRAMES
     transform: scale(1);
   }
 }
+
+@-webkit-keyframes wiggle {
+  0%, 100% { left: 0; }
+  12%, 38%, 62%, 88% { left: -15px; }
+  25%, 50%, 75% { left: 15px; }
+}
