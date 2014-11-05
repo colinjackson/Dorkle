@@ -1,16 +1,17 @@
 @import "utils/colors";
 
-div.flash-messages {
+div#flash {
   width: 80%;
   min-width: 1000px;
   margin: 0 auto;
-  padding-top: 10px;
+  padding-top: 5px;
   border: solid $br-light;
   border-width: 0 1px;
   background: $bg-beige;
 
   ul {
-    margin: 0 40px;
+    margin: 0 40px 0 40px;
+    height: 56px;
     text-align: center;
 
     li {
@@ -24,6 +25,11 @@ div.flash-messages {
       font-weight: 300;
       color: $ft-blue;
       background: $bg-azure;
+
+      position: relative;
+      z-index: 500;
+      top: -60px;
+      -webkit-animation: slidedown 6s;
     }
 
     li.flash-errors-message {

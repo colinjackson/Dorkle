@@ -11,7 +11,8 @@ window.Dorkle = {
     Dorkle.siteRouter = new Dorkle.Routers.SiteRouter({
       $mainEl: $('main')
     });
-    Dorkle.header = new Dorkle.Views.Header({el: $('header')});
+    Dorkle.header = new Dorkle.Views.Header({el: $('body > header')});
+    Dorkle.flash = new Dorkle.Views.Flash({el: $('div#flash')});
 
     Backbone.history.start({pushState: true});
   }
