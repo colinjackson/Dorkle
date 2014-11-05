@@ -26,9 +26,9 @@ class RoundsController < ApplicationController
     @round = Round.includes(:game).find(params[:id])
     @guess = params[:round_guess]
     if @round.handle_guess(@guess)
-      flash.now[:notices] = ["#{@guess} is correct!"]
+      flash.now[:successes] = ["#{@guess} is correct!"]
     else
-      flash.now[:notices] = ["#{@guess} is incorrect, sorry"]
+      flash.now[:successes] = ["#{@guess} is incorrect, sorry"]
     end
 
     render :show

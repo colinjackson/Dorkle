@@ -15,7 +15,7 @@ class GamesController < ApplicationController
   def create
     @game = current_user.created_games.new(game_params)
     if @game.save
-      flash[:notices] = ["Your game has been uploaded!"]
+      flash[:successes] = ["Your game has been uploaded!"]
       redirect_to game_url(@game)
     else
       flash.now[:errors] = ["Gadzooks!"] + @game.errors.full_messages
@@ -37,7 +37,7 @@ class GamesController < ApplicationController
   def update
     @game = current_user.created_games.find(params[:id])
     if @game.update(game_params)
-      flash[:notices] = ["Huzzah! Your changes have been saved!"]
+      flash[:successes] = ["Huzzah! Your changes have been saved!"]
       redirect_to game_url(@game)
     else
       flash.now[:errors] = ["Confound it!"] + @game.errors.full_messages

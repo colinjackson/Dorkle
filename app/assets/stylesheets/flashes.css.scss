@@ -1,0 +1,41 @@
+@import "utils/colors";
+
+div.flash-messages {
+  width: 80%;
+  min-width: 1000px;
+  margin: 0 auto;
+  padding-top: 10px;
+  border: solid $br-light;
+  border-width: 0 1px;
+  background: $bg-beige;
+
+  ul {
+    margin: 0 40px;
+    text-align: center;
+
+    li {
+      display: inline-block;
+      padding: 5px 15px 3px 15px;
+      margin: 10px;
+      border: 2px solid $br-light;
+      font-size: 0.75em;
+      border-radius: 18px;
+      text-align: center;
+      font-weight: 300;
+      color: $ft-blue;
+      background: $bg-azure;
+    }
+
+    li.flash-errors-message {
+      border-color: $br-red;
+      background: $bg-pink;
+      color: $ft-red;
+    }
+
+    li.flash-successes-message {
+      border-color: $br-teallight;
+      background: $bg-green;
+      color: $ft-green;
+    }
+  }
+}

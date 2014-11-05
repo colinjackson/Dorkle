@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notices] = ["Welcome to Dorkle!"]
+      flash[:successes] = ["Welcome to Dorkle!"]
       sign_in!(@user)
       redirect_to user_url(@user)
     else
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notices] = ["You've successfully updated your account! Happy Dorkling!"]
+      flash[:successes] = ["You've successfully updated your account! Happy Dorkling!"]
       redirect_to user_url(@user)
     else
       flash[:errors] = @user.errors.full_messages

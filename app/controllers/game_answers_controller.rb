@@ -12,7 +12,7 @@ class GameAnswersController < ApplicationController
     if game_answer.save()
       redirect_to game_answers_url(@game)
     else
-      flash.now[:notices] = ["Zounds!"] + game_answer.errors.full_messages
+      flash.now[:successes] = ["Zounds!"] + game_answer.errors.full_messages
       @game.answers.delete(game_answer)
       render :index
     end

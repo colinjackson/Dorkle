@@ -14,7 +14,7 @@ main {
   width: 80%;
   min-width: 1000px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding-bottom: 20px;
   border: solid $br-light;
   border-width: 0 1px 1px 1px;
   background: $bg-beige;
@@ -42,7 +42,7 @@ GAME ANSWER ITEM
   font-size: 0.75em;
   color: $ft-darkblue;
   border-radius: 23px;
-  background: $bg-teal;
+  background: $bg-teal-gradient;
   box-shadow: 0 3px 0 $br-teallight;
   -webkit-animation: slapdown 0.25s;
 }
