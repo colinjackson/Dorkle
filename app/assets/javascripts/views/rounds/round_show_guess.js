@@ -7,6 +7,7 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   },
 
   events: {
+    'keypress #guess-box': 'handleEnter',
     'keyup #guess-box': 'checkAnswer',
     'submit': 'cancelSubmission'
   },
@@ -24,6 +25,19 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   startRound: function () {
     this.$guessBox.prop('disabled', false);
     this.$guessBox.focus();
+  },
+
+  handleEnter: function (event) {
+    if (event.which === 13) {
+      this.$guessBox.addClass('incorrect-flash');
+      setTimeout(function () {
+        this.$guessBox.addClass('will-transition');
+        this.$guessBox.removeClass('incorrect-flash');
+        setTimeout(function () {
+          this.$guessBox.removeClass('will-transition');
+        }.bind(this), 500);
+      }.bind(this), 125);
+    }
   },
 
   checkAnswer: function (event) {

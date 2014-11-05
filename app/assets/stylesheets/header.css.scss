@@ -3,7 +3,7 @@
 header {
   width: 100%;
   padding-bottom: 45px;
-
+  background: $bg-beige;
   li {
     float: left;
   }
@@ -12,8 +12,6 @@ header {
     width: 80%;
     min-width: 1000px;
     margin: 0 auto;
-    border: solid $br-light;
-    border-width: 0 1px;
 
     .dorkle-logo-link {
       display: block;
@@ -74,6 +72,7 @@ header {
     width: 100%;
     margin-bottom: -45px;
     background: $bg-yellow-gradient;
+    border-top: 1px solid $br-light;
     box-shadow: 0 3px 0 $br-orange;
     color: $ft-blue;
     font-weight: bold;
@@ -114,7 +113,7 @@ header {
     li > a:active {
       top: 3px;
       color: $ft-whiteblue;
-      box-shadow: 0 -3px 0 $bg-beige;
+      box-shadow: 0 -3px 0 $br-light;
     }
   }
 

@@ -53,12 +53,23 @@
         .guess-box {
           box-sizing: border-box;
           width: 100%;
-          padding: 5px;
+          padding: 9px;
           border: 2px solid $br-orange;
           border-radius: 6px;
-          font-size: 1.25em;
           text-align: center;
           background: $bg-beige;
+        }
+
+        .guess-box:disabled {
+          background: $bg-azure;
+        }
+
+        .guess-box.incorrect-flash {
+          background: $bg-pink;
+        }
+
+        .guess-box.will-transition {
+          transition: background 0.5s;
         }
       }
 
