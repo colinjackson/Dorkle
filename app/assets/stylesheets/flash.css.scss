@@ -27,7 +27,7 @@ div#flash {
       background: $bg-azure;
 
       position: relative;
-      z-index: 500;
+      z-index: 2;
       top: -60px;
       -webkit-animation: slidedown 6s;
     }

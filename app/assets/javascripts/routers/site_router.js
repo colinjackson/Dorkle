@@ -26,8 +26,10 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
     if (Dorkle.currentUserId) {
       var view = new Dorkle.Views.GameNew();
       this._swapMainView(view);
+      Backbone.history.navigate('/games/new');
     } else {
-      Backbone.history.navigate('', {trigger: true});
+      Dorkle.flash.displayError('Sorry, but you need to sign in if you want ' +
+                                'to make a game!')
     }
   },
 

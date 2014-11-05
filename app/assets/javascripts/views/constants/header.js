@@ -1,12 +1,17 @@
 Dorkle.Views.Header = Backbone.View.extend({
 
+  initialize: function () {
+    this.barrelsRolled = 0;
+  },
+
   events: {
     'click a.go-to': 'preventDefault',
     'click a.go-to.root': 'goToRoot',
     'click a.go-to.current-user': 'goToCurrentUser',
     'click a.go-to.games': 'goToGames',
     'click a.go-to.create': 'goToCreate',
-    'click a.go-to.random-game': 'goToRandomGame'
+    'click a.go-to.random-game': 'goToRandomGame',
+    'mouseover img.dorkle-logo': 'doABarrelRoll'
   },
   preventDefault: function (event) { event.preventDefault(); },
 
@@ -24,7 +29,7 @@ Dorkle.Views.Header = Backbone.View.extend({
   },
 
   goToCreate: function () {
-    Backbone.history.navigate('games/new', {trigger: true});
+    Dorkle.siteRouter.gameNew();
   },
 
   goToRandomGame: function () {
@@ -35,6 +40,15 @@ Dorkle.Views.Header = Backbone.View.extend({
         Backbone.history.navigate(randomGamePath, {trigger: true});
       }
     });
+  },
+
+  doABarrelRoll: function () {
+    this.barrelsRolled += 1;
+
+    if (this.barrelsRolled >= 8) {
+      Dorkle.flash.display("DO A BARREL ROLL!");
+      this.barrelsRolled = 0;
+    }
   }
 
 });

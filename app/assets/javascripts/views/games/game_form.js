@@ -25,7 +25,6 @@ Dorkle.Views.GameForm = Backbone.View.extend({
   },
 
   clickFileInput: function (event) {
-    event.preventDefault();
     this.$('#game_image').click();
   },
 

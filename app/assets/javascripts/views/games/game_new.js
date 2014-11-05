@@ -39,6 +39,15 @@ Dorkle.Views.GameNew = Backbone.Superview.extend({
         Dorkle.games.add(game);
         var newGamePath = '/games/' + game.id;
         Backbone.history.navigate(newGamePath, {trigger: true});
+        Dorkle.flash.displaySuccess('Your game is now live. Sweet!');
+      },
+
+      error: function (game, response) {
+        var messages = ["Oh no, your changes weren't saved!"]
+          .concat(response.responseJSON.error);
+        _(messages).each(function (message) {
+          Dorkle.flash.displayError(message);
+        });
       }
     });
   }

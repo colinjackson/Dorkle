@@ -2,6 +2,7 @@ Dorkle.Views.Flash = Backbone.View.extend({
 
   initialize: function () {
     this.$list = this.$('ul');
+    this.currentFlashes = [];
 
     this.handleServerFlashes();
   },
@@ -32,11 +33,18 @@ Dorkle.Views.Flash = Backbone.View.extend({
 
   _presentFlash: function (flash) {
     var $flash = $(flash);
+
+    for (var i = 0; i < this.currentFlashes.length; i++) {
+      if ($flash.text() === this.currentFlashes[i].text()) return false;
+    }
+
     this.$list.append($flash);
+    this.currentFlashes.push($flash);
 
     setTimeout(function () {
       $flash.remove();
-    }, 6000);
+      this.currentFlashes.shift();
+    }.bind(this), 6000);
   }
 
 });

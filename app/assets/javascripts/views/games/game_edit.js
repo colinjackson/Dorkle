@@ -38,6 +38,11 @@ Dorkle.Views.GameEdit = Backbone.Superview.extend({
       success: function (game) {
         var updatedGamePath = '/games/' + game.id;
         Backbone.history.navigate(updatedGamePath, {trigger: true});
+        Dorkle.flash.displaySuccess('Changes successfully saved. Nice!');
+      },
+      error: function (game, response) {
+        var message = "Oh no, your changes weren't saved! " + response.error;
+        Dorkle.flash.displayError(message);
       }
     });
   },

@@ -12,14 +12,16 @@ module Api
     def create
       @game = current_user.created_games.new(game_params)
 
-      game_answers_params.each do |answer_params|
-        @game.answers.new(answer_params.permit(:answer))
+      unless !game_answers_params
+        game_answers_params.each do |answer_params|
+          @game.answers.new(answer_params.permit(:answer))
+        end
       end
 
       if @game.save()
         render :show
       else
-        render json: { error: @game.errors.full_messages }
+        render json: { error: @game.errors.full_messages }, status: :unprocessable_entity
       end
     end
 
@@ -37,14 +39,14 @@ module Api
       if @game.update(game_params)
         render :show
       else
-        render json: { error: @game.errors.full_messages }
+        render json: { error: @game.errors.full_messages }, status: :unprocessable_entity
       end
     end
 
     def destroy
       @game = Game.find(params[:id])
       @game.destroy
-      render json: {}, status: 200;
+      render json: {}
     end
 
     private

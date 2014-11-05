@@ -38,7 +38,11 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
     event.preventDefault();
 
     this.model.set('answer', this.$editBox.val());
-    if (this.model.id) this.model.save();
+    if (this.model.id) this.model.save({}, {
+      error: function (model, response) {
+        Dorkle.flash.displayError('Drats! ' + response.errors);
+      }
+    });
 
     this.$editBox = null;
     this.render();

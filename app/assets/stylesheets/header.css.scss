@@ -17,7 +17,7 @@ header {
       display: block;
       float: left;
       position: relative;
-      z-index: 2;
+      z-index: 4;
       height: 60px;
       padding: 5px 15px;
     }
@@ -68,7 +68,7 @@ header {
 
   .navbar {
     position: relative;
-    z-index: 1000;
+    z-index: 3;
     width: 100%;
     margin-bottom: -45px;
     background: $bg-yellow-gradient;
@@ -113,6 +113,7 @@ header {
     li > a:active {
       top: 3px;
       color: $ft-whiteblue;
+      background: $bg-orange-gradient;
       box-shadow: 0 -3px 0 $br-light;
     }
   }
