@@ -27,11 +27,11 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   },
 
   checkAnswer: function (event) {
-    var guess = this.$guessBox.val();
+    var guess = this.$guessBox.val().toLowerCase();
 
     var correctAnswer;
     this.validAnswers.every(function (answer) {
-      if (guess === answer.get('answer')) {
+      if (guess === answer.get('answer').toLowerCase()) {
         correctAnswer = answer;
         return false;
       }
