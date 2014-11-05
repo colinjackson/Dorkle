@@ -60,4 +60,39 @@ RSpec.describe Game, :type => :model do
     it { should have_many(:rounds) }
   end
 
+  describe "returns a subtitle or placeholder text" do
+    it "should return a subtitle if it has one" do
+      game = create(:game, subtitle: "Can you do this thing?")
+      expect(game.get_subtitle).to eq("Can you do this thing?")
+    end
+
+    it "should return placeholder text if it does not (or if it's empty)" do
+      expect(create(:game).get_subtitle).to eq("(no subtitle)")
+    end
+  end
+
+  describe "formats its source value" do
+    # default source: http://www.ruby-doc.org/core-2.1.4/Array.html
+    let(:game) { create(:game) }
+
+    it "should reformat web urls to include their scheme" do
+      newGame = create(:game, source: "www.google.com/")
+      expect(newGame.source).to eq("http://www.google.com/")
+    end
+
+    it "should not alter urls that include their scheme explicitly" do
+      expect(game.source).to eq("http://www.ruby-doc.org/core-2.1.4/Array.html")
+    end
+
+    it "returns just the hostname when asked" do
+      expect(game.get_source_host).to eq("www.ruby-doc.org")
+    end
+
+    it "truncates overly long hostnames" do
+      longHostname = "www.thisisanexcessivelylonghostnamewhatthehellwhywouldyouevenbuythisdomainnamewhatiswrongwithyou.com"
+      newGame = create(:game, source: "http://#{longHostname}/info")
+      expect(newGame.get_source_host).to eq(longHostname[0, 25])
+    end
+  end
+
 end

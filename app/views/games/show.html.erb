@@ -1,6 +1,6 @@
 <div class="game-show group">
   <h1><%= @game.title %></h1>
-  <h2><%= @game.getSubtitle %></h2>
+  <h2><%= @game.get_subtitle %></h2>
 
   <%= image_tag @game.image.url(:show) %>
 
@@ -19,7 +19,9 @@
         </tr>
         <tr>
           <td class="default-key">Source</td>
-          <td class="default-value"><%= @game.source %></td>
+          <td class="default-value">
+            <a href="<%= @game.source %>"><%= @game.get_source_host %></a>
+          </td>
         </tr>
       </table>
 
