@@ -1,4 +1,4 @@
-<h1><%= round.game ? round.game.get('title') : 'Loading...' %></h1>
+<h1><%= round.game ? round.game.escape('title') : 'Loading...' %></h1>
 
 <div class="round-show-board group">
   <div class="round-show-board-guessing group"></div>
