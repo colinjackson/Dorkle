@@ -43,10 +43,10 @@ RSpec.describe Round, :type => :model do
     end
 
     describe "checking guesses" do
-      it "returns the appropriate answer object for a correct guess" do
-        answer = round.answer_for_guess("a")
-        expect(answer).to be_a(GameAnswer)
-        expect(answer.answer).to eq("a")
+      it "returns the appropriate answer objects for a correct guess" do
+        answers = round.answers_for_guess("a");
+        expect(answers.count).to be(1)
+        expect(answers.first.answer).to eq("a")
       end
 
       it "creates an answer match object for a correct guess" do
@@ -58,7 +58,7 @@ RSpec.describe Round, :type => :model do
 
       it "does not return an answer if it's already been matched" do
         round.handle_guess("a")
-        expect(round.answer_for_guess("a")).to be_nil
+        expect(round.answers_for_guess("a")).to be_empty
       end
 
     end
