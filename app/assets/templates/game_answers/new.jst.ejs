@@ -1,5 +1,22 @@
-<div class="group">
+<div>
   <label for="answer-box">New answer</label>
   <input type="text" name="answer" id="answer-box">
-  <button class="game-answers-form-submit button-default">ADD</button>
 </div>
+
+<div>
+  <label for="game_answer_regex">Matches
+    <span class="help-tag">what's this?</span>
+    <div class="regex-explanation">
+      <p>
+        Use this box if you'd like to match answers that aren't quite exact. You
+        can put multiple answers in here separated by the pipe ("|") symbol. So
+        "party|people" would match both "party" and "people".
+      </p>
+
+      <small>For the techies: any regex will work in here, too!</small>
+    </div>
+  </label>
+  <input type="text" name="regex" id="game_answer_regex">
+</div>
+
+<button class="game-answers-form-submit button-default">ADD</button>

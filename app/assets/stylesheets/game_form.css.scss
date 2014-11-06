@@ -23,6 +23,7 @@
     }
 
     .game-answers {
+      margin-top: 40px;
       float: right;
       width: 47.5%;
 
@@ -130,28 +131,63 @@
       }
 
       .game-answers-new {
-        #answer-box {
-          float: left;
-          position: relative;
-          top: 3px;
-          box-sizing: border-box;
-          width: 75%;
-          margin-right: 5%;
+        position: relative;
+
+        .help-tag {
+          position: absolute;
+          right: 20px;
+          font-size: 12px;
+          font-weight: 300;
+          font-style: italic;
+          border-radius: 3px;
+          padding: 2px 5px;
+          color: $ft-darkblue;
+        }
+
+        .help-tag:hover {
+          background: $ft-darkblue;
+          color: $bg-azure;
+        }
+
+        .help-tag:hover ~ .regex-explanation {
+          display: block;
+        }
+
+        .regex-explanation {
+          display: none;
+          position: absolute;
+          z-index: 2;
+          width: 275px;
+          padding: 5px 10px;
+          border: 2px solid $br-light;
+          border-radius: 5px;
+          left: 175px;
+          opacity: 0.9;
+          background: $ft-darkblue;
+          color: $bg-azure;
+          font-size: 14px;
+          text-align: left;
+
+          small {
+            margin-top: 14px;
+            font-size: 12px;
+            font-style: italic;
+          }
         }
 
         .game-answers-form-submit {
-          float: right;
-          width: 20%;
-          opacity: 0.8;
+          width: 100%;
+          opacity: 0.7;
         }
       }
     }
   }
 
   .game-form-submit {
-    width: 100%;
     margin-top: 20px;
+    width: 100%;
   }
+
 
   .game-edit-controls {
     margin-top: 20px;
