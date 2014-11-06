@@ -24,7 +24,6 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
   checkForEnter: function (event) {
     if (event.which === 13) {
       this.saveAnswer(event);
-      this.toggleDropdown(event);
     }
   },
 
@@ -54,15 +53,22 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
 
     var updateAttrs = this.$dropdown.serializeJSON();
     this.model.set(updateAttrs);
-    this.model.save({}, {
-      success: function () {
-        Dorkle.flash.displaySuccess('Answer changes saved!');
-        this.resetAnswerName();
-      }.bind(this),
-      error: function (model, response) {
-        Dorkle.flash.displayError('Uh-oh! That didn\'t work out... Try again?')
-      }
-    });
+
+    if (this.model.id) {
+      this.model.save({}, {
+        success: function () {
+          Dorkle.flash.displaySuccess('Answer changes saved!');
+          this.resetAnswerName();
+          this.toggleDropdown(event);
+        }.bind(this),
+        error: function (model, response) {
+          Dorkle.flash.displayError('Uh-oh! That didn\'t work out... Try again?')
+        }
+      });
+    } else {
+      this.resetAnswerName();
+      this.toggleDropdown(event);
+    }
   },
 
   deleteAnswer: function (event) {
