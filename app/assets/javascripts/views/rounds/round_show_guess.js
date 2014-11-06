@@ -30,13 +30,10 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   handleEnter: function (event) {
     if (event.which === 13) {
       this.$guessBox.addClass('incorrect-flash');
+
       setTimeout(function () {
-        this.$guessBox.addClass('will-transition');
         this.$guessBox.removeClass('incorrect-flash');
-        setTimeout(function () {
-          this.$guessBox.removeClass('will-transition');
-        }.bind(this), 500);
-      }.bind(this), 125);
+      }.bind(this), 500);
     }
   },
 

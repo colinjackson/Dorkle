@@ -127,10 +127,15 @@ KEYFRAMES
   }
 }
 
-@-webkit-keyframes wiggle {
-  0%, 100% { left: 0; }
-  12%, 38%, 62%, 88% { left: -15px; }
-  25%, 50%, 75% { left: 15px; }
+@-webkit-keyframes incorrectflash {
+  0%, 100% {
+    left: 0;
+    background: $bg-beige
+  }
+  6%, 18%, 30%, 44% { left: -10px; }
+  12%, 23%, 37% { left: 10px; }
+
+  10%, 40% { background: $bg-pink }
 }
 
 @-webkit-keyframes slidedown {

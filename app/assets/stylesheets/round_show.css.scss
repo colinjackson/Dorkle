@@ -63,12 +63,7 @@
         }
 
         .guess-box.incorrect-flash {
-          background: $bg-pink;
-          -webkit-animation: wiggle 0.25s;
-        }
-
-        .guess-box.will-transition {
-          transition: background 0.5s;
+          -webkit-animation: incorrectflash 0.5s;
         }
       }
 
