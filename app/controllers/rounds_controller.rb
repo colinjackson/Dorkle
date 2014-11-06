@@ -28,7 +28,7 @@ class RoundsController < ApplicationController
     if @round.handle_guess(@guess)
       flash.now[:successes] = ["#{@guess} is correct!"]
     else
-      flash.now[:successes] = ["#{@guess} is incorrect, sorry"]
+      flash.now[:errors] = ["#{@guess} is incorrect, sorry"]
     end
 
     render :show

@@ -20,21 +20,23 @@ class Round < ActiveRecord::Base
   has_many :answer_matches, class_name: "RoundAnswerMatch", inverse_of: :round
 
   def handle_guess(guess)
-    answer = answer_for_guess(guess)
-    if answer
-      self.answer_matches.create!(answer: answer)
+    answers = answers_for_guess(guess)
+    if !answers.empty?
+      answers.each { |answer| self.answer_matches.create!(answer: answer) }
     else
       return false
     end
   end
 
-  def answer_for_guess(guess)
-    self.answers
+  def answers_for_guess(guess)
+    potential_answers = self.answers
       .joins("LEFT OUTER JOIN (#{RoundAnswerMatch.where(round_id: self.id).to_sql})
               AS matches ON matches.answer_id = game_answers.id")
-      .where("lower(game_answers.answer) = ?", guess.downcase)
       .where('matches.id IS NULL')
-      .first
+
+    potential_answers.select do |answer|
+      answer.matches?(guess)
+    end
   end
 
   def answers_left

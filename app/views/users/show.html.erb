@@ -21,7 +21,8 @@
         </table>
 
         <% if @user == current_user %>
-          <%= link_to "Update Your Profile", edit_user_url(current_user) %>
+          <%= link_to "UPDATE YOUR PROFILE", edit_user_url(current_user),
+            class: 'user-show-profile-update button-default' %>
         <% end %>
       </div>
     </div>
@@ -30,9 +31,7 @@
       <h2>Created Games</h2>
       <ul class="user-show-created-games-list">
         <% @user.created_games.each do |game| %>
-          <li>
-            <%= render 'games/item', game: game, with_user: false %>
-          </li>
+          <%= render 'games/item', game: game, with_user: false %>
         <% end %>
       </ul>
     </div>

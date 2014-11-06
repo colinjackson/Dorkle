@@ -7,6 +7,7 @@
 #  answer     :string(255)      not null
 #  created_at :datetime
 #  updated_at :datetime
+#  regex      :string(255)
 #
 
 require 'rails_helper'

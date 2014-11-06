@@ -2,10 +2,10 @@
   <h1><%= @round.game.title %></h1>
 
   <div class="round-show-board group">
-    <div class="round-show-board-guessing">
+    <div class="round-show-board-guessing group">
       <div class="round-show-board-guess">
         <% if @round.time_remaining > 0 && @round.answers_left > 0 %>
-          <form class="default" action="<%= guess_round_url(@round) %>" method="post">
+          <form action="<%= guess_round_url(@round) %>" method="post">
             <%= auth_input %>
 
             <div>
@@ -30,17 +30,24 @@
         <% end %>
       </div>
 
-      <div class="board-status-metrics">
-        <h3><%= time_string(@round.time_remaining.to_i) %> remaining...</h3>
-        <h3><%= @round.answers_left %>/<%= @round.answers.count %> remaining</h3>
+      <div class="round-show-metrics">
+        <h3 class="round-metrics-timer">
+          <span class="time">
+            <%= time_string(@round.time_remaining.to_i) %></span> remaining...
+        </h3>
+        <h3 class="round-metrics-remaining">
+          <span class="time">
+            <%= @round.answers_left %></span>/<%= @round.answers.count %>
+            remaining
+        </h3>
       </div>
     </div>
 
     <div class="round-show-board-status">
       <h2>Correct Answers</h2>
-      <ul class="board-status-matches-list">
+      <ul class="board-status-matches-list group">
         <% @round.answer_matches.each do |answer_match| %>
-        <li class="group">
+        <li class="game-answer-item group">
           <span class="answer-match-item">
             <%= answer_match.answer.answer %>
           </span>

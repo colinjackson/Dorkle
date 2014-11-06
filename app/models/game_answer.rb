@@ -7,6 +7,7 @@
 #  answer     :string(255)      not null
 #  created_at :datetime
 #  updated_at :datetime
+#  regex      :string(255)
 #
 
 class GameAnswer < ActiveRecord::Base
@@ -18,4 +19,13 @@ class GameAnswer < ActiveRecord::Base
     class_name: "RoundAnswerMatch",
     foreign_key: :answer_id,
     inverse_of: :answer
+
+  def get_regex
+    self.regex ? self.regex : self.answer.downcase
+  end
+
+  def matches?(guess)
+    !!(guess =~ /\A\s*(#{self.get_regex})\s*\Z/)
+  end
+
 end

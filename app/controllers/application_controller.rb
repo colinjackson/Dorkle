@@ -30,11 +30,17 @@ class ApplicationController < ActionController::Base
   end
 
   def require_signed_in
-    redirect_to new_session_url if !signed_in?
+    if !signed_in?
+      flash[:errors] = ["You need to be logged in to do that!"]
+      redirect_to new_session_url
+    end
   end
 
   def require_signed_out
-    redirect_to user_url(current_user) if signed_in?
+    if signed_in?
+      flash[:successes] = ["You're already signed in, silly!"]
+      redirect_to user_url(current_user)
+    end
   end
 
 end

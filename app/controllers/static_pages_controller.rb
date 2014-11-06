@@ -1,8 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def root
-    @games = Game.last(3).reverse
-    render :root
+    redirect_to games_url
   end
 
 end
