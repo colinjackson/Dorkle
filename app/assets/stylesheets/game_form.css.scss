@@ -26,30 +26,105 @@
       float: right;
       width: 47.5%;
 
+      h2 {
+        text-align: center;
+      }
+
       .game-answers-list {
         text-align: center;
         margin-bottom: 15px;
+        line-height: 0.3;
 
         .game-answer-item {
-          .game-answer-item-editing {
-            display: inline-block;
-            text-align: center;
+          position: relative;
+          line-height: 1.5;
+
+          span {
+            max-width: 92.5%;
           }
 
-          .game-answer-delete {
+          .game-answer-show-dropdown {
+            float: right;
             display: inline-block;
-            color: white;
-            background: $ft-darkblue;
-            opacity: 0.35;
-            padding: 8px 5px 6px 5px;
-            margin-left: -5px;
-            line-height: 0.3em;
-            font-size: 1.2em;
+            color: $ft-green;
             font-weight: bold;
-            border-radius: 12px;
+            opacity: 0.67;
+            padding: 4px 5px 0 5px;
+            border-radius: 3px;
+            margin-left: -5px;
+            font-size: 0.7em;
             position: relative;
-            top: 1px;
+            top: 2px;
             left: 8px;
+          }
+
+          .game-answer-show-dropdown:hover:not(.active) {
+            background: $bg-azure;
+            color: $ft-lightblue;
+            -webkit-animation: wiggle 0.33s;
+          }
+
+          .game-answer-show-dropdown.active {
+            background: $ft-darkblue;
+            color: $bg-azure;
+          }
+
+          .game-answer-show-dropdown:hover ~ .game-answer-dropdown {
+            display: block;
+          }
+
+          .game-answer-dropdown.active {
+            display: block;
+            opacity: 0.92;
+          }
+
+          .game-answer-dropdown {
+            display: none;
+            position: absolute;
+            width: 300px;
+            padding: 5px;
+            overflow: hidden;
+            z-index: 2;
+            top: 98%;
+            left: -150px;
+            border: 2px solid $br-light;
+            background: $bg-azure;
+            font-weight: 300;
+            opacity: 0.1;
+            transition: opacity 0.25s;
+
+            label {
+              font-style: italic;
+            }
+
+            input[type=text] {
+              width: 100%;
+              border-radius: 5px;
+              background: $bg-beige;
+              text-align: center;
+              margin-bottom: 5px;
+              border: 2px solid $br-light;
+            }
+
+            button {
+              float: left;
+              margin-top: 10px;
+              width: 148px;
+              height: 30px;
+              line-height: 0.5;
+              border-radius: 3px;
+              background: magenta;
+              color: white;
+            }
+
+            .game-answer-save {
+              margin-right: 4px;
+              background: $ft-green;
+            }
+
+            .game-answer-delete {
+              background: $ft-red;
+            }
           }
         }
       }

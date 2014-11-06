@@ -33,7 +33,7 @@ module Api
 
     private
     def game_answer_params
-      params.require(:game_answer).permit(:answer, :game_id)
+      params.require(:game_answer).permit(:answer, :game_id, :regex)
     end
 
     def require_current_user_owner
@@ -52,7 +52,9 @@ module Api
         forbidden = game.author_id != current_user.id
       end
 
-      render json: { you_are_a: "bad person"} if forbidden
+      if forbidden
+        render json: { you_are_a: "bad person"}, status: :forbidden
+      end
     end
 
   end

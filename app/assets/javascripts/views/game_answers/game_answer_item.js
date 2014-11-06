@@ -4,13 +4,34 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
   template: JST['game_answers/_item'],
 
   events: {
-    'click .game-answer-item-answer': 'beginEditing',
-    'focusout input.game-answer-item-editing': 'endEditing',
-    'keydown input.game-answer-item-editing': 'checkForEnter',
+    'click .game-answer-show-dropdown': 'toggleDropdown',
+    'keydown .game-answer-dropdown input': 'checkForEnter',
+    'focusout .game-answer-dropdown input': 'checkForLostFocus',
+    'click button.game-answer-save': 'saveAnswer',
     'click button.game-answer-delete': 'deleteAnswer'
   },
+
+  toggleDropdown: function (event) {
+    event.preventDefault();
+    this.$button.toggleClass('active');
+    this.$dropdown.toggleClass('active');
+
+    if (this.$dropdown.hasClass('active')) {
+      this.$('#game_answer_answer').select();
+    }
+  },
+
   checkForEnter: function (event) {
-    if (event.which === 13) this.$editBox.blur();
+    if (event.which === 13) {
+      this.saveAnswer(event);
+      this.toggleDropdown(event);
+    }
+  },
+
+  checkForLostFocus: function (event) {
+    if (!$(event.relatedTarget).parent() === this.$dropdown) {
+      this.toggleDropdown();
+    }
   },
 
   render: function () {
@@ -18,40 +39,35 @@ Dorkle.Views.GameAnswerItem = Backbone.View.extend({
       gameAnswer: this.model
     });
     this.$el.html(renderedContent);
+    this.$button = this.$('.game-answer-show-dropdown');
+    this.$dropdown = this.$('.game-answer-dropdown');
 
     return this;
   },
 
-  beginEditing: function (event) {
-    event.preventDefault();
-
-    var $item = $(event.currentTarget);
-    this.$editBox = $('<input type="text">');
-    this.$editBox.addClass('game-answer-item-editing');
-
-    $item.replaceWith(this.$editBox);
-    this.$editBox.val(this.model.get('answer'));
-    this.$editBox.select();
+  resetAnswerName: function () {
+    this.$('.game-answer-item-answer').text(this.model.get('answer'));
   },
 
-  endEditing: function (event) {
+  saveAnswer: function (event) {
     event.preventDefault();
 
-    this.model.set('answer', this.$editBox.val());
-    if (this.model.id) this.model.save({}, {
+    var updateAttrs = this.$dropdown.serializeJSON();
+    this.model.set(updateAttrs);
+    this.model.save({}, {
+      success: function () {
+        Dorkle.flash.displaySuccess('Answer changes saved!');
+        this.resetAnswerName();
+      }.bind(this),
       error: function (model, response) {
-        Dorkle.flash.displayError('Drats! ' + response.errors);
+        Dorkle.flash.displayError('Uh-oh! That didn\'t work out... Try again?')
       }
     });
-
-    this.$editBox = null;
-    this.render();
   },
-
-
 
   deleteAnswer: function (event) {
     event.preventDefault();
     this.model.destroy();
+    this.toggleDropdown(event);
   }
 });
