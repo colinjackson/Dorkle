@@ -6,5 +6,14 @@ Dorkle.Collections.GameAnswers = Backbone.Collection.extend({
 
   initialize: function (models, options) {
     if (options && options.game) this.game = options.game;
+  },
+
+  answersForGuess: function (guess) {
+    var matches = [];
+    this.each(function (answer) {
+      if (answer.doesMatch(guess)) matches.push(answer);
+    });
+
+    return matches;
   }
 });

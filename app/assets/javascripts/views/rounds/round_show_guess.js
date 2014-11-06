@@ -40,28 +40,24 @@ Dorkle.Views.RoundShowGuess = Backbone.View.extend({
   checkAnswer: function (event) {
     var guess = this.$guessBox.val().toLowerCase();
 
-    var correctAnswer;
-    this.validAnswers.every(function (answer) {
-      if (guess === answer.get('answer').toLowerCase()) {
-        correctAnswer = answer;
-        return false;
-      }
-      return true;
-    });
-
-    if (correctAnswer) this.handleCorrectGuess(correctAnswer, this.$guessBox);
+    var matchingAnswers = this.validAnswers.answersForGuess(guess);
+    if (matchingAnswers.length > 0) {
+      this.handleCorrectGuess(matchingAnswers);
+    }
   },
 
-  handleCorrectGuess: function (answer) {
+  handleCorrectGuess: function (answers) {
     this.$guessBox.val('');
 
-    var answerMatch = new Dorkle.Models.RoundAnswerMatch({
-      answer: answer
-    });
-    answerMatch.set({round_id: this.model.id, answer_id: answer.id});
-    this.model.matches().create(answerMatch);
+    _(answers).each(function (answer) {
+      var answerMatch = new Dorkle.Models.RoundAnswerMatch({
+        answer: answer
+      });
+      answerMatch.set({round_id: this.model.id, answer_id: answer.id});
+      this.model.matches().create(answerMatch);
 
-    this.validAnswers.remove(answer);
+      this.validAnswers.remove(answer);
+    }.bind(this));
   },
 
   endRound: function () {

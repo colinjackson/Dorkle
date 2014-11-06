@@ -6,6 +6,7 @@ end
 
 json.answers @round.answers do |answer|
   json.(answer, :id, :answer)
+  json.regex answer.get_regex
 end
 
 json.answer_matches @round.answer_matches do |answer_match|
