@@ -3,16 +3,16 @@
 <table>
   <tr>
     <td class="default-key">Name</td>
-    <td class="default-value"><%= user.get('name') || "Anonymous" %></td>
+    <td class="default-value"><%= user.escape('name') || "Anonymous" %></td>
   </tr>
   <tr>
     <td class="default-key">Username</td>
-    <td class="default-value"><%= user.get('username') %></td>
+    <td class="default-value"><%= user.escape('username') %></td>
   </tr>
   <% if (isCurrentUser) { %>
   <tr>
     <td class="default-key">Email</td>
-    <td class="default-value"><%= user.get('email') %></td>
+    <td class="default-value"><%= user.escape('email') %></td>
   </tr>
   <% } %>
 </table>

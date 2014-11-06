@@ -1,6 +1,6 @@
-<h1><%= game.get('title') || '...' %></h1>
+<h1><%= game.escape('title') || '...' %></h1>
 
-<img src="<%= game.get('image_url_show') %>">
+<img src="<%= game.escape.('image_url_show') %>">
 
 <div class="game-show-controls">
   <div class="game-show-details group">
@@ -18,13 +18,14 @@
       <tr>
         <td class="default-key">time</td>
         <td class="default-value">
-          <%= Dorkle.Utils.timeString(game.get('time_limit')) %>
+          <%= Dorkle.Utils.timeString(game.escape.('time_limit')) %>
         </td>
       </tr>
       <tr>
         <td class="default-key">source</td>
         <td class="default-value">
-          <a href="<%= game.get('source') %>"><%= game.get('source_host') %></a>
+          <a href="<%= game.escape.('source') %>">
+            <%= game.escape.('source_host') %></a>
         </td>
       </tr>
     </table>

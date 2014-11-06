@@ -1,14 +1,14 @@
-<span class="game-answer-item-answer"><%= gameAnswer.get('answer') %></span>
+<span class="game-answer-item-answer"><%= gameAnswer.escape('answer') %></span>
 <button class="game-answer-show-dropdown">&#9660;</button>
 
 <form class="game-answer-dropdown group">
   <label for="game_answer_answer">answer</label>
   <input type="text" name="answer" id="game_answer_answer"
-    value="<%= gameAnswer.get('answer') %>">
+    value="<%= gameAnswer.escape('answer') %>">
 
   <label for="game_answer_regex">matches</label>
   <input type="text" name="regex" id="game_answer_regex"
-    value="<%= gameAnswer.get('regex') %>">
+    value="<%= gameAnswer.escape('regex') %>">
 
   <button class="game-answer-save button-default">save</button>
   <button class="game-answer-delete button-default">delete</button>

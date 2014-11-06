@@ -1,15 +1,15 @@
 <div>
   <label for="game_title">Title</label>
   <input type="text" name="title" id="game_title"
-      value="<%= game.get('title') %>">
+      value="<%= game.escape('title') %>">
 </div>
 <div>
   <label for="game_subtitle">Subtitle (optional)</label>
   <input type="text" name="subtitle" id="game_subtitle"
-      value="<%= game.get('subtitle') %>">
+      value="<%= game.escape('subtitle') %>">
 </div>
 <div>
-  <img id="game-image-preview" src="<%= game.get('image_url_thumb') %>">
+  <img id="game-image-preview" src="<%= game.escape('image_url_thumb') %>">
   <label for="game_image">Add an image (optional)</label>
   <span id="game_image-button" class="button-default">UPLOAD</span>
   <input type="file" name="image" id="game_image">
@@ -17,10 +17,10 @@
 <div>
   <label for="game_source">Source</label>
   <input type="text" name="source" id="game_source"
-      value="<%= game.get('source') %>">
+      value="<%= game.escape('source') %>">
 </div>
 <div>
   <label for="game_time_limit">Time Limit (in seconds)</label>
   <input type="text" name="time_limit" id="game_time_limit"
-      value="<%= game.get('time_limit') %>">
+      value="<%= game.escape('time_limit') %>">
 </div>
