@@ -4,13 +4,18 @@ Dorkle.Routers.SiteRouter = Backbone.Router.extend({
   },
 
   routes: {
-    '':                   'gamesIndex',
+    '':                   'root',
     'games':              'gamesIndex',
     'games/new':          'gameNew',
     'games/:id':          'gameShow',
     'games/:id/edit':     'gameEdit',
     'rounds/:id':         'roundShow',
     'users/:id':          'userShow'
+  },
+
+  root: function () {
+    var view = new Dorkle.Views.RootView()
+    this._swapMainView(view)
   },
 
   gamesIndex: function () {

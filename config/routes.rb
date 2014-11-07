@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
 
     resources :round_answer_matches, only: :create, as: "answer_matches"
+
+    root to: "static_pages#root"
   end
 
   post "/pusher/auth", to: "pusher#auth"

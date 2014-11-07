@@ -8,7 +8,7 @@
   <div class="root-content group">
     <div class="hot-games">
       <h2>People really dig these games</h2>
-      <ul class="default">
+      <ul class="hot-games-list default">
         <% @hot_games.each do |game| %>
         <%= render "games/item", game: game, with_user: true %>
         <% end %>

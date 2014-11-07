@@ -1,0 +1,18 @@
+<li class="user-item">
+  <a class="user-show-link group" href="javascript:void(0)">
+    <img src="<%= user.escape('image_url_thumb') %>"
+
+    <div class="user-item-details">
+      <h2 class="user-item-name"><%= user.getName() %></h2>
+      <span class="user-item-statistic">
+        <% if (itemType === 'best players') { %>
+          <%= user.escape('total_answered') %>
+            total questions answered correctly
+        <% } else if (itemType === 'best authors') { %>
+          <%= user.escape('created_games_play_count') %> plays of
+            <%= user.getName() %>'s games
+        <% } %>
+      </span>
+    </div>
+  </a>
+</li>
