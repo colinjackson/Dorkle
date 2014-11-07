@@ -27,7 +27,7 @@ RSpec.describe Round, :type => :model do
     end
   end
 
-  describe "associations" do
+  describe "associates" do
     it { should belong_to(:game) }
     it { should belong_to(:player) }
     it { should have_many(:answers) }
@@ -42,7 +42,7 @@ RSpec.describe Round, :type => :model do
       end
     end
 
-    describe "checking guesses" do
+    describe "checks guesses" do
       it "returns the appropriate answer objects for a correct guess" do
         answers = round.answers_for_guess("a");
         expect(answers.count).to be(1)
@@ -63,7 +63,7 @@ RSpec.describe Round, :type => :model do
 
     end
 
-    describe "reporting gamestate" do
+    describe "reports gamestate" do
       it "reports the remaining number of answers to be found" do
         expect(round.answers_left).to be(3)
         round.handle_guess("a")
