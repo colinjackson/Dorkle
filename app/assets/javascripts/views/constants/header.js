@@ -45,9 +45,15 @@ Dorkle.Views.Header = Backbone.View.extend({
   doABarrelRoll: function () {
     this.barrelsRolled += 1;
 
-    if (this.barrelsRolled >= 8) {
-      Dorkle.flash.display("DO A BARREL ROLL!");
+    if (this.barrelsRolled >= 5) {
+      Dorkle.flash.display("DO A BARREL ROLL!!!");
       this.barrelsRolled = 0;
+      setTimeout(function () {
+        $('body').addClass('barrel-roll')
+        setTimeout(function () {
+          $('body').removeClass('barrel-roll')
+        }, 3000)
+      }, 2250);
     }
   }
 
