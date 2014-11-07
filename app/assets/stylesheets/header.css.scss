@@ -4,7 +4,7 @@ header {
   width: 100%;
   padding-bottom: 45px;
   background: $bg-beige;
-  
+
   li {
     float: left;
     border-radius: 0px;
@@ -14,6 +14,7 @@ header {
     width: 80%;
     min-width: 1000px;
     margin: 0 auto;
+    text-align: center;
 
     .dorkle-logo-link {
       display: block;

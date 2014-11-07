@@ -1,4 +1,5 @@
-<ul class="notification-dropdown">
+<% is_empty = current_user.notifications.unread.empty? %>
+<ul class="notification-dropdown <%= is_empty ? "is-empty" : nil %>">
   <% current_user.notifications.each do |notification| %>
   <li class="group">
     <%= notification.text %>

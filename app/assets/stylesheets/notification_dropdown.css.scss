@@ -16,6 +16,10 @@ header > .top-bar > ul.session-info {
     transition: background 0.33s, opacity 0.33s;
   }
 
+  .notifications-badge.is-empty {
+    opacity: 0;
+  }
+
   .notification-dropdown:hover,
   .notifications-badge:hover ~ .notification-dropdown,
   .current-user-image:hover ~ .notification-dropdown {
@@ -26,6 +30,11 @@ header > .top-bar > ul.session-info {
     opacity: 0.9;
   }
 
+  .notification-dropdown.is-empty,
+  .notifications-badge:hover ~ .notification-dropdown.is-empty,
+  .current-user-image:hover ~ .notification-dropdown.is-empty {
+    display: none;
+  }
 
   .notification-dropdown {
     position: absolute;
