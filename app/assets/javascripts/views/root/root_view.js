@@ -15,6 +15,7 @@ Dorkle.Views.RootView = Backbone.Superview.extend({
   render: function () {
     var renderedContent = this.template();
     this.$el.html(renderedContent);
+    this.prepareWave();
 
     var view = this
     this.hotGames.each(function (game) {
@@ -70,5 +71,16 @@ Dorkle.Views.RootView = Backbone.Superview.extend({
     this.hotGames.set(data.hot_games);
     this.bestPlayers.set(data.best_players);
     this.bestAuthors.set(data.best_authors);
+  },
+
+  prepareWave: function () {
+    var dorkly = this.$('.dorkle-logo');
+    $(setTimeout(function () {
+        dorkly.addClass('wavehello');
+        setTimeout(function () {
+          dorkly.removeClass('wavehello');
+        }, 5000);
+      }, 2000)
+    );
   }
 })

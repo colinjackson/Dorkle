@@ -3,6 +3,10 @@ Dorkle.Views.UserItem = Backbone.View.extend({
   className: 'user-item',
   template: JST['users/_item'],
 
+  events: {
+    'click a': 'goToUser'
+  },
+
   render: function () {
     var renderedContent = this.template({
       user: this.model,
@@ -11,5 +15,11 @@ Dorkle.Views.UserItem = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  goToUser: function (event) {
+    event.preventDefault();
+    var userPath = '/users/' + this.model.id;
+    Backbone.history.navigate(userPath, {trigger: true});
   }
 })
