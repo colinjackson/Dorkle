@@ -51,6 +51,10 @@ class Notification < ActiveRecord::Base
     end
   end
 
+  def path
+    URI(self.url).path
+  end
+
   def event
     EVENTS[self.event_id]
   end
