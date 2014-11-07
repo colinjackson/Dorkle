@@ -12,13 +12,22 @@
     </ul>
   </div>
 
-  <!-- <div class="leaderboard">
+  <div class="leaderboard">
     <h2>Biggest Dorks</h2>
-    <ul class="leaderboard-list">
-      <%# @best_users.each do |user| %>
-      <%# end %>
+    <h3>Most Questions Answered</h3>
+    <ul class="leaderboard-best-players-list">
+      <% @best_players.each do |user| %>
+        <%= render "users/item", user: user, item_type: :best_players %>
+      <% end %>
     </ul>
-  </div> -->
+
+    <h3>Most Popular Created Games</h3>
+    <ul class="leaderboard-best-authors-list">
+      <% @best_authors.each do |user| %>
+        <%= render "users/item", user: user, item_type: :best_authors %>
+      <% end %>
+    </ul>
+  </div>
 
 
 </div>

@@ -1,0 +1,15 @@
+<li class="user-item">
+  <a class="user-show-link group" href="<%= user_url(user) %>">
+    <%= image_tag user.image.url(:thumb) %>
+
+    <div class="user-item-details">
+      <h2 class="user-item-name"><%= user.getName %></h2>
+      <span class="user-item-statistic">
+        <% if item_type == :best_players %>
+          <%= user.total_answered %> total questions answered correctly
+        <% elsif item_type == :best_authors %>
+          <%= user.created_games_play_count %> plays of <%= user.getName %>'s games
+        <% end %>
+      </span>
+    </div>
+  </a>

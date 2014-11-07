@@ -83,12 +83,16 @@ class User < ActiveRecord::Base
     self.completed_rounds_count
   end
 
-  def flakiness
-    1 - (self.completed_rounds_count.to_f / self.rounds_count)
+  def total_answered
+    self.completed_answer_matches_count
   end
 
-  def created_games_plays
+  def created_games_play_count
     self.created_games_completed_rounds_count
+  end
+
+  def flakiness
+    1 - (self.completed_rounds_count.to_f / self.rounds_count)
   end
 
   def update_custom_counter_caches_for_player
