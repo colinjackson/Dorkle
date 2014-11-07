@@ -1,0 +1,11 @@
+<ul class="notification-dropdown">
+  <% current_user.notifications.each do |notification| %>
+  <li class="group">
+    <%= notification.text %>
+    <div class="notification-controls">
+      <%= link_to "show me!", root_url %>
+      <%= button_to acquiesce, notification_url(notification), method: :delete %>
+    </div>
+  </li>
+  <% end %>
+</ul>

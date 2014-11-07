@@ -4,6 +4,7 @@ header {
   width: 100%;
   padding-bottom: 45px;
   background: $bg-beige;
+  
   li {
     float: left;
     border-radius: 0px;
@@ -46,9 +47,10 @@ header {
 
     ul.session-info {
       float: right;
+      position: relative;
       padding: 11px 0;
 
-      li {
+      > li {
         border-left: 1px solid $br-light;
 
         .current-user-image {
@@ -59,7 +61,7 @@ header {
         }
       }
 
-      li:first-child {
+      > li:first-child {
         border: 0;
       }
 

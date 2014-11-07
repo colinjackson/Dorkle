@@ -28,4 +28,8 @@ module ApplicationHelper
     authActions.include?(params[:action]) &&
       authControllers.include?(params[:controller])
   end
+
+  def acquiesce
+    ["yep", "uh-huh", "got it", "ight", "okay", "word", "kthxbye"].sample
+  end
 end

@@ -11,6 +11,14 @@
       <li>
         <img class="current-user-image"
           src="<%= current_user.image.url(:thumb) %>">
+
+        <% unless current_user.notifications.empty? %>
+        <span class="notifications-badge">
+          <%= current_user.notifications.count %>
+        </span>
+        <%= render "layouts/notification_dropdown" %>
+        <% end %>
+
         <a class="go-to current-user" href="<%= user_url(current_user) %>">
           <%= current_user.username %>
         </a>

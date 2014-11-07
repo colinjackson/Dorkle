@@ -1,0 +1,62 @@
+@import "utils/colors";
+
+header > .top-bar > ul.session-info {
+
+  .notifications-badge {
+    position: absolute;
+    top: 40px;
+    left: -10px;
+    opacity: 0.75;
+    padding: 4px 7px;
+    line-height: 0.9;
+    border-radius: 3px;
+    background: $ft-red;
+    font-weight: bold;
+    color: $ft-whiteblue;
+    transition: background 0.33s, opacity 0.33s;
+  }
+
+  .notification-dropdown:hover,
+  .notifications-badge:hover ~ .notification-dropdown,
+  .current-user-image:hover ~ .notification-dropdown {
+    display: block;
+  }
+
+  .notification-dropdown:hover {
+    opacity: 0.9;
+  }
+
+
+  .notification-dropdown {
+    position: absolute;
+    display: none;
+    z-index: 5;
+    top: 50px;
+    left: -300px;
+    width: 400px;
+    padding: 5px;
+    border: 2px solid $br-light;
+    border-radius: 8px;
+    background: $bg-azure;
+    opacity: 0.25;
+    transition: opacity 0.33s;
+    font-size: 14px;
+    font-style: 300;
+    color: $ft-red;
+
+    li {
+      width: 100%;
+      text-align: center;
+
+      .notification-controls {
+        float: right;
+        width: 30%;
+
+        a, input[type=submit] {
+          padding: 0;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
