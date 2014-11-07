@@ -1,15 +1,24 @@
-<h1>Latest Games</h1>
+<div class="root">
+  <h1> Welcome to
+    <img class="dorkle-logo" src="<%= image_path("dorkle-logo.png") %>">
+  </h1>
 
-<ul class="games-list">
-  <% @games.each do |game| %>
-    <li class="game-item">
-      <a class="group" href="<%= game_url(game) %>">
-        <h2 class="game-item-title"><%= game.title %></h2>
-        <h3 class="game-item-subtitle"><%= game.get_subtitle %></h3>
-        <h3 class="game-item-author">by <%= game.author.username %></h3>
-        <h3 class="game-item-time">Time limit:
-          <%= time_string(game.time_limit) %></h3>
-      </a>
-    </li>
-  <% end %>
-</ul>
+  <div class="hot-games">
+    <h2>People really dig these games</h2>
+    <ul class="hot-games-list">
+      <% @hot_games.each do |game| %>
+      <%= render "games/item", game: game, with_user: true %>
+      <% end %>
+    </ul>
+  </div>
+
+  <!-- <div class="leaderboard">
+    <h2>Biggest Dorks</h2>
+    <ul class="leaderboard-list">
+      <%# @best_users.each do |user| %>
+      <%# end %>
+    </ul>
+  </div> -->
+
+
+</div>

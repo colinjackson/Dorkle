@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
 
   def root
-    redirect_to games_url
+    @hot_games = Game.order(:rounds_count).last(5)
+    render :root
   end
 
 end
