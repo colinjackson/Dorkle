@@ -9,6 +9,10 @@ module Api
       end
 
       if @round.save
+        unless @round.game.author == current_user
+          @round.game.author.notifications
+            .create!(event_id: 1, notifiable: @round)
+        end
         render :show
       else
         render json: { error: @game.errors.full_messages }

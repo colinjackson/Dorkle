@@ -25,6 +25,8 @@ class Notification < ActiveRecord::Base
   validates_presence_of :user, :notifiable, :event_id
   validates_inclusion_of :event_id, in: EVENTS.keys
 
+  scope :unread, -> { where(is_read: false) }
+
   belongs_to :notifiable, polymorphic: true
   belongs_to :user, inverse_of: :notifications
 

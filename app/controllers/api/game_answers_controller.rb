@@ -53,7 +53,7 @@ module Api
       end
 
       if forbidden
-        render json: { you_are_a: "bad person"}, status: :forbidden
+        render json: { "you are a": "bad person"}, status: :forbidden
       end
     end
 

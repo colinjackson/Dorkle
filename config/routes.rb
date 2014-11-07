@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: :show
+    resources :users, only: :show do
+      resources :notifications, only: :index
+    end
+    resources :notifications, only: [:update, :destroy]
 
     resources :games do
       resources :game_answers, only: :index, as: "answers"
