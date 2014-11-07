@@ -3,7 +3,7 @@
   <li class="group">
     <%= notification.text %>
     <div class="notification-controls">
-      <%= link_to "show me!", root_url %>
+      <%= link_to "show me!", notification.url %>
       <%= button_to acquiesce, notification_url(notification), method: :delete %>
     </div>
   </li>

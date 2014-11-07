@@ -13,6 +13,7 @@
 #
 
 class Notification < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
 
   EVENTS = {
     1 => :created_game_played,
@@ -28,16 +29,33 @@ class Notification < ActiveRecord::Base
   belongs_to :user, inverse_of: :notifications
 
   def text
-    if EVENTS[self.event_id] == :created_game_played
+    if self.event == :created_game_played
       player = self.notifiable.player
       name = player ? player.getName : "Someone"
       "#{name} played your game!"
-    elsif EVENTS[self.event_id] == :new_challenge
+    elsif self.event == :new_challenge
       name = self.notifiable.challenger.getName
       "#{name} challenged you!"
     else
       "Something happened, but Dorkle doesn't know what!"
     end
+  end
+
+  def url
+    if self.event == :created_game_played
+      game_url(self.notifiable.game)
+    else
+      root_url
+    end
+  end
+
+  def event
+    EVENTS[self.event_id]
+  end
+
+  private
+  def default_url_options
+    {host: Rails.env.production? ? "playdorkle.com" : "localhost:3000"}
   end
 
 end
