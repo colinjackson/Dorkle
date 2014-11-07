@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :users, except: :index
   resources :sessions, only: [:new, :create, :destroy]
+  resources :notifications, only: [:update, :destroy]
+
 
   resources :games do
     resources :game_answers, only: :index, as: "answers"
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
       post "guess" => "rounds#guess"
     end
   end
-
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: :show

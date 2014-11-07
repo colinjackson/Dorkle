@@ -10,6 +10,7 @@ class RoundsController < ApplicationController
     @round.start_time = Time.now()
 
     if @round.save
+      @round.game.author.notifications.create!(event_id: 1, notifiable: @round)
       redirect_to round_url(@round)
     else
       flash.now[:errors] = ["What has science done?!?"] + @round.errors.full_messages
