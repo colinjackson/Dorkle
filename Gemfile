@@ -16,6 +16,7 @@ gem 'annotate', '~> 2.6.5'
 gem 'figaro', '>= 1.0.0'
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk'
+gem 'pusher'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development

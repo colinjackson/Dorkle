@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :notifications, only: [:update, :destroy]
 
-
   resources :games do
     resources :game_answers, only: :index, as: "answers"
   end
@@ -33,5 +32,6 @@ Rails.application.routes.draw do
     resources :round_answer_matches, only: :create, as: "answer_matches"
   end
 
+  post "/pusher/auth", to: "pusher#auth"
   root to: "static_pages#root"
 end

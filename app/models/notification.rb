@@ -25,6 +25,8 @@ class Notification < ActiveRecord::Base
   validates_presence_of :user, :notifiable, :event_id
   validates_inclusion_of :event_id, in: EVENTS.keys
 
+  after_create :push_notification
+
   scope :unread, -> { where(is_read: false) }
 
   belongs_to :notifiable, polymorphic: true
@@ -60,6 +62,24 @@ class Notification < ActiveRecord::Base
   end
 
   private
+  def server_name
+    "private-notifications_#{self.user_id}"
+  end
+
+  def push_notification
+    Pusher.trigger(server_name, "new_notification", pusher_json)
+  end
+
+  def pusher_json
+    {
+      id: self.id,
+      user_id: self.user_id,
+      text: self.text,
+      url: self.url,
+      path: self.path
+    }.to_json
+  end
+
   def default_url_options
     {host: Rails.env.production? ? "playdorkle.com" : "localhost:3000"}
   end

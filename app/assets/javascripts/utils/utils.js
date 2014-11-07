@@ -6,3 +6,9 @@ var timeString = Dorkle.Utils.timeString = function (time) {
   secs = ('0' + Math.floor(time % 60)).slice(-2);
   return mins + ':' + secs;
 }
+
+var userServer = Dorkle.Utils.userServer = function () {
+  if (!Dorkle.currentUserId) return "";
+
+  return "private-notifications_" + Dorkle.currentUserId;
+}

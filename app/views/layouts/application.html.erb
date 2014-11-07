@@ -9,6 +9,15 @@
     <%= javascript_include_tag 'client-routing' %>
   <% end %>
 
+  <script src="//js.pusher.com/2.2/pusher.min.js"></script>
+  <script charset="utf-8">
+    Pusher.log = function (message) {
+      console.log(message);
+    };
+
+    window.pusher = new Pusher("<%= ENV["pusher_key"] %>");
+  </script>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
