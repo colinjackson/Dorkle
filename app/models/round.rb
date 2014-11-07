@@ -14,6 +14,8 @@
 class Round < ActiveRecord::Base
   validates_presence_of :game
 
+  scope :completed, -> { where(is_completed: true) }
+
   belongs_to :player, class_name: "User", inverse_of: :rounds
   belongs_to :game, inverse_of: :rounds
   has_many :answers, through: :game, source: :answers

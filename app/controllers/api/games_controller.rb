@@ -5,7 +5,7 @@ module Api
     wrap_parameters false
 
     def index
-      @games = Game.includes(:author).all
+      @games = Game.includes(:author).with_answers
       render :index
     end
 

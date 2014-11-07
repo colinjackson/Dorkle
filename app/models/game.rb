@@ -28,6 +28,10 @@ class Game < ActiveRecord::Base
     less_than_or_equal_to: 900
   before_save :ensure_url_scheme
 
+  scope :with_answers, -> do
+    includes(:answers).where.not(game_answers: {game_id: nil});
+  end
+
   belongs_to :author, class_name: "User", inverse_of: :created_games
   has_many :answers, class_name: "GameAnswer"
   has_many :rounds, inverse_of: :game
