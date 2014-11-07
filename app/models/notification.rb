@@ -25,7 +25,7 @@ class Notification < ActiveRecord::Base
   validates_inclusion_of :event_id, in: EVENTS.keys
 
   belongs_to :notifiable, polymorphic: true
-  belongs_to :user
+  belongs_to :user, inverse_of: :notifications
 
   def text
     if EVENTS[self.event_id] == :created_game_played

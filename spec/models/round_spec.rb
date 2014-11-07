@@ -31,7 +31,8 @@ RSpec.describe Round, :type => :model do
     it { should belong_to(:game) }
     it { should belong_to(:player) }
     it { should have_many(:answers) }
-    it { should have_many(:answer_matches)}
+    it { should have_many(:answer_matches) }
+    it { should have_many(:notifications) }
   end
 
   describe "methods" do

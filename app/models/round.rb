@@ -18,6 +18,7 @@ class Round < ActiveRecord::Base
   belongs_to :game, inverse_of: :rounds
   has_many :answers, through: :game, source: :answers
   has_many :answer_matches, class_name: "RoundAnswerMatch", inverse_of: :round
+  has_many :notifications, as: :notifiable
 
   def handle_guess(guess)
     answers = answers_for_guess(guess)

@@ -27,6 +27,13 @@ RSpec.describe Notification, :type => :model do
     end
   end
 
+  describe "associates" do
+
+    it { should belong_to(:user) }
+    it { should belong_to(:notifiable) }
+
+  end
+
   describe "generates text" do
 
     context "for when a user's created game is played" do

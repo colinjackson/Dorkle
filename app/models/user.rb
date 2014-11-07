@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   before_create :set_default_name
 
   has_many :sessions, inverse_of: :user
+  has_many :notifications, inverse_of: :user
   has_many :rounds, foreign_key: :player_id, inverse_of: :player
   has_many :created_games,
     class_name: "Game",

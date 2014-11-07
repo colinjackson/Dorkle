@@ -87,6 +87,7 @@ RSpec.describe User, :type => :model do
     it { should have_many(:sessions) }
     it { should have_many(:created_games) }
     it { should have_many(:rounds) }
+    it { should have_many(:notifications) }
   end
 
 end
