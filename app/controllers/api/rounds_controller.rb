@@ -34,7 +34,7 @@ module Api
 
     private
     def round_params
-      params.require(:round).permit(:game_id, :start_time)
+      params.require(:round).permit(:game_id, :start_time, :is_completed)
     end
 
   end

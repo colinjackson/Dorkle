@@ -2,13 +2,13 @@
 #
 # Table name: rounds
 #
-#  id         :integer          not null, primary key
-#  game_id    :integer          not null
-#  player_id  :integer
-#  completed  :boolean          default(FALSE)
-#  created_at :datetime
-#  updated_at :datetime
-#  start_time :datetime
+#  id           :integer          not null, primary key
+#  game_id      :integer          not null
+#  player_id    :integer
+#  is_completed :boolean          default(FALSE)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  start_time   :datetime
 #
 
 require 'rails_helper'
@@ -20,9 +20,9 @@ RSpec.describe Round, :type => :model do
 
     it { should validate_presence_of(:game) }
 
-    describe "completed" do
+    describe "is_completed" do
       it "should default to false" do
-        expect(round.completed).to be false
+        expect(round.is_completed).to be false
       end
     end
   end

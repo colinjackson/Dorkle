@@ -96,6 +96,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     this._subviewsSend(function (subview) {
       subview.endRound();
     });
+    this.model.set('is_completed', true);
     this.model.save();
   },
 

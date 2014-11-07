@@ -1,4 +1,4 @@
-json.(@round, :id, :completed, :start_time)
+json.(@round, :id, :is_completed, :start_time)
 
 json.game do
   json.partial! 'api/games/game', game: @round.game
