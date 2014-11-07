@@ -15,9 +15,16 @@ window.Dorkle = {
 
     Dorkle.currentUserId = $('#current-user').data('id');
     if (Dorkle.currentUserId) {
-      Dorkle.notifications = new Dorkle.Views.NotificationDisplay({
-        el: $('#notification-display')
+      Dorkle.currentUser = new Dorkle.Models.User({id: Dorkle.currentUserId});
+      var notifications = new Dorkle.Collections.Notifications([], {
+        user: Dorkle.currentUser
       });
+
+      Dorkle.notifications = new Dorkle.Views.NotificationDisplay({
+        el: $('#notification-display'),
+        collection:notifications
+      });
+      notifications.fetch();
     }
 
     Backbone.history.start({pushState: true});

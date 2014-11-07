@@ -5,6 +5,6 @@ Dorkle.Collections.Notifications = Backbone.Collection.extend({
   },
 
   initialize: function (models, options) {
-    options.user && this.user = options.user;
+    if (options.user) this.user = options.user;
   }
 });

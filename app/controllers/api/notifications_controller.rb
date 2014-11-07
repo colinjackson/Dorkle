@@ -1,5 +1,6 @@
 module Api
   class NotificationsController < ApplicationController
+    before_filter :require_current_user_owner
 
     def index
       @notifications = User.find(params[:user_id]).notifications.unread
@@ -12,7 +13,7 @@ module Api
       if @notification.update(notification_params)
         render :show
       else
-        render { errors: @notification.errors.full_messages },
+        render json: { errors: @notification.errors.full_messages },
           status: :unprocessable_entity
       end
     end
@@ -34,7 +35,7 @@ module Api
       forbidden ||= !signed_in?
       unless forbidden
         if params[:action] == "index"
-          user = User.find(params[:game_id])
+          user = User.find(params[:user_id])
         else
           user = Notification.find(params[:id]).user
         end
@@ -42,7 +43,7 @@ module Api
         forbidden = current_user != user
       end
 
-      forbidden ? render json: { "you are a": "bad person"}, status: :forbidden
+      render json: { you_are_a: "bad person"}, status: :forbidden if forbidden
     end
 
   end
