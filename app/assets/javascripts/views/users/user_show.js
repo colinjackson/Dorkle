@@ -3,6 +3,7 @@ Dorkle.Views.UserShow = Backbone.Superview.extend({
   template: JST['users/show'],
 
   initialize: function () {
+    this.listenTo(this.model, "change:image_url_show", this.updateImage);
     this.listenTo(this.model, 'change:username change:name', this.updateTitle);
     this.listenTo(this.model.createdGames(), 'add', this.addGame);
   },
@@ -28,6 +29,11 @@ Dorkle.Views.UserShow = Backbone.Superview.extend({
 
   updateTitle: function () {
     this.$('h1').text(this.model.getName());
+  },
+
+  updateImage: function () {
+    $('.user-show-content > img')
+      .attr('src', this.model.escape('image_url_show'));
   },
 
   addGame: function (game) {

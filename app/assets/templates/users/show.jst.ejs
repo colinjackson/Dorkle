@@ -1,7 +1,9 @@
 <h1><%= user.getName() ? user.getName() : '...' %></h1>
 
 <div class="group">
-  <div class="user-show-content"></div>
+  <div class="user-show-content group">
+    <img src="<%= user.escape('image_url_show') %>">
+  </div>
 
   <div class="user-show-created-games">
     <h2>Created Games</h2>

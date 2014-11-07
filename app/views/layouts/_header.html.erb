@@ -8,8 +8,13 @@
   </span>
   <ul class="session-info group">
     <% if signed_in? %>
-      <li><%= link_to current_user.username, user_url(current_user),
-        class: "go-to current-user" %></li>
+      <li>
+        <img class="current-user-image"
+          src="<%= current_user.image.url(:thumb) %>">
+        <a class="go-to current-user" href="<%= user_url(current_user) %>">
+          <%= current_user.username %>
+        </a>
+      </li>
       <li><%= button_to "sign out", session_url(current_session),
         method: :delete %></li>
     <% else %>

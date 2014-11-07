@@ -2,7 +2,9 @@
   <h1><%= @user.getName %></h1>
 
   <div class="group">
-    <div class="user-show-content">
+    <div class="user-show-content group">
+      <%= image_tag @user.image.url(:show) %>
+
       <div class="user-show-details">
         <h2>Details</h2>
         <table>

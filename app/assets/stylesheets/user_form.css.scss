@@ -9,8 +9,12 @@
     border: 2px solid $br-orange;
     width: 650px;
     margin: 0 auto;
-  }
 
+    input[type=file] {
+      position: absolute;
+      visibility: hidden;
+    }
+  }
 }
 
 .user-form-submit {

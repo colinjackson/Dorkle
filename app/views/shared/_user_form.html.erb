@@ -1,4 +1,5 @@
-<form class="default" action="<%= form_action %>" method="POST">
+<form class="default" action="<%= form_action %>"
+  method="POST" enctype="multipart/form-data">
   <%= update_input(form_method) %>
   <%= auth_input %>
 
@@ -19,6 +20,11 @@
     <input type="email" name="user[email]" id="user_email"
         value="<%= user.email %>">
   </div>
+  <div>
+    <label for="user_image">Add an image (optional)</label>
+    <span id="user_image-button" class="button-default">UPLOAD</span>
+    <%= file_field :user, :image %>
+  </div>
   <% end %>
 
   <div>
@@ -28,3 +34,14 @@
 
   <button class="user-form-submit button-default"><%= button_text %></button>
 </form>
+
+<script charset="utf-8">
+  $('#user_image-button').click(function (event) {
+    event.preventDefault();
+    $('#user_image').click();
+  });
+
+  $('#user_image').change(function (event) {
+    $('#user_image-button').text(event.currentTarget.files[0].name);
+  });
+</script>

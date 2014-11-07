@@ -32,7 +32,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:successes] = ["You've successfully updated your account! Happy Dorkling!"]
+      flash[:successes] =
+        ["You've successfully updated your account! Happy Dorkling!"]
       redirect_to user_url(@user)
     else
       flash[:errors] = @user.errors.full_messages
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :name, :password)
+    params.require(:user).permit(:username, :email, :name, :password, :image)
   end
 
   def require_current_user

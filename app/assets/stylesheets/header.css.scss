@@ -49,6 +49,13 @@ header {
 
       li {
         border-left: 1px solid $br-light;
+
+        .current-user-image {
+          float: left;
+          height: 44px;
+          width: auto;
+          border: 2px solid $br-light;
+        }
       }
 
       li:first-child {

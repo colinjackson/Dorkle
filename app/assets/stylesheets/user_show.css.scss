@@ -6,6 +6,16 @@
   }
 
   .user-show-content {
+    > img {
+      float: left;
+      width: 30%;
+    }
+
+    .user-show-details {
+      float: right;
+      width: 65%;
+    }
+
     table {
       width: 50%;
       margin: 0 auto;

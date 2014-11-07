@@ -1,6 +1,8 @@
 <h1><%= game.escape('title') || '...' %></h1>
 
-<img src="<%= game.escape('image_url_show') %>">
+<% if (game.escape('image_url_show')) { %>
+  <img src="<%= game.escape('image_url_show') %>">
+<% } %>
 
 <div class="game-show-controls">
   <div class="game-show-details group">
