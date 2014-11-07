@@ -2,18 +2,21 @@
 #
 # Table name: games
 #
-#  id                 :integer          not null, primary key
-#  title              :string(255)      not null
-#  subtitle           :string(255)
-#  source             :string(255)      not null
-#  time_limit         :integer          not null
-#  author_id          :integer          not null
-#  created_at         :datetime
-#  updated_at         :datetime
-#  image_file_name    :string(255)
-#  image_content_type :string(255)
-#  image_file_size    :integer
-#  image_updated_at   :datetime
+#  id                     :integer          not null, primary key
+#  title                  :string(255)      not null
+#  subtitle               :string(255)
+#  source                 :string(255)      not null
+#  time_limit             :integer          not null
+#  author_id              :integer          not null
+#  created_at             :datetime
+#  updated_at             :datetime
+#  image_file_name        :string(255)
+#  image_content_type     :string(255)
+#  image_file_size        :integer
+#  image_updated_at       :datetime
+#  rounds_count           :integer
+#  completed_rounds_count :integer
+#  answer_matches_count   :integer
 #
 
 require 'uri'
@@ -36,6 +39,13 @@ class Game < ActiveRecord::Base
   has_many :answers, class_name: "GameAnswer"
   has_many :rounds, inverse_of: :game
 
+  has_many :completed_rounds, -> { where(is_completed: true) },
+    class_name: "Round"
+
+  has_many :completed_answer_matches,
+    through: :completed_rounds,
+    source: :answer_matches
+
   has_attached_file :image,
     styles: {show: "600x600>", thumb: "100x100#"},
     default_url: "https://s3-us-west-2.amazonaws.com/dorkle-production/" +
@@ -48,6 +58,20 @@ class Game < ActiveRecord::Base
 
   def get_source_host
     URI(self.source).host[0, 25]
+  end
+
+  def play_count
+    self.completed_rounds_count
+  end
+
+  def playthrough_rate
+    self.play_count.to_f / self.rounds_count
+  end
+
+  def average_score
+    correct_count = self.completed_answer_matches_count
+    potential_count = self.play_count * self.answers_count
+    correct_count.to_f / potential_count
   end
 
   private

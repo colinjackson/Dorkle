@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107061337) do
+ActiveRecord::Schema.define(version: 20141107153408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,17 +28,21 @@ ActiveRecord::Schema.define(version: 20141107061337) do
   add_index "game_answers", ["game_id"], name: "index_game_answers_on_game_id", using: :btree
 
   create_table "games", force: true do |t|
-    t.string   "title",              null: false
+    t.string   "title",                                      null: false
     t.string   "subtitle"
-    t.string   "source",             null: false
-    t.integer  "time_limit",         null: false
-    t.integer  "author_id",          null: false
+    t.string   "source",                                     null: false
+    t.integer  "time_limit",                                 null: false
+    t.integer  "author_id",                                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "rounds_count",                   default: 0
+    t.integer  "answers_count",                  default: 0
+    t.integer  "completed_rounds_count",         default: 0
+    t.integer  "completed_answer_matches_count", default: 0
   end
 
   add_index "games", ["author_id"], name: "index_games_on_author_id", using: :btree

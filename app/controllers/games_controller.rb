@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   before_filter :require_current_user_owner, only: [:edit, :update, :destroy]
 
   def index
-    @games = Game.includes(:author).with_answers
+    @games = Game.includes(:author).with_answers.last(10)
     render :index
   end
 
