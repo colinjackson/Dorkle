@@ -6,6 +6,8 @@ Dorkle.Views.NotificationDisplay = Backbone.Superview.extend({
 
     this.listenTo(this.collection, 'add', this.addNotification);
     this.listenTo(this.collection, 'remove', this.removeNotification);
+
+    setInterval(function () { this.collection.fetch() }.bind(this), 30000);
   },
 
   addNotification: function (notification) {
