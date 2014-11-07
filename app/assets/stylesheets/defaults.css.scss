@@ -139,3 +139,14 @@ table td.default-value {
   margin-left: 20px;
   word-wrap: break-word;
 }
+
+/* LIST ITEM DEFAULTS */
+ul.default {
+
+  > li {
+    padding: 20px;
+    margin: 20px 0;
+    background: $bg-azure;
+    border: 2px solid $br-light;
+  }
+}

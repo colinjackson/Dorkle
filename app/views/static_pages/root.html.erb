@@ -1,33 +1,46 @@
 <div class="root">
-  <h1> Welcome to
+  <h1>
+    Welcome to
     <img class="dorkle-logo" src="<%= image_path("dorkle-logo.png") %>">
+    <small>Time to get your game on!</small>
   </h1>
 
-  <div class="hot-games">
-    <h2>People really dig these games</h2>
-    <ul class="hot-games-list">
-      <% @hot_games.each do |game| %>
-      <%= render "games/item", game: game, with_user: true %>
-      <% end %>
-    </ul>
+  <div class="root-content group">
+    <div class="hot-games">
+      <h2>People really dig these games</h2>
+      <ul class="default">
+        <% @hot_games.each do |game| %>
+        <%= render "games/item", game: game, with_user: true %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="leaderboard">
+      <h2>Biggest Dorks</h2>
+      <h3>Most Questions Answered</h3>
+      <ul class="leaderboard-best-players-list default">
+        <% @best_players.each do |user| %>
+          <%= render "users/item", user: user, item_type: :best_players %>
+        <% end %>
+      </ul>
+
+      <h3>Most Popular Created Games</h3>
+      <ul class="leaderboard-best-authors-list default">
+        <% @best_authors.each do |user| %>
+          <%= render "users/item", user: user, item_type: :best_authors %>
+        <% end %>
+      </ul>
+    </div>
   </div>
-
-  <div class="leaderboard">
-    <h2>Biggest Dorks</h2>
-    <h3>Most Questions Answered</h3>
-    <ul class="leaderboard-best-players-list">
-      <% @best_players.each do |user| %>
-        <%= render "users/item", user: user, item_type: :best_players %>
-      <% end %>
-    </ul>
-
-    <h3>Most Popular Created Games</h3>
-    <ul class="leaderboard-best-authors-list">
-      <% @best_authors.each do |user| %>
-        <%= render "users/item", user: user, item_type: :best_authors %>
-      <% end %>
-    </ul>
-  </div>
-
 
 </div>
+
+<script charset="utf-8">
+  var dorkly = $('.root > h1 > .dorkle-logo');
+  $(setTimeout(function () {
+      dorkly.addClass('wavehello');
+      setTimeout(function () {
+        dorkly.removeClass('wavehello');
+      }, 5000);
+    }, 2000));
+</script>

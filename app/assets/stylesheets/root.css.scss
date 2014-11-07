@@ -1,0 +1,66 @@
+@import "utils/colors";
+
+.root {
+  h1 {
+    border: 2px solid $br-orange;
+    border-radius: 8px;
+    padding: 20px 24px;
+    background: $bg-amber;
+    color: $ft-lightblue;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 2.5em;
+    text-align: left;
+
+    img {
+      width: 75%;
+      margin: 0 auto;
+    }
+
+    img.wavehello {
+      -webkit-animation: wavehello 4s;
+    }
+
+    small {
+      display: block;
+      margin-top: 20px;
+      text-align: right;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 0.66em;
+    }
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 0.9em;
+  }
+
+  .hot-games {
+    float: left;
+    width: 62.5%;
+  }
+
+  .leaderboard {
+    float: right;
+    width: 32.5%;
+
+    img {
+      float: left;
+      width: 46px;
+      border: 2px solid $br-light;
+    }
+
+    ul {
+
+      h2 {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+}
