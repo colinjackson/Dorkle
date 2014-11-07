@@ -2,21 +2,22 @@
 #
 # Table name: games
 #
-#  id                     :integer          not null, primary key
-#  title                  :string(255)      not null
-#  subtitle               :string(255)
-#  source                 :string(255)      not null
-#  time_limit             :integer          not null
-#  author_id              :integer          not null
-#  created_at             :datetime
-#  updated_at             :datetime
-#  image_file_name        :string(255)
-#  image_content_type     :string(255)
-#  image_file_size        :integer
-#  image_updated_at       :datetime
-#  rounds_count           :integer
-#  completed_rounds_count :integer
-#  answer_matches_count   :integer
+#  id                             :integer          not null, primary key
+#  title                          :string(255)      not null
+#  subtitle                       :string(255)
+#  source                         :string(255)      not null
+#  time_limit                     :integer          not null
+#  author_id                      :integer          not null
+#  created_at                     :datetime
+#  updated_at                     :datetime
+#  image_file_name                :string(255)
+#  image_content_type             :string(255)
+#  image_file_size                :integer
+#  image_updated_at               :datetime
+#  rounds_count                   :integer          default(0)
+#  answers_count                  :integer          default(0)
+#  completed_rounds_count         :integer          default(0)
+#  completed_answer_matches_count :integer          default(0)
 #
 
 require 'rails_helper'

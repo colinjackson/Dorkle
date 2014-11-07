@@ -2,21 +2,22 @@
 #
 # Table name: games
 #
-#  id                     :integer          not null, primary key
-#  title                  :string(255)      not null
-#  subtitle               :string(255)
-#  source                 :string(255)      not null
-#  time_limit             :integer          not null
-#  author_id              :integer          not null
-#  created_at             :datetime
-#  updated_at             :datetime
-#  image_file_name        :string(255)
-#  image_content_type     :string(255)
-#  image_file_size        :integer
-#  image_updated_at       :datetime
-#  rounds_count           :integer
-#  completed_rounds_count :integer
-#  answer_matches_count   :integer
+#  id                             :integer          not null, primary key
+#  title                          :string(255)      not null
+#  subtitle                       :string(255)
+#  source                         :string(255)      not null
+#  time_limit                     :integer          not null
+#  author_id                      :integer          not null
+#  created_at                     :datetime
+#  updated_at                     :datetime
+#  image_file_name                :string(255)
+#  image_content_type             :string(255)
+#  image_file_size                :integer
+#  image_updated_at               :datetime
+#  rounds_count                   :integer          default(0)
+#  answers_count                  :integer          default(0)
+#  completed_rounds_count         :integer          default(0)
+#  completed_answer_matches_count :integer          default(0)
 #
 
 require 'uri'
@@ -35,11 +36,15 @@ class Game < ActiveRecord::Base
     includes(:answers).where.not(game_answers: {game_id: nil});
   end
 
-  belongs_to :author, class_name: "User", inverse_of: :created_games
+  belongs_to :author, counter_cache: :created_games_count,
+    class_name: "User",
+    inverse_of: :created_games
+
   has_many :answers, class_name: "GameAnswer"
   has_many :rounds, inverse_of: :game
 
-  has_many :completed_rounds, -> { where(is_completed: true) },
+  has_many :completed_rounds,
+    -> { where(is_completed: true) },
     class_name: "Round"
 
   has_many :completed_answer_matches,
@@ -72,6 +77,11 @@ class Game < ActiveRecord::Base
     correct_count = self.completed_answer_matches_count
     potential_count = self.play_count * self.answers_count
     correct_count.to_f / potential_count
+  end
+
+  def update_custom_counter_caches
+    self.completed_rounds_count = self.completed_rounds.count
+    self.completed_answer_matches_count = self.completed_answer_matches.count
   end
 
   private

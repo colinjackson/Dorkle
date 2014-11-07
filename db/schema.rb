@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107153408) do
+ActiveRecord::Schema.define(version: 20141107171914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,16 +92,21 @@ ActiveRecord::Schema.define(version: 20141107153408) do
   add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username",           null: false
-    t.string   "email",              null: false
+    t.string   "username",                                         null: false
+    t.string   "email",                                            null: false
     t.string   "name"
-    t.string   "password_digest",    null: false
+    t.string   "password_digest",                                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "rounds_count",                         default: 0
+    t.integer  "completed_rounds_count",               default: 0
+    t.integer  "completed_answer_matches_count",       default: 0
+    t.integer  "created_games_count",                  default: 0
+    t.integer  "created_games_completed_rounds_count", default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

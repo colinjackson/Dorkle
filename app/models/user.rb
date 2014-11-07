@@ -2,17 +2,22 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  username           :string(255)      not null
-#  email              :string(255)      not null
-#  name               :string(255)
-#  password_digest    :string(255)      not null
-#  created_at         :datetime
-#  updated_at         :datetime
-#  image_file_name    :string(255)
-#  image_content_type :string(255)
-#  image_file_size    :integer
-#  image_updated_at   :datetime
+#  id                                   :integer          not null, primary key
+#  username                             :string(255)      not null
+#  email                                :string(255)      not null
+#  name                                 :string(255)
+#  password_digest                      :string(255)      not null
+#  created_at                           :datetime
+#  updated_at                           :datetime
+#  image_file_name                      :string(255)
+#  image_content_type                   :string(255)
+#  image_file_size                      :integer
+#  image_updated_at                     :datetime
+#  rounds_count                         :integer          default(0)
+#  completed_rounds_count               :integer          default(0)
+#  completed_answer_matches_count       :integer          default(0)
+#  created_games_count                  :integer          default(0)
+#  created_games_completed_rounds_count :integer          default(0)
 #
 
 require 'uri'
@@ -29,10 +34,20 @@ class User < ActiveRecord::Base
   has_many :sessions, inverse_of: :user
   has_many :notifications, inverse_of: :user
   has_many :rounds, foreign_key: :player_id, inverse_of: :player
+  has_many :completed_rounds, -> { where(is_completed: true) },
+    class_name: "Round",
+    foreign_key: :player_id
+  has_many :completed_answer_matches,
+    through: :completed_rounds,
+    source: :answer_matches
+
   has_many :created_games,
     class_name: "Game",
     foreign_key: :author_id,
     inverse_of: :author
+  has_many :created_games_completed_rounds,
+    through: :created_games,
+    source: :completed_rounds
 
   has_attached_file :image,
     styles: {show: "600x600>", thumb: "50x50#"},
@@ -62,6 +77,28 @@ class User < ActiveRecord::Base
 
   def getName
     self.name ? self.name : self.username
+  end
+
+  def play_count
+    self.completed_rounds_count
+  end
+
+  def flakiness
+    1 - (self.completed_rounds_count.to_f / self.rounds_count)
+  end
+
+  def created_games_plays
+    self.created_games_completed_rounds_count
+  end
+
+  def update_custom_counter_caches_for_player
+    self.completed_rounds_count = self.completed_rounds.count
+    self.completed_answer_matches_count = self.completed_answer_matches.count
+  end
+
+  def update_custom_counter_caches_for_author
+    self.created_games_completed_rounds_count =
+      self.created_games_completed_rounds.count
   end
 
   private

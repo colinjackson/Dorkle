@@ -18,8 +18,13 @@ class Round < ActiveRecord::Base
 
   scope :completed, -> { where(is_completed: true) }
 
-  belongs_to :player, class_name: "User", inverse_of: :rounds
+  belongs_to :player, counter_cache: true,
+    class_name: "User",
+    inverse_of: :rounds
+
   belongs_to :game, inverse_of: :rounds, counter_cache: true
+  has_one :author, through: :game
+
   has_many :answers, through: :game, source: :answers
   has_many :answer_matches, class_name: "RoundAnswerMatch", inverse_of: :round
   has_many :notifications, as: :notifiable
@@ -64,7 +69,10 @@ class Round < ActiveRecord::Base
   private
   def update_counter_caches
     return if !self.is_completed
-    self.game.completed_rounds_count = self.game.rounds.completed.size
+
+    self.game.update_custom_counter_caches
+    self.player.update_custom_counter_caches_for_player
+    self.author.update_custom_counter_caches_for_author
   end
 
 end
