@@ -98,11 +98,15 @@ class User < ActiveRecord::Base
   def update_custom_counter_caches_for_player
     self.completed_rounds_count = self.completed_rounds.count
     self.completed_answer_matches_count = self.completed_answer_matches.count
+
+    self.save!
   end
 
   def update_custom_counter_caches_for_author
     self.created_games_completed_rounds_count =
       self.created_games_completed_rounds.count
+
+    self.save!
   end
 
   private

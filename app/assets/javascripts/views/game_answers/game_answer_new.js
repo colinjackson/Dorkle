@@ -10,7 +10,6 @@ Dorkle.Views.GameAnswerNew = Backbone.View.extend({
   render: function () {
     var renderedContent = this.template();
     this.$el.html(renderedContent);
-    this.$answerBox = this.$('#answer-box');
 
     return this;
   },
@@ -22,7 +21,6 @@ Dorkle.Views.GameAnswerNew = Backbone.View.extend({
     if (this.collection.game.id) {
       newAnswerAttrs.game_id = this.collection.game.id
       this.collection.create(newAnswerAttrs, {
-        wait: true,
         error: function (model, response) {
           Dorkle.flash.displayError('Darn! ' + response.errors);
         }
@@ -30,7 +28,8 @@ Dorkle.Views.GameAnswerNew = Backbone.View.extend({
     } else {
       this.collection.add(newAnswerAttrs);
     }
-    this.$answerBox.val('');
+    this.$('input').val('');
+    this.$('#answer-box').focus();
   }
 
 });
