@@ -55,10 +55,47 @@
       border: 2px solid $br-light;
     }
 
-    ul {
+    .user-item:nth-child(1) {
+      background: $bg-gold;
+      position: relative;
+    }
 
-      h2 {
-        font-size: 0.9em;
+    .user-item:nth-child(1):after {
+      content: "♛";
+      font-size: 1.5em;
+      position: absolute;
+      transform: rotate(-30deg);
+      line-height: 0.9;
+      top: 5px;
+      left: 6px;
+      color: $ft-darkblue;
+    }
+
+    .user-item:nth-child(2) {
+      background: $bg-silver;
+    }
+
+    .user-item:nth-child(3) {
+      background: $bg-bronze;
+    }
+
+    .user-item-details {
+      .user-item-name {
+        font-size: 1.05em;
+      }
+
+      .user-item-statistic {
+        display: block;
+        font-size: 0.7em;
+        font-weight: 300;
+        text-align: center;
+
+        strong {
+          display: block;
+          text-align: center;
+          font-size: 2.25em;
+          font-weight: bold;
+        }
       }
     }
   }

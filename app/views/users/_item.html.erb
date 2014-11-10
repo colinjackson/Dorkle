@@ -6,9 +6,11 @@
       <h2 class="user-item-name"><%= user.getName %></h2>
       <span class="user-item-statistic">
         <% if item_type == :best_players %>
-          <%= user.total_answered %> total questions answered correctly
+          <strong><%= user.total_answered %></strong>
+          total questions answered
         <% elsif item_type == :best_authors %>
-          <%= user.created_games_play_count %> plays of <%= user.getName %>'s games
+          <strong><%= user.created_games_play_count %></strong>
+          plays of <%= user.getName %>'s games
         <% end %>
       </span>
     </div>
