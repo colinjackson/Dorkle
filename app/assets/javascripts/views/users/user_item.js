@@ -3,6 +3,10 @@ Dorkle.Views.UserItem = Backbone.View.extend({
   className: 'user-item',
   template: JST['users/_item'],
 
+  initialize: function (options) {
+    this.itemType = options.itemType;
+  },
+
   events: {
     'click a': 'goToUser'
   },
