@@ -4,6 +4,7 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
 
   initialize: function () {
     this.listenToOnce(this.model, 'sync', this.prepareForStart);
+    this.listenTo(this.model, 'change:is_completed', this.endRound);
 
     this.validAnswers = this.model.answers().clone();
     this.listenTo(this.model, 'sync', this.setValidAnswers)
@@ -80,24 +81,25 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
   },
 
   handleVictory: function () {
-    this.endRound();
+    this.model.set('is_completed', true);
+    this.model.save();
     alert('Congratulations! You win!')
   },
 
   handleDefeat: function () {
-    this.endRound();
+    this.model.set('is_completed', true);
+    this.model.save();
     alert('Oh no, you lose!');
   },
 
   endRound: function () {
+    if (!this.model.get('is_completed')) return false;
     this._setLabelState('game-over-state', 'GAME OVER!');
 
     clearInterval(this.roundTimeoutID)
     this._subviewsSend(function (subview) {
       subview.endRound();
     });
-    this.model.set('is_completed', true);
-    this.model.save();
   },
 
   remove: function () {

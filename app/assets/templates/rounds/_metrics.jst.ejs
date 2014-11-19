@@ -5,4 +5,7 @@
 <h3 class="round-metrics-remaining">
   <span class="left"><%= round.answersLeft() %></span>/<%= round.answers().length %>
     answers left
+  <% if (!round.is_completed) { %>
+    <button class="give-up">give up</button>
+  <% } %>
 </h3>

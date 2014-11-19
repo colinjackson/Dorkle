@@ -7,6 +7,10 @@ Dorkle.Views.RoundShowMetrics = Backbone.View.extend({
     this.listenTo(this.model.matches(), 'add', this.updateAnswersLeft);
   },
 
+  events: {
+    'click .give-up': 'roundCompleted'
+  },
+
   render: function () {
     var renderedContent = this.template({
       round: this.model
@@ -30,6 +34,11 @@ Dorkle.Views.RoundShowMetrics = Backbone.View.extend({
   updateAnswersLeft: function () {
     this.$('.round-metrics-remaining > span.left')
       .text(this.model.answersLeft());
+  },
+
+  roundCompleted: function () {
+    this.model.set('is_completed', true);
+    this.model.save();
   },
 
   endRound: function () {
