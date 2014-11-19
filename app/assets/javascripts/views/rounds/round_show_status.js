@@ -24,7 +24,7 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
   addAnswerMatch: function (answerMatch, isMissed) {
     var subview = new Dorkle.Views.AnswerMatchItem({
       model: answerMatch,
-      isMissed: isMissed
+      isMissed: (isMissed === true ? true : false)
     });
 
     this.addSubview('ul.board-status-matches-list', subview);
