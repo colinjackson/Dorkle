@@ -21,7 +21,7 @@ class GameAnswer < ActiveRecord::Base
     inverse_of: :answer
 
   def get_regex
-    self.regex ? self.regex : self.answer.downcase
+    self.regex ? self.regex : Regexp.escape(self.answer.downcase)
   end
 
   def matches?(guess)
