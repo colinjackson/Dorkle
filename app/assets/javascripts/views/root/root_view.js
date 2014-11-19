@@ -74,13 +74,15 @@ Dorkle.Views.RootView = Backbone.Superview.extend({
   },
 
   prepareWave: function () {
+    if (document.cookie.indexOf('dorkle_danced=true') !== -1) return false;
+    document.cookie = 'dorkle_danced=true'
+
     var dorkly = this.$('.dorkle-logo');
     $(setTimeout(function () {
-        dorkly.addClass('wavehello');
-        setTimeout(function () {
-          dorkly.removeClass('wavehello');
-        }, 5000);
-      }, 2000)
-    );
+      dorkly.addClass('wavehello');
+      setTimeout(function () {
+        dorkly.removeClass('wavehello');
+      }, 5000);
+    }, 2000));
   }
 })
