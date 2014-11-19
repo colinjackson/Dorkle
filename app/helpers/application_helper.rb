@@ -30,6 +30,6 @@ module ApplicationHelper
   end
 
   def acquiesce
-    ["yep", "uh-huh", "got it", "ight", "okay", "word", "kthxbye"].sample
+    ["yep", "uh-huh", "got it", "cool", "okay", "kthxbye"].sample
   end
 end

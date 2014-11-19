@@ -4,7 +4,7 @@
   <div class="round-show-board group">
     <div class="round-show-board-guessing group">
       <div class="round-show-board-guess">
-        <% if @round.time_remaining > 0 && @round.answers_left > 0 %>
+        <% if !@round.is_completed %>
           <form action="<%= guess_round_url(@round) %>" method="post">
             <%= auth_input %>
 
@@ -34,6 +34,8 @@
         <h3 class="round-metrics-timer">
           <span class="time">
             <%= time_string(@round.time_remaining.to_i) %></span> remaining...
+
+            <%= button_to 'give up', finish_round_url(@round), method: :patch %>
         </h3>
         <h3 class="round-metrics-remaining">
           <span class="time">

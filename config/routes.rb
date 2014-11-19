@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :rounds, only: [:create, :show] do
     member do
       post "guess" => "rounds#guess"
+      patch "finish" => "rounds#finish"
     end
   end
 

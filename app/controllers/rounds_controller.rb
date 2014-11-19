@@ -1,4 +1,5 @@
 class RoundsController < ApplicationController
+  before_filter :check_if_completed, except: :create
 
   def create
     if signed_in?
@@ -38,9 +39,24 @@ class RoundsController < ApplicationController
     render :show
   end
 
+  def finish
+    @round = Round.find(params[:id])
+    @round.is_completed = true;
+    @round.save
+    redirect_to round_url(@round)
+  end
+
   private
   def round_params
     params.require(:round).permit(:game_id)
+  end
+
+  def check_if_completed
+    @round = Round.find(params[:id])
+    if @round.time_remaining <= 0 || @round.answers_left == 0
+      @round.is_completed = true
+      @round.save
+    end
   end
 
 end
