@@ -2,7 +2,8 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
   className: 'round-show-board-status',
   template: JST['rounds/_status'],
 
-  initialize: function () {
+  initialize: function (options) {
+    this.validAnswers = options.validAnswers;
     this.listenTo(this.model.matches(), 'add', this.addAnswerMatch);
   },
 
@@ -20,14 +21,23 @@ Dorkle.Views.RoundShowStatus = Backbone.Superview.extend({
 
   startRound: function () { return true },
 
-  addAnswerMatch: function (answerMatch) {
+  addAnswerMatch: function (answerMatch, isMissed) {
     var subview = new Dorkle.Views.AnswerMatchItem({
-      model: answerMatch
+      model: answerMatch,
+      isMissed: isMissed
     });
 
     this.addSubview('ul.board-status-matches-list', subview);
   },
 
-  endRound: function () { this.stopListening(); }
+  endRound: function () {
+    this.stopListening();
+    this.validAnswers.each(function (missedAnswer) {
+      var missedMatch = new Dorkle.Models.RoundAnswerMatch({
+        answer: missedAnswer
+      });
+      this.addAnswerMatch(missedMatch, true);
+    }.bind(this));
+  }
 
 });

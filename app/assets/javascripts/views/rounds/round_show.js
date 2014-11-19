@@ -29,7 +29,8 @@ Dorkle.Views.RoundShow = Backbone.Superview.extend({
     this.addSubview('.round-show-board-guessing', metricsSubview);
 
     var statusSubview = new Dorkle.Views.RoundShowStatus({
-      model: this.model
+      model: this.model,
+      validAnswers: this.validAnswers
     });
     this.addSubview('.round-show-board', statusSubview);
 
