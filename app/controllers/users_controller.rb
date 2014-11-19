@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def demo
     @user = User.find_by_username("dorkmaster")
     sign_in!(@user)
+    flash[:successes] = ["All right, you're in! Time to get your dork on!"]
     redirect_to user_url(@user)
   end
 
