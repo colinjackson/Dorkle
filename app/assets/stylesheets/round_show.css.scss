@@ -73,6 +73,21 @@
         padding: 18px 25px;
         border: 2px solid $br-light;
         background: $bg-amber;
+
+        .round-metrics-remaining {
+          font-size: 18px;
+
+          > .give-up {
+            float: right;
+            padding: 3px 5px;
+            border: 2px solid $br-light;
+            border-radius: 3px;
+            font-size: 15px;
+            font-weight: 300;
+            color: $ft-blue;
+            background: $bg-orange-gradient;
+          }
+        }
       }
     }
   }

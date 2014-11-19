@@ -34,13 +34,15 @@
         <h3 class="round-metrics-timer">
           <span class="time">
             <%= time_string(@round.time_remaining.to_i) %></span> remaining...
-
-            <%= button_to 'give up', finish_round_url(@round), method: :patch %>
         </h3>
         <h3 class="round-metrics-remaining">
           <span class="time">
             <%= @round.answers_left %></span>/<%= @round.answers.count %>
             remaining
+            <% unless @round.is_completed %>
+            <%= button_to "give up", finish_round_url(@round),
+              method: :patch, form_class: "give-up" %>
+            <% end %>
         </h3>
       </div>
     </div>
