@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   before_filter :require_signed_out, only: [:new, :create]
   before_filter :require_current_user, only: [:edit, :update, :destroy]
 
+  def demo
+    @user = User.find_by_username("dorkmaster")
+    sign_in!(@user)
+    redirect_to user_url(@user)
+  end
+
   def new
     @user = User.new()
     render :new
