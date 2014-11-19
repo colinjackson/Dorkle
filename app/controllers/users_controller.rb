@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_current_user, only: [:edit, :update, :destroy]
 
   def demo
-    @user = User.find_by_username("dorkmaster")
+    @user = User.find_by_username("CDO")
     sign_in!(@user)
     flash[:successes] = ["All right, you're in! Time to get your dork on!"]
     redirect_to user_url(@user)
