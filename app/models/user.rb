@@ -23,6 +23,8 @@
 require 'uri'
 
 class User < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:username, :email, :name]
 
   validates_presence_of :username, :email, :password_digest
   validates_uniqueness_of :username, :email

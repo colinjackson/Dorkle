@@ -23,6 +23,9 @@
 require 'uri'
 
 class Game < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [:title, :subtitle]
+
   validates_presence_of :title, :source, :time_limit, :author
   validates_uniqueness_of :title
   validates_format_of :source, with: %r{\b(([\w-]+://?|www[.])[^\s()]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))} # thanks, Jon Gruber!
