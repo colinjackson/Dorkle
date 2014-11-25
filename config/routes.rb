@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :notifications, only: [:update, :destroy]
+  resource :search, only: [:query] do
+    collection do
+      match ":query" => "searches#query", via: :get, as: "query"
+    end
+  end
 
   resources :games do
     resources :game_answers, only: :index, as: "answers"
