@@ -32,5 +32,5 @@ window.Dorkle = {
 };
 
 $(document).ready(function(){
-  Dorkle.initialize();
+  // Dorkle.initialize();
 });

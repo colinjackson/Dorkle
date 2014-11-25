@@ -6,10 +6,11 @@
     Dorkle: a spiffy <a href="http://www.sporcle.com">Sporcle</a> spinoff
     by <a href="http://colinjackson.co">Colin Jackson</a>
   </span>
+  <%= render "searches/search_bar", query: nil %>
   <ul class="session-info group">
     <% if signed_in? %>
 
-      <li id="notification-display"> <!-- this is where the magic happens! -->
+      <li id="notification-display">
         <img class="current-user-image"
           src="<%= current_user.image.url(:thumb) %>">
 
