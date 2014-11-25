@@ -1,4 +1,5 @@
 <div class="search-query">
+  <%= render "search_bar", query: @query %>
 
   <ul class="query-results">
   <% @results.each do |result| %>

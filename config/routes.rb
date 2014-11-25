@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:update, :destroy]
   resource :search, only: [:query] do
     collection do
-      match ":query" => "searches#query", via: :get, as: "query"
+      get "query" => "searches#query", as: "query"
     end
   end
 
