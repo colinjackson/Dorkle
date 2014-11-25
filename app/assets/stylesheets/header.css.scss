@@ -21,7 +21,7 @@ header {
       position: relative;
       z-index: 4;
       height: 60px;
-      padding: 5px 15px;
+      padding: 5px 5px 5px 15px;
     }
 
     .dorkle-logo-link:hover > .dorkle-logo {
@@ -34,14 +34,31 @@ header {
     }
 
     .welcome-message {
+      float: left;
       display: inline-block;
-      padding: 24px;
-      font-size: 0.7em;
+      width: 140px;
+      padding: 14px 10px 14px 0;
+      font-size: 0.66em;
       font-weight: 300;
+      font-style: italic;
+      text-align: left;
       color: gray;
 
       > a {
         text-decoration: underline;
+      }
+    }
+
+    .search-bar {
+      float: left;
+      width: 370px;
+      margin-left: 25px;
+      padding: 16px 0;
+      font-size: 0.75em;
+      background: transparent;
+
+      input {
+        background: $bg-amber;
       }
     }
 
@@ -68,7 +85,7 @@ header {
       a, input[type="submit"] {
         display: block;
         float: left;
-        padding: 10px 20px 9px 20px;
+        padding: 10px 10px 9px 10px;
         font-size: 0.9em;
         font-weight: bold;
         color: $ft-darkblue;
@@ -126,5 +143,4 @@ header {
       box-shadow: 0 -3px 0 $br-light;
     }
   }
-
 }
