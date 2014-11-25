@@ -1,0 +1,12 @@
+<div class="search-query">
+
+  <ul class="query-results">
+  <% @results.each do |result| %>
+    <% if result.class == User %>
+      <%= render "users/item", user: result, item_type: nil %>
+    <% elsif result.class == Game %>
+      <%= render "games/item", game: result, with_user: true %>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
