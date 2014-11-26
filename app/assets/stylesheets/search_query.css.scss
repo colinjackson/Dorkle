@@ -1,0 +1,14 @@
+@import "utils/colors";
+
+.search-query {
+  > form.search-bar {
+    margin-bottom: 10px;
+  }
+
+  > p.response-message {
+    font-style: italic;
+    text-align: center;
+    font-size: 0.85em;
+    margin-bottom: 25px;
+  }
+}

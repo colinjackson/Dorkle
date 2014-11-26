@@ -1,6 +1,6 @@
 Dorkle.Views.GameItem = Backbone.View.extend({
   tagName: 'li',
-  className: 'game-item',
+  className: 'searchable-item game-item',
   template: JST['games/_item'],
 
   events: {

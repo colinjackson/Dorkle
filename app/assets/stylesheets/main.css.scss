@@ -56,44 +56,60 @@ GAME ANSWER ITEM
 /* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-GAME SHOW ITEM
+SEARCHABLE ITEM
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
 
-.game-show-link {
-  display: block;
-
-  > img {
-    float: left;
-    height: 150px;
-    width: auto;
-    margin-right: 20px;
-    border: 2px solid $br-orange;
-    background: $bg-beige;
-  }
-
-  .game-item-title {
-    color: $ft-brown;
-  }
-
-  span {
+.searchable-item {
+  > a {
     display: block;
-  }
 
-  .game-item-subtitle {
-    font-style: italic;
-    margin-bottom: 8px;
-  }
+    > img {
+      float: left;
+      height: 150px;
+      width: auto;
+      margin-right: 20px;
+      border: 2px solid $br-orange;
+      background: $bg-beige;
+    }
 
-  .game-item-author, .game-item-time {
-    float: left;
-    padding: 0 10px;
-    font-weight: 300;
-  }
+    span {
+      display: block;
+    }
 
-  .game-item-author {
-    border-right: 1px solid $br-light;
+    .game-item-subtitle {
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .game-item-author, .game-item-time {
+      float: left;
+      padding: 0 10px;
+      font-weight: 300;
+    }
+
+    .game-item-author {
+      border-right: 1px solid $br-light;
+    }
+  }
+}
+
+
+
+/* %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+SEARCH BAR
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% */
+
+form.search-bar {
+  background: transparent;
+
+  > input[type=text] {
+    background: $bg-amber;
   }
 }
 

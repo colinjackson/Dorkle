@@ -45,13 +45,15 @@
     width: 62.5%;
   }
 
-  .leaderboard {
+  div.leaderboard {
     float: right;
     width: 32.5%;
 
     img {
       float: left;
       width: 46px;
+      height: auto;
+      margin: 0;
       border: 2px solid $br-light;
     }
 
@@ -81,7 +83,7 @@
 
     .user-item-details {
       .user-item-name {
-        font-size: 1.05em;
+        font-size: 0.9em;
       }
 
       .user-item-statistic {

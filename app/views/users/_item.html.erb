@@ -1,18 +1,21 @@
-<li class="user-item">
+<li class="searchable-item user-item">
   <a class="user-show-link group" href="<%= user_url(user) %>">
     <%= image_tag user.image.url(:thumb) %>
 
     <div class="user-item-details">
       <h2 class="user-item-name"><%= user.getName %></h2>
-      <span class="user-item-statistic">
-        <% if item_type == :best_players %>
+      <% if [:best_players, :full_stats].include?(item_type) %>
+        <span class="user-item-statistic">
           <strong><%= user.total_answered %></strong>
           total questions answered
-        <% elsif item_type == :best_authors %>
+        </span>
+      <% end %>
+      <% if [:best_authors, :full_stats].include?(item_type) %>
+        <span class="user-item-statistic">
           <strong><%= user.created_games_play_count %></strong>
           plays of <%= user.getName %>'s games
-        <% end %>
-      </span>
+        </span>
+      <% end %>
     </div>
   </a>
 </li>
